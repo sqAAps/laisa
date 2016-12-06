@@ -1,0 +1,86 @@
+section#post_ad_section{
+    width: 100%;
+    margin-top: 40px;
+    padding-bottom: 40px;
+}
+div#post_container.container-fluid{
+    padding-bottom: 15px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #bceadf;
+    background-color: white;
+}
+h2#post_ad_heading{
+	text-align: center;
+    margin: 5px;
+}
+div#one-time, div#recurring{
+    display: inline-block;
+    width: 49%;
+    font-size: 18px;
+    cursor: pointer;
+}
+div#one-time{
+    color: orange;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px 0px 1px 0px;
+}
+div#recurring{
+    color: gray;
+}
+form#recurring_form{
+    display: none;
+}
+label#date_label, label#time_label{
+	margin-left: 7%;
+}
+label#days_label{
+    margin-left: 27px;
+    float: left;
+}
+input#autocomplete, input#autocomplete2, input#amount_input, textarea#description_input {
+	width: 86%;
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+}
+input#date_input{
+    width: 70%;
+}
+div#days_input{
+    display: inline-block;
+}
+ul#type_list{
+	padding-left: 0px;
+    list-style-type: none;
+    margin: 10px 7%;
+}
+li.type_list_items{
+}
+span.radio_text{
+	margin-left: 3%;
+}
+div#time_div{
+	margin-left: 7%;
+}
+
+button#post_ad {
+	width: 86%;
+    height: 30px;
+    font-size: 17px;
+    background-color: lawngreen;
+    color: white;
+    border-color: lawngreen;
+    display: block;
+    margin: auto;
+	margin-top: 10px;
+}
+
+#validate-status {
+    color: red;
+    display: block;
+    font-weight: 600;
+    text-align: center;
+}
+/* Street Adress*/

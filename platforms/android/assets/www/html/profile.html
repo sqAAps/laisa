@@ -1,0 +1,164 @@
+<!DOCTYPE>
+<html>
+    <title>Namela</title>
+    <head>
+		<script type="text/javascript" src="../API/jquery.js"></script>
+		<script src="../API/335bootstrap.js"></script>
+		<script type="text/javascript" src="../js/index.js"></script>
+		<link rel="stylesheet" href="../API/335bootstrap.css">
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+        <link href='../css/index.css' rel='stylesheet' type="text/css">
+        <link href='../css/signin.css' rel='stylesheet' type="text/css">
+        <link href='../css/profile.css' rel='stylesheet' type="text/css">
+        <!--<script src="http://malsup.github.com/jquery.form.js"></script>-->
+    </head>
+        
+    <body id="dabody">
+                
+		<!--Mobile Navigation bar-->
+		<div class="mobile_nav_head" id="nav_head">
+			<div class="container-fluid">
+				<a href="javascript:open_profile_menu();">
+					<img id="profile_menu" src="../images/icons/mobile_navigation/profile_menu.svg">
+				</a>
+				<a href="javascript:close_profile_menu();">
+					<img id="close_menu1" src="../images/icons/mobile_navigation/close_menu.svg">
+				</a>	    
+					
+				<a href="profile.html">
+					<img id="mobile_logo" src="../images/icons/mobile_navigation/logo.svg" />
+				</a>
+                	   
+				<a href="javascript:open_search_menu();">
+					<img id="search_menu" src="../images/icons/mobile_navigation/search_menu.svg">
+				</a>	
+				<a href="javascript:close_search_menu();">	
+					<img id="close_menu2" src="../images/icons/mobile_navigation/close_menu.svg">
+				</a>
+			</div>
+		</div>                
+                
+		<!--Profile Menu-->
+		<div id="profile_menu_button">
+			<div class="container-fluid">
+              
+				<ul id="profile_menu_ul">
+					<a href="post.html" style="text-decoration:none">
+						<li id="profile_menu_li">
+							<img id="profile_menu_li_img" src="../images/icons/profile_menu/add_post.svg"/>
+							<span id="profile_menu_li_head">Add Post</span>
+						</li>
+					</a>
+                   
+					<a href="inbox.html" style="text-decoration:none">
+						<li id="profile_menu_li">
+							<img id="profile_menu_li_img" src="../images/icons/profile_menu/inbox.svg"/>
+							<span id="profile_menu_li_head">Inbox</span>
+						</li>
+					</a>
+				</ul>
+                     
+				<div id="logout_div">
+					<a href="LogOut/signout.php">
+						<span id="logout_span">Logout</span>
+					</a>
+				</div>
+			</div>
+		</div>                
+                
+		<!--Search Menu-->
+		<div id="search_menu_button">
+			<div class="container-fluid" id="search_menu_container">
+						
+				<h4 id="search_menu_header">Search</h4>
+						
+				<form id="mobile_search_menu_form" name="mobile_search_menu_form" action="" method="POST">
+
+					<!-- Departure Field -->
+					<input id="search_menu_departure" name="departure" type="text" placeholder=" Departure" required />                            
+
+					<!-- Destination Field -->
+					<input id="search_menu_destination" name="destination" type="text" placeholder=" Destination" />
+					
+					<!-- D A T E -->
+					<input id="search_menu_date" name="date" type="text" placeholder=" DATE: YYYY/MM/DD" />
+
+					<br>                                            
+					<input id="search_menu_offering_transport" type="radio" name="type" value="o" checked/>
+					<span id="span_search_menu_offering_looking"> Transport</span>
+							
+					<br>
+					<input id="search_menu_offering_passenger" type="radio" name="type" value="w" />
+					<span id="span_search_menu_offering_looking"> Commuters/Passgeners</span>
+
+					<p id="validate_status"></p>
+
+					<!-- Form submit button -->
+					<button type="button" id="search_menu_search" name="search_menu_search" onclick="search()" >SEARCH</button>
+				</form>
+
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			function search(){
+				_("search_menu_button").style.display = "none";
+				_("close_menu2").style.display = "none";
+				
+				_("search_menu").style.display = "block";
+				_("profile_menu").style.display = "block";
+				
+				var departure = _("search_menu_departure").value;
+				var destination = _("search_menu_destination").value;
+				var date = _("search_menu_date").value;
+								
+				if(_("search_menu_offering_transport").checked){
+					var type = "o";
+				} else{
+					var type = "w";
+				}
+				
+				var status = _("validate_status");
+				
+				if(departure == "" || destination == "" || date == ""){
+					status.innerHTML = '<span style="color: #ff0000;font-family: sans-serif;margin-left: 15px;font-size: 15px;">Fill out all of the form data</span>';
+				} else {			
+					status.innerHTML = 'please wait ...';
+					//var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/login.php");
+					var ajax = ajaxObj("POST", "../php/search.php");
+					ajax.onreadystatechange = function() {
+						if(ajaxReturn(ajax) == true) {
+							_("search_results").innerHTML = ajax.responseText;
+						}
+					}
+					ajax.send("departure="+departure+"&destination="+destination+"&date="+date+"&type="+type+"&html="+'');
+				}
+			}
+		</script>
+		
+		<!--///////////////////////////////////////////////////////////////////////////////////////////// 
+						P R O F I L E
+		/////////////////////////////////////////////////////////////////////////////////////////////-->
+		<div id="profile_head"></div>
+        
+		
+		<div id="send_msg_container"></div>
+		<!--///////////////////////////////////////////////////////////////////////////////////////////// 
+						J A V A S C R I P T
+		/////////////////////////////////////////////////////////////////////////////////////////////-->
+        <script type="text/javascript">
+			function profile(){
+				//var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/login.php");
+				var ajax = ajaxObj("POST", "../php/profile.php");
+				
+				ajax.onreadystatechange = function() {
+					if(ajaxReturn(ajax) == true) {
+						_("profile_head").innerHTML = ajax.responseText;
+					}
+				}
+				ajax.send("profile="+"");
+			}
+			window.onload = profile;
+		</script>
+    </body>
+</html>

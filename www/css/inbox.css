@@ -1,0 +1,177 @@
+table#table_container{
+    width: 100%;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    padding-bottom: 30px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #bceadf;
+    background-color: white;
+}
+td#table_container_td{
+    width: 100%;
+    vertical-align:top;
+}
+h2#message_header{
+	text-align: center;
+    margin: 7px 0px;
+}
+
+/*//////////////////////////////
+        DELETE
+//////////////////////////////*/
+table#delete_container{
+    width: 96%;
+    margin: auto;
+    margin-bottom: 10px;  
+}
+td#delete_container_image_container{
+    width: 3%; 
+}
+img#delete_container_image{
+
+}
+td#delete_button_container{
+    width: 97%;
+    vertical-align: top;
+}
+input#deleteBtn{
+    background-color: white;
+    color: orange;
+    height: 28px;
+    border-style: none;
+    font-size: 20px;
+}
+
+/*////////////////////////////////
+    From    Message         Date
+////////////////////////////////*/
+table#headline_container{
+    width: 96%;
+    margin: auto;
+    border: #bceadf;
+    border-width: 1px 0px;
+    border-style: solid;
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+td#toggleAll_checkbox_container{
+    width: 4%;
+    vertical-align: top;
+}
+input#toggleAll{
+    
+}
+td#from{
+    width: 25%;
+}
+td#message{
+    width: 58%;
+    vertical-align: top;
+}
+
+td#date{
+    width: 5%;
+}
+
+/*////////////////////////////////////
+    While loop for every message
+////////////////////////////////////*/
+table#message_container{
+    width: 96%;
+    border-bottom: 1px solid gainsboro;
+    padding-bottom: 10px;
+    margin: 10px auto;
+}
+td#sender_checkbox_container{
+    width: 4%;
+    vertical-align: top;
+}
+
+td#sender_image_container{
+    width: 25%;
+}
+img#message_image{
+	display: block;
+    width: 75px;
+    height: 75px;
+    margin: auto;
+    border-radius: 65%;
+    border: 3px solid white;
+}
+
+td#sender_message_container{
+    width: 58%;
+    vertical-align: top;
+}
+a#sender_name{
+    font-size: 14px;
+    color: mediumseagreen;
+    font-family: sans-serif;
+    font-weight: 600;
+}
+td#sender_date_container{
+	width: 16%;
+    padding: 0px 2%;
+    vertical-align: top;
+}
+td.delete_message_td, td.reply_message_td{
+	padding: 10px 0px;
+    width: 50%;
+}
+button.delete_button, button.reply{
+	background-color: white;
+    border: 1px solid slategrey;
+	margin-bottom: 10px;
+}
+div#message_options{
+	margin-top: 10px;
+}
+/*///////////////////////////////////// 
+        Reply Box
+/////////////////////////////////////*/
+div#replyBox{
+    display: none;
+    width: 40%;
+    height: 378px;
+    border: 2px solid #189F87;
+    top: 107px;
+    position: fixed;
+    margin: auto;
+    z-index: 50;
+    padding: 15px;
+    color: black;
+    background-color: white;
+}
+div#close_container{
+    float: right;
+}
+span#close{
+    font-weight: 600;
+    color: orange;
+}
+textarea#pmTextArea{
+    width: 98%;
+    display: block;
+    margin: auto;
+    z-index: auto;
+    position: relative;
+    line-height: 20px;
+    font-size: 14px;
+    transition: none;
+    background: transparent;
+    border-style: solid;
+    border-color: #189F87;
+}
+input#replyBtn{
+    border-style: none;
+    padding: 8px 10px;
+    margin-left: 10px;
+    color: white;
+    font-size: 16px;
+    background-color: yellowgreen;
+}
+a#reply_a{
+    text-align: center;
+    color: orangered;

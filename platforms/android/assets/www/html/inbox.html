@@ -1,0 +1,287 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--<html xmlns="http://www.w3.org/1999/xhtml">-->
+<html>
+    <head>
+        <script src="../API/jquery.js"></script>
+        <script src="../API/335bootstrap.js"></script>
+		<script type="text/javascript" src="../js/index.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>laisa Messages</title>
+        <link href='../css/inbox.css' rel='stylesheet' type="text/css">
+        <link href='../css/signin.css' rel='stylesheet' type="text/css">
+        <link href='../css/index.css' rel='stylesheet' type="text/css">
+        <link href="../API/335bootstrap.css" rel="stylesheet" type="text/css">
+    
+        <script language="javascript" type="text/javascript">         
+            function toggleChecks(field) {
+                if (document.myform.toggleAll.checked == true){
+                    for (i = 0; i < field.length; i++) {
+                        field[i].checked = true;
+                    }
+                } else {
+                    for (i = 0; i < field.length; i++) {
+                        field[i].checked = false;
+                    }	    	
+                }
+            }
+            
+            $(document).ready(function() { 
+                $(".toggle").click(function () {         
+                    if ($(this).next().is(":hidden")) {
+                        $(".hiddenDiv").hide();
+                        $(this).next().slideDown("fast"); 
+                    } else { 
+                        $(this).next().hide(); 
+                    } 
+                }); 
+            });
+            
+            /*function markAsRead(msgID) {
+                $.post("../markAsRead.php",{ messageid:msgID, ownerid:<?php echo $user_id; ?> } ,function(data) {
+                    $('#subj_line_'+msgID).addClass('msgRead');
+                    // alert(data); // This line was just for testing returned data from the PHP file, it is not required for marking messages as read
+                });
+            }*/
+                       
+            function toggleReplyBox(sendername,senderid,recName,recID,replyWipit) {
+                $("#recipientShow").text(recName);
+                document.replyForm.pm_sender_name.value = sendername;
+                document.replyForm.pmWipit.value = replyWipit;
+                document.replyForm.pm_sender_id.value = senderid;
+                document.replyForm.pm_rec_name.value = recName;
+                document.replyForm.pm_rec_id.value = recID;
+                document.replyForm.replyBtn.value = "Send reply to "+recName;
+            
+                if ($('#replyBox').is(":hidden")) {
+                    $('#replyBox').fadeIn(1000);
+                } else {
+                    $('#replyBox').hide();
+                }      
+            }
+                
+            function processReply () {
+                var pmTextArea = $("#pmTextArea");
+                var sendername = $("#pm_sender_name");
+                var senderid = $("#pm_sender_id");
+                var recName = $("#pm_rec_name");
+                var recID = $("#pm_rec_id");
+                var pm_wipit = $("#pmWipit");
+                var url = "../private_msg_parse.php";
+                
+                if (pmTextArea.val() == "") {
+                    $("#PMStatus").text("Please type in your message.").show().fadeOut(6000);
+                } else {
+                    $("#pmFormProcessGif").show();
+                    
+                    $.post(url,{ message: pmTextArea.val(), senderName: sendername.val(), senderID: senderid.val(), rcpntName: recName.val(), rcpntID: recID.val(), thisWipit: pm_wipit.val() } ,  function(data) {
+                        document.replyForm.pmTextArea.value = "";
+                        $("#pmFormProcessGif").hide();
+                        $('#replyBox').slideUp("fast");
+                        $("#PMFinal").html("&nbsp; &nbsp;"+data).show().fadeOut(8000);
+                    });  
+                }
+            }
+        </script>
+
+        <style type="text/css"> 
+            .hiddenDiv{display:none}
+            #pmFormProcessGif{display:none}
+            .msgDefault {color:darkslategrey;}
+            .msgRead {font-weight:100;color:#666;}
+        </style>
+    </head>
+    
+    <body>                  
+		<!--Mobile Navigation bar-->
+		<div class="mobile_nav_head" id="nav_head">
+			<div class="container-fluid">
+				<a href="javascript:open_profile_menu();">
+					<img id="profile_menu" src="../images/icons/mobile_navigation/profile_menu.svg">
+				</a>
+				<a href="javascript:close_profile_menu();">
+					<img id="close_menu1" src="../images/icons/mobile_navigation/close_menu.svg">
+				</a>	    
+					
+				<a href="profile.html">
+					<img id="mobile_logo" src="../images/icons/mobile_navigation/logo.svg" />
+				</a>
+			</div>
+		</div>               
+                
+		<!--Profile Menu-->
+		<div id="profile_menu_button">
+			<div class="container-fluid">
+              
+				<ul id="profile_menu_ul">
+					<a href="post.html" style="text-decoration:none">
+						<li id="profile_menu_li">
+							<img id="profile_menu_li_img" src="../images/icons/profile_menu/add_post.svg"/>
+							<span id="profile_menu_li_head">Add Post</span>
+						</li>
+					</a>
+                   
+					<a href="inbox.html" style="text-decoration:none">
+						<li id="profile_menu_li">
+							<img id="profile_menu_li_img" src="../images/icons/profile_menu/inbox.svg"/>
+							<span id="profile_menu_li_head">Inbox</span>
+						</li>
+					</a>
+				</ul>
+                     
+				<div id="logout_div">
+					<a href="LogOut/signout.php">
+						<span id="logout_span">Logout</span>
+					</a>
+				</div>
+			</div>
+		</div>
+		
+		<!--Messages-->
+		<div id="messages"></div>
+		
+		<!--REPLY MESSAGE-->
+		<div id="reply_message"></div>
+		<script type="text/javascript">
+			function messages(){
+				var status = _("messages");
+				status.innerHTML = 'please wait ...';
+				//var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/login.php");
+				var ajax = ajaxObj("POST", "../php/inbox.php");
+				ajax.onreadystatechange = function() {
+					if(ajaxReturn(ajax) == true) {
+						_("messages").innerHTML = ajax.responseText;
+					}
+				}
+				ajax.send("inbox="+'');
+			}
+			window.onload = messages;
+			
+			function delete_msg(id){
+				var status = _("messages");
+				status.innerHTML = 'please wait ...';
+				//var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/login.php");
+				var ajax = ajaxObj("POST", "../php/inbox.php");
+				ajax.send("delete_msg="+id);
+				
+				messages();
+			}
+			
+			function reply_msg(ad_id){
+				var send_container = document.createElement('div');
+				send_container.className = "send_container";
+				send_container.id = "send_container";
+				document.getElementById("reply_message").appendChild(send_container);
+
+
+				var send_message = document.createElement('div');
+				send_message.className = "send_message_div";
+				send_message.id = "send_message."+ad_id;
+				document.getElementById("send_container").appendChild(send_message);
+
+				var send_message_head = document.createElement('div');
+				send_message_head.className ="send_head";
+				var send_message_text_text = document.createTextNode("Reply Message");
+				send_message_head.appendChild(send_message_text_text);
+				document.getElementById("send_message."+ad_id).appendChild(send_message_head);
+
+				var send_text = document.createElement('textarea');
+				send_text.className = "send_text";
+				send_text.id = "send_text." + ad_id;
+				send_text.setAttribute('placeholder', ' Type your message here');
+				document.getElementById("send_message." + ad_id).appendChild(send_text);
+
+				var send_button = document.createElement('input');
+				send_button.id = "send_button." + ad_id;
+				send_button.className = "send_button";
+				send_button.setAttribute('type', 'button');
+				send_button.setAttribute('value', 'SEND');
+				send_button.name = "send_button";
+				send_button.onclick = function(){
+					var message = document.getElementById("send_text." + ad_id).value;
+					if(_("send_text." + ad_id) === ""){
+						_("send_text." + ad_id).style.border = "2px solid red";
+					}
+					else{
+						_("send_text." + ad_id).style.border = "1px solid gainsboro";
+
+						//var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/login.php");
+						var ajax = ajaxObj("POST", "../php/send_message.php");
+						ajax.onreadystatechange = function() {
+							if(ajaxReturn(ajax) == true) {
+								if(ajax.responseText.slice(-12) === 'message_sent'){
+									var elem = document.getElementById("send_container");
+									elem.parentNode.removeChild(elem);
+									alert("Message Sent")
+								}
+							}
+						}
+						ajax.send("reply="+message+"&sender_id="+ad_id);
+					}
+				}
+				document.getElementById("send_message." + ad_id).appendChild(send_button);
+
+				var cancel_button = document.createElement('input');
+				cancel_button.id = "cancel_button." + ad_id;
+				cancel_button.className = "cancel_button";
+				cancel_button.setAttribute('type', 'button');
+				cancel_button.setAttribute('value', 'CANCEL');
+				cancel_button.name = "cancel_button";
+				cancel_button.onclick = function(){
+					var elem = document.getElementById("send_container");
+					elem.parentNode.removeChild(elem);
+				}
+				document.getElementById("send_message." + ad_id).appendChild(cancel_button);
+			}
+		</script>
+		
+		
+		
+        <!--            FOOTER          -->
+        <footer>
+            <div class="container-fluid">
+                    
+                <ul id="footer_info">
+                    <li class="footer_items" id="about_us">
+                        <a id="footer_links" href="../about_us/about_us.php#company_info?">About Us</a>
+                    </li>
+                    <li class="footer_items" id="privacy">
+                        <a id="footer_links" href="../about_us/about_us.php#terms_info">Privacy & Terms</a>
+                    </li>
+                    <li class="footer_items" id="Careers">
+                        <a id="footer_links" href="../about_us/about_us.php#careers_info">Careers</a>
+                    </li>
+                    <li class="footer_items" id="contact_us">
+                        Contact Us
+                    </li>
+                </ul>
+                
+                <div id="contact_us_form">
+                    <h2 id="contact_us_heading">Contact Us</h2>
+                        
+                    <form id="contact_us" name="contact_us" method="post">
+                        <label id="name_label" for="name_input">Name:</label>
+                        <input id="name_input" type="text" name="name_input" />
+                        
+                        <br>
+                        <label id="email_label" for="email_input">Email:</label>
+                        <input id="email_input" type="email" name="email_input" />
+                        
+                        <br>
+                        <label id="message_label" for="message_input">Message:</label>
+                        <textarea id="message_input" name="message_input" rows="10" cols="50"></textarea>
+                            
+                        <br>
+                        <button id="submit_contact_us_form" type="submit" name="submit_contact_us_form">Submit</button>
+                            
+                        <p id="physical_information">
+                            email: info@namela.co.za
+                            <br>Tel: 011 283 2044/3854
+                            <br>Physical Address: 12 Rivonia drive, Sandton
+                        </p>
+                    </form>                    
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

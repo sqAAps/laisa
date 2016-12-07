@@ -1,0 +1,65 @@
+<!DOCTYPE>
+<html>
+    <title>Namela</title>
+    <head>
+		<script type="text/javascript" src="../API/jquery.js"></script>
+		<script src="../API/335bootstrap.js"></script>
+		<script type="text/javascript" src="../js/index.js"></script>
+		<link rel="stylesheet" href="../API/335bootstrap.css">
+		<link href="../images/icons/mobile_navigation/1logo.png" rel="shortcut icon">
+		<title>laisa</title>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+        <link href='../css/index.css' rel='stylesheet' type="text/css">
+        <link href='../css/signin.css' rel='stylesheet' type="text/css">
+        <link href='../css/profile.css' rel='stylesheet' type="text/css">
+    </head>
+        
+    <body id="dabody" style="background-color: #f2f2f3;">
+                
+		<!--Mobile Navigation bar-->
+		<div class="mobile_nav_head" id="nav_head">
+			<div class="container-fluid">	    
+				<a href="javascript:profile()">
+					<img id="mobile_logo" style="position: relative; margin-left: 85%;" src="../images/icons/mobile_navigation/logo.svg" />
+				</a>
+			</div>
+		</div>
+		
+		<!--	W I S H L I S T	-->
+		<div id="wishlist"></div>
+		
+		<script type="text/javascript">
+			function wishlist(){
+				//var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/login.php");
+				var ajax = ajaxObj("POST", "../php/wishlist.php");
+				
+				ajax.onreadystatechange = function() {
+					if(ajaxReturn(ajax) == true) {
+						_("wishlist").innerHTML = ajax.responseText;
+					}
+				}
+				ajax.send("wishlist=" + '');
+			}
+			window.onload = wishlist;
+			
+			function delete_from_wishlist(id){
+				var ajax = ajaxObj("POST", "../php/wishlist.php");	
+				ajax.onreadystatechange = function() {
+					if(ajaxReturn(ajax) == true) {
+						if(ajax.response === 'deleted'){
+							window.location.assign("./wishlist.html");
+						}
+					}
+				}
+				ajax.send("delete_from_wishlist=" + id);
+			}
+			
+			function profile(){
+				var page_url = window.location.href;
+				var page_url_split = page_url.split("?");
+				var id = page_url_split[1];
+				window.location.assign("./profile.html?"+id);
+			}
+		</script>
+    </body>
+</html>

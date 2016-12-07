@@ -66,6 +66,11 @@
         },
         "com.orcasinc.pushplugin": {
             "PACKAGE_NAME": "za.co.sqaaps.laisa"
+        },
+        "cordova-plugin-facebook4": {
+            "APP_ID": "1842810965963847",
+            "APP_NAME": "laisa",
+            "PACKAGE_NAME": "za.co.sqaaps.laisa"
         }
     },
     "dependent_plugins": {

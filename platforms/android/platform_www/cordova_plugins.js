@@ -459,6 +459,13 @@ module.exports = [
         "clobbers": [
             "PushNotification"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-facebook4/www/facebook-native.js",
+        "id": "cordova-plugin-facebook4.FacebookConnectPlugin",
+        "clobbers": [
+            "facebookConnectPlugin"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -486,7 +493,8 @@ module.exports.metadata =
     "cordova-plugin-vibration": "2.1.2",
     "cordova-plugin-whitelist": "1.2.2",
     "com.google.playservices": "21.0.1",
-    "com.orcasinc.pushplugin": "2.5.9"
+    "com.orcasinc.pushplugin": "2.5.9",
+    "cordova-plugin-facebook4": "1.7.4"
 };
 // BOTTOM OF METADATA
 });

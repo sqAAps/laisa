@@ -66,6 +66,16 @@
     <feature name="PushPlugin">
         <param name="android-package" value="com.plugin.gcm.PushPlugin" />
     </feature>
+    <feature name="FacebookConnectPlugin">
+        <param name="android-package" value="org.apache.cordova.facebook.ConnectPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <access origin="https://m.facebook.com" />
+    <access origin="https://graph.facebook.com" />
+    <access origin="https://api.facebook.com" />
+    <access origin="https://*.fbcdn.net" />
+    <access origin="https://*.akamaihd.net" />
+    <preference name="android-minSdkVersion" value="15" />
     <icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
     <icon density="mdpi" src="www/res/icon/android/drawable-mdpi-icon.png" />
     <icon density="hdpi" src="www/res/icon/android/drawable-hdpi-icon.png" />

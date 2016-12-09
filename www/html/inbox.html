@@ -68,7 +68,7 @@
                 var recName = $("#pm_rec_name");
                 var recID = $("#pm_rec_id");
                 var pm_wipit = $("#pmWipit");
-				var url = "http://www.sqaaps.co.za/php/namela/private_msg_parse.php"
+				var url = "http://www.sqaaps.co.za/php/laisa/private_msg_parse.php"
                 //var url = "../php/private_msg_parse.php";
                 
                 if (pmTextArea.val() == "") {
@@ -113,7 +113,7 @@
 			function messages(){
 				var status = _("messages");
 				status.innerHTML = 'please wait ...';
-				var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/namela/inbox.php");
+				var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/inbox.php");
 				//var ajax = ajaxObj("POST", "../php/inbox.php");
 				ajax.onreadystatechange = function() {
 					if(ajaxReturn(ajax) == true) {
@@ -127,7 +127,7 @@
 			function delete_msg(id){
 				var status = _("messages");
 				status.innerHTML = 'please wait ...';
-				var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/namela/inbox.php");
+				var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/inbox.php");
 				//var ajax = ajaxObj("POST", "../php/inbox.php");
 				ajax.send("delete_msg="+id);
 				
@@ -172,7 +172,7 @@
 					else{
 						_("send_text." + ad_id).style.border = "1px solid gainsboro";
 
-						var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/namela/send_message.php");
+						var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/send_message.php");
 						//var ajax = ajaxObj("POST", "../php/send_message.php");
 						ajax.onreadystatechange = function() {
 							if(ajaxReturn(ajax) == true) {

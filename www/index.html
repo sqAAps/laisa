@@ -16,178 +16,26 @@
 	</head>
     
 	<body>
-		<!--Mobile Navigation bar-->
+		<!--	M O B I L E 	N A V I G A T I O N-->
 		<div class="mobile_nav_head" id="nav_head">
 			<div class="container-fluid">
-				<!--
-				<a href="javascript:open_profile_menu();">
-					<img id="profile_menu" src="images/icons/mobile_navigation/profile_menu.svg">
-				</a>
-				<a href="javascript:close_profile_menu();">
-					<img id="close_menu1" src="images/icons/mobile_navigation/close_menu.svg">
-				</a>
-				-->
-					
 				<img id="mobile_logo" src="images/icons/mobile_navigation/logo.svg" style="position: relative; margin-left: 85%;" />
-                
-				<!--
-				<a href="javascript:open_search_menu();">
-					<img id="search_menu" src="images/icons/mobile_navigation/search_menu.svg">
-				</a>	
-				<a href="javascript:close_search_menu();">	
-					<img id="close_menu2" src="images/icons/mobile_navigation/close_menu.svg">
-				</a>
-				-->
-				
 			</div>
 		</div>
-                
-		<!--Profile Menu-->
-		<div id="profile_menu_button">
-			<div class="container-fluid">
-                        
-				<div id="user_account_header">						
-					<h2 id="sign_in_heading">Sign In</h2>
-                	
-					<!-- Sign in Form -->>
-					<!--
-					<form class="" id="login_form" name="signin_form" action="" method="POST">
-
-						<!-- Email Field -- >
-						<input class="" id="email" name="email" type="email" placeholder=" Email Address" required />
-
-						<!-- Password Field -- >
-						<input class="" id="password" name="password" type="password" placeholder=" Password" required />
-						
-						<p id="error_messages"></p>
-
-						<button class="" id="submit" name="" type="button" onclick="login()">Sign in</button>
-					</form>
-					-->
-					<script type="text/javascript">
-						function login(){
-							var email = _("email").value;
-							var password = _("password").value;
-
-							var status = _("error_messages");
-
-							if(email === "" || password === ""){
-								status.innerHTML = '<span style="color: #ff0000;font-family: sans-serif;margin-left: 15px;font-size: 15px;">Fill out all of the form data</span>';
-							} else {
-								_("submit").style.display = "none";
-								status.innerHTML = 'please wait ...';
-								var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/namela/signin.php");
-								//var ajax = ajaxObj("POST", "php/signin.php");
-								ajax.onreadystatechange = function() {
-									if(ajaxReturn(ajax) == true) {
-										if(ajax.responseText.slice(-8) === 'loggedin'){
-											window.location.assign("html/profile.html");
-										} else {
-											status.innerHTML = ajax.responseText;
-											_("submit").style.display = "block";
-										}
-									}
-								}
-								ajax.send("email="+email+"&password="+password);
-							}
-						}
-					</script>
-					
-							
-				</div>  
-                   
-			</div>
-		</div>                
-                
-		<!--///////////////////////////////////////////////////////////////////////////////////////////// 
-						mOBILE Search Menu
-		/////////////////////////////////////////////////////////////////////////////////////////////-->
-		<div id="search_menu_button">
-			<div class="container-fluid" id="search_menu_container">
-						
-				<h4 id="search_menu_header">Search</h4>
-						
-				<form id="mobile_search_menu_form" name="mobile_search_menu_form" action="" method="POST">
-
-					<!-- Departure Field -->
-					<input id="search_menu_departure" name="departure" type="text" placeholder=" Departure" required />                            
-
-					<!-- Destination Field -->
-					<input id="search_menu_destination" name="destination" type="text" placeholder=" Destination" />
-					
-					<!-- D A T E -->
-					<input id="search_menu_date" name="date" type="text" placeholder=" DATE: YYYY/MM/DD" />
-
-					<br>                                            
-					<input id="search_menu_offering_transport" type="radio" name="type" value="o" checked/>
-					<span id="span_search_menu_offering_looking"> Transport</span>
-							
-					<br>
-					<input id="search_menu_offering_passenger" type="radio" name="type" value="w" />
-					<span id="span_search_menu_offering_looking"> Commuters/Passgeners</span>
-
-					<p id="validate_status"></p>
-
-					<!-- Form submit button -->
-					<button type="button" id="search_menu_search" name="search_menu_search" onclick="search()" >SEARCH</button>
-				</form>
-
-			</div>
-		</div>
-		
-		<script type="text/javascript">
-			function search(){
-				_("search_menu_button").style.display = "none";
-				_("value_prop").style.display = "none";
-				_("posts_from_users").style.display = "none";
-				_("close_menu2").style.display = "none";
-				
-				_("search_menu").style.display = "block";
-				_("profile_menu").style.display = "block";
-				var departure = _("search_menu_departure").value;
-				var destination = _("search_menu_destination").value;
-				var date = _("search_menu_date").value;
-								
-				if(_("search_menu_offering_transport").checked){
-					var type = "o";
-				} else{
-					var type = "w";
-				}
-				
-				var status = _("validate_status");
-				
-				if(departure == "" || destination == "" || date == ""){
-					status.innerHTML = '<span style="color: #ff0000;font-family: sans-serif;margin-left: 15px;font-size: 15px;">Fill out all of the form data</span>';
-				} else {			
-					status.innerHTML = 'please wait ...';
-					var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/namela/search.php");
-					//var ajax = ajaxObj("POST", "php/search.php");
-					ajax.onreadystatechange = function() {
-						if(ajaxReturn(ajax) == true) {
-							_("search_results").innerHTML = ajax.responseText;
-						}
-					}
-					ajax.send("departure="+departure+"&destination="+destination+"&date="+date+"&type="+type+"&index="+'');
-				}
-			}
-		</script>
-                
-                
-
-		<!--///////////////////////////////////////////////////////////////////////////////////////////// 
-                           P R I N T	S E A R C H		R E S U L T S
-		/////////////////////////////////////////////////////////////////////////////////////////////-->		
-		<div id="search_results"></div>
+		<!------------------------------------------->
 			
 
 
-		<!--///////////////////////////////////////////////////////////////////////////////////////////// 
-							V A L U E	 P R O P O S I T I O N
-		/////////////////////////////////////////////////////////////////////////////////////////////-->
+		<!--	V A L U E	 P R O P O S I T I O N	-->
 		<div class="value_prop" id="value_prop">
 			
 			<div id="vp_text">Share a ride with your friends</div>
 			<div id="fb_button" style="text-align: center; margin: 10px auto;">
+				<!-- FACEBOOK -->
+				<a href="javascript:checkLoginState();">
+					<img id="fb_login-img" src="images/facebook.png"/>
+				</a>
+				
 				<fb:login-button id="signup" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>	
 				<script type="text/javascript">
 						function statusChangeCallback(response) {
@@ -230,7 +78,7 @@
 							  var js, fjs = d.getElementsByTagName(s)[0];
 							  if (d.getElementById(id)) return;
 							  js = d.createElement(s); js.id = id;
-							  js.src = "//connect.facebook.net/en_US/sdk.js";
+							  js.src = "https://connect.facebook.net/en_US/sdk.js";
 							  fjs.parentNode.insertBefore(js, fjs);
 						  }
 						(document, 'script', 'facebook-jssdk'));
@@ -252,7 +100,7 @@
 								//console.log(response.picture.data.url);						
 								
 								//put the details in my database
-								var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/namela/signin.php");
+								var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/signin.php");
 								//var ajax = ajaxObj("POST", "./php/signin.php");
 								ajax.onreadystatechange = function() {
 									if(ajaxReturn(ajax) == true) {

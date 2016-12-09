@@ -1,4 +1,5 @@
 <?php
+header('Access-Control-Allow-Origin: *');
 require_once './connect.inc.php';
 require_once './core.inc.php';
 require './view.php';

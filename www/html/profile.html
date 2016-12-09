@@ -68,7 +68,8 @@
 				</ul>
                      
 				<div id="logout_div">
-					<a href="../php/signout.php">
+					<!--<a href="../php/signout.php">-->
+					<a href="http://www.sqaaps.co.za/php/namela/signout.php">
 						<span id="logout_span">Logout</span>
 					</a>
 				</div>
@@ -133,8 +134,8 @@
 					status.innerHTML = '<span style="color: #ff0000;font-family: sans-serif;margin-left: 15px;font-size: 15px;">Fill out all of the form data</span>';
 				} else {			
 					status.innerHTML = 'please wait ...';
-					//var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/login.php");
-					var ajax = ajaxObj("POST", "../php/search.php");
+					var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/namela/search.php");
+					//var ajax = ajaxObj("POST", "../php/search.php");
 					ajax.onreadystatechange = function() {
 						if(ajaxReturn(ajax) == true) {
 							_("search_results").innerHTML = ajax.responseText;
@@ -161,8 +162,8 @@
 				var page_url_split = page_url.split("?");
 				var id = page_url_split[1];
 				
-				//var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/profile.php");
-				var ajax = ajaxObj("POST", "../php/profile.php");
+				var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/namela/profile.php");
+				//var ajax = ajaxObj("POST", "../php/profile.php");
 				
 				ajax.onreadystatechange = function() {
 					if(ajaxReturn(ajax) == true) {

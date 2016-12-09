@@ -1,4 +1,5 @@
 <?php
+header('Access-Control-Allow-Origin: *');
 require 'connect.inc.php';
 require 'core.inc.php';
 global $connection;

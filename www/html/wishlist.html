@@ -30,8 +30,8 @@
 		
 		<script type="text/javascript">
 			function wishlist(){
-				//var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/login.php");
-				var ajax = ajaxObj("POST", "../php/wishlist.php");
+				var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/namela/login.php");
+				//var ajax = ajaxObj("POST", "../php/wishlist.php");
 				
 				ajax.onreadystatechange = function() {
 					if(ajaxReturn(ajax) == true) {
@@ -43,7 +43,8 @@
 			window.onload = wishlist;
 			
 			function delete_from_wishlist(id){
-				var ajax = ajaxObj("POST", "../php/wishlist.php");	
+				var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/namela/wishlist.php");
+				//var ajax = ajaxObj("POST", "../php/wishlist.php");	
 				ajax.onreadystatechange = function() {
 					if(ajaxReturn(ajax) == true) {
 						if(ajax.response === 'deleted'){

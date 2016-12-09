@@ -76,8 +76,8 @@
 							} else {
 								_("submit").style.display = "none";
 								status.innerHTML = 'please wait ...';
-								//var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/signin.php");
-								var ajax = ajaxObj("POST", "php/signin.php");
+								var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/namela/signin.php");
+								//var ajax = ajaxObj("POST", "php/signin.php");
 								ajax.onreadystatechange = function() {
 									if(ajaxReturn(ajax) == true) {
 										if(ajax.responseText.slice(-8) === 'loggedin'){
@@ -160,8 +160,8 @@
 					status.innerHTML = '<span style="color: #ff0000;font-family: sans-serif;margin-left: 15px;font-size: 15px;">Fill out all of the form data</span>';
 				} else {			
 					status.innerHTML = 'please wait ...';
-					//var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/search.php");
-					var ajax = ajaxObj("POST", "php/search.php");
+					var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/namela/search.php");
+					//var ajax = ajaxObj("POST", "php/search.php");
 					ajax.onreadystatechange = function() {
 						if(ajaxReturn(ajax) == true) {
 							_("search_results").innerHTML = ajax.responseText;
@@ -252,7 +252,8 @@
 								//console.log(response.picture.data.url);						
 								
 								//put the details in my database
-								var ajax = ajaxObj("POST", "./php/signin.php");
+								var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/namela/signin.php");
+								//var ajax = ajaxObj("POST", "./php/signin.php");
 								ajax.onreadystatechange = function() {
 									if(ajaxReturn(ajax) == true) {
 										if(ajax.responseText.slice(-8) === 'inserted'){

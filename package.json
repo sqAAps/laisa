@@ -1,12 +1,12 @@
 {
   "name": "laisa",
   "version": "4.0.2",
-  "description": ">Share a ride with your friends",
+  "description": "Helping you find transport, or a friend to travel with",
   "repository": {
     "type": "git",
-    "url": "https://sqaaps.co.za"
+    "url": "https://www.sqaaps.co.za"
   },
-  "author": "PhoneGap Team",
+  "author": "sqAAps",
   "license": "Apache-2.0.0",
   "keywords": [
     "ecosystem:phonegap",
@@ -15,7 +15,7 @@
     "phonegap:template"
   ],
   "bugs": {
-    "url": "https://sqaaps.co.za"
+    "url": "https://www.sqaaps.co.za"
   },
-  "homepage": "https://sqaaps.co.za"
+  "homepage": "https://www.sqaaps.co.za"
 }

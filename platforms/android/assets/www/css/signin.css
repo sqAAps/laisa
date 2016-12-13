@@ -1,3 +1,6 @@
+body{
+	margin: 0;
+}
 div#search_results_div{
     margin-left: 210px;
 }
@@ -17,6 +20,9 @@ div#vp_text{
     border-bottom: 1px solid;
 }
 /*	F A C E B O O K */
+img#fb_login-img{
+	width: 60%;
+}
 div#signup{
 	padding-top: 90%;
     color: white;
@@ -139,6 +145,7 @@ h1#how_it_works_header{
     text-align: center;
     margin: 0;
     padding: 40px 0px 20px 0px;
+	font-family: sans-serif;
 }
 
 div#topic_div.container-fluid{

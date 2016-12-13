@@ -36,7 +36,7 @@
 					<img id="fb_login-img" src="images/facebook.png"/>
 				</a>
 				
-				<fb:login-button id="signup" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>	
+				<!--<fb:login-button id="signup" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>-->
 				<script type="text/javascript">
 						function statusChangeCallback(response) {
 							console.log('statusChangeCallback');
@@ -104,6 +104,7 @@
 								//var ajax = ajaxObj("POST", "./php/signin.php");
 								ajax.onreadystatechange = function() {
 									if(ajaxReturn(ajax) == true) {
+										alert(ajax.responseText);
 										if(ajax.responseText.slice(-8) === 'inserted'){
 											window.location.assign("html/profile.html?" + localStorage.getItem("id"));
 										}

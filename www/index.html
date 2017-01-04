@@ -303,7 +303,7 @@
 		
 		<script type="text/javascript">
 			function onLoad() {
-				document.addEventListener("deviceready", onDeviceReady, false);
+				document.addEventListener("deviceready", onDeviceReady);
 			}
 					
 			function onDeviceReady() {
@@ -334,7 +334,37 @@
 					ajax.send('fblogin=' + '' + '&id='+ userData.id + '&name=' + userData.name + '&picture=' + encodeURIComponent(userData.picture.data.url) + '&phonenumber=' + "undefined" + '&email=' + userData.email + '&gender=' + userData.gender);
 
 				}
-				facebookConnectPlugin.login('/me?fields=email,name,gender,picture.width(150).height(150)', fbLoginSuccess, function loginError(error) {console.error(error)});
+				
+				facebookConnectPlugin.api('/me?fields=email,name,gender,picture.width(150).height(150)', ["public_profile", "email"], function onSuccess(userData){
+					console.log("UserInfo: ", userData);
+					
+					/* Access Tokes	*/
+					facebookConnectPlugin.getAccessToken(function(token) {
+						console.log("Token: " + token);
+					});
+					
+					/* Saving userData*/
+					localStorage.setItem('id', userData.id);
+					localStorage.setItem('name', userData.name);
+					localStorage.setItem('phoneNumber', "undefined");
+					localStorage.setItem('email', userData.email);
+					localStorage.setItem('picture', userData.picture.data.url);
+					localStorage.setItem('gender', userData.gender);						
+
+					//Send to Database
+					//var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/signin.php");
+					var ajax = ajaxObj("POST", "./php/signin.php");
+					ajax.onreadystatechange = function() {
+						if(ajaxReturn(ajax) == true) {
+							if(ajax.responseText.slice(-8) === 'inserted'){
+								window.location.assign("html/profile.html?" + localStorage.getItem("id"));
+							}
+						}
+					}
+					ajax.send('fblogin=' + '' + '&id='+ userData.id + '&name=' + userData.name + '&picture=' + encodeURIComponent(userData.picture.data.url) + '&phonenumber=' + "undefined" + '&email=' + userData.email + '&gender=' + userData.gender);
+				}, function onError (error) {
+					console.error(error);
+				});
 			}
 					
 			/*function statusChangeCallback(response) {

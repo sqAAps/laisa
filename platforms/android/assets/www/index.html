@@ -15,8 +15,8 @@
 		<link href='css/signin.css' rel='stylesheet' type="text/css">
 	</head>
     
-	<body>
-		<!--	M O B I L E 	N A V I G A T I O N-->
+	<body onload="onLoad()">
+		<!--	N A V I G A T I O N	-->
 		<div class="mobile_nav_head" id="nav_head">
 			<div class="container-fluid">
 				<img id="mobile_logo" src="images/icons/mobile_navigation/logo.svg" style="position: relative; margin-left: 85%;" />
@@ -25,113 +25,27 @@
 		<!------------------------------------------->
 			
 
-
 		<!--	V A L U E	 P R O P O S I T I O N	-->
 		<div class="value_prop" id="value_prop">
-			
 			<div id="vp_text">Share a ride with your friends</div>
+			
 			<div id="fb_button" style="text-align: center; margin: 10px auto;">
 				<!-- FACEBOOK -->
-				<a href="javascript:checkLoginState();">
+				<a onclick="checkLoginState();">
 					<img id="fb_login-img" src="images/facebook.png"/>
 				</a>
 				
-				<fb:login-button id="signup" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>	
-				<script type="text/javascript">
-						function statusChangeCallback(response) {
-							console.log('statusChangeCallback');
-							console.log(response);
-							// The response object is returned with a status field that lets the app know the current login status of the person.
-
-							// Full docs on the response object can be found in the documentation for FB.getLoginStatus().
-							if (response.status === 'connected') {
-								testAPI();
-								/*window.location.assign("html/profile.html");*/
-								//alert("loggedIn")
-							} /*else {
-								window.history.back();
-							}*/
-						}
-
-						// This function is called when someone finishes with the LoginButton.  See the onlogin handler attached to it in the sample code below.
-						function checkLoginState() {
-							FB.getLoginStatus(function(response) {
-								statusChangeCallback(response);
-							});
-						}
-
-						window.fbAsyncInit = function() {
-							FB.init({
-								appId      : '1842810965963847',
-								cookie     : true,
-								xfbml      : true,
-								version    : 'v2.8'
-							});
-
-							FB.getLoginStatus(function(response) {
-								statusChangeCallback(response);
-							});
-						};
-
-						// Load the SDK asynchronously
-						(function(d, s, id) {
-							  var js, fjs = d.getElementsByTagName(s)[0];
-							  if (d.getElementById(id)) return;
-							  js = d.createElement(s); js.id = id;
-							  js.src = "https://connect.facebook.net/en_US/sdk.js";
-							  fjs.parentNode.insertBefore(js, fjs);
-						  }
-						(document, 'script', 'facebook-jssdk'));
-
-						// Here we run a very simple test of the Graph API after login is
-						// successful.  See statusChangeCallback() for when this call is made.
-						function testAPI() {
-							console.log('Welcome!  Fetching your information.... ');
-							FB.api('/me?fields=email,name,gender,picture.width(150).height(150)', function(response) {
-								console.log('Successful login for: ' + response.name);
-								console.log('user_friends: ' + response.user_friends);
-								localStorage.setItem('id', response.id);
-								localStorage.setItem('name', response.name);
-								localStorage.setItem('phoneNumber', "undefined");
-								localStorage.setItem('email', response.email);
-								localStorage.setItem('picture', response.picture.data.url);
-								localStorage.setItem('gender', response.gender);
-								console.log(JSON.stringify(response));
-								//console.log(response.picture.data.url);						
-								
-								//put the details in my database
-								var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/signin.php");
-								//var ajax = ajaxObj("POST", "./php/signin.php");
-								ajax.onreadystatechange = function() {
-									if(ajaxReturn(ajax) == true) {
-										if(ajax.responseText.slice(-8) === 'inserted'){
-											window.location.assign("html/profile.html?" + localStorage.getItem("id"));
-										}
-									}
-								}
-								ajax.send('fblogin=' + '' + '&id='+ response.id + '&name=' + response.name + '&picture=' + encodeURIComponent(response.picture.data.url) + '&phonenumber=' + "undefined" + '&email=' + response.email + '&gender=' + response.gender);
-							});
-						}
-						
-						
-						function start(){
-							alert(window.location.href);
-						}
-						//window.onload = start;
-					
-					</script>
+				<!--<fb:login-button id="signup" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>	-->
 			</div>
+			
 			<div id="arrows">
 				<img id="arrows_scroll" src="images/icons/Arrows.svg" />
 			</div>
-		</div>
-            
+		</div> 
+		<!------------------------------------------->
             
            
-		<!--///////////////////////////////////////////////////////////////////////////////////////////// 
-							B O D Y		S E C T I O N
-		/////////////////////////////////////////////////////////////////////////////////////////////-->
-		
+		<!--	B O D Y		S E C T I O N	-->
 		<section class="posts_from_users" id="posts_from_users">
 			<div id="how_it_works">
 				<h1 id="how_it_works_header">How it works</h1>
@@ -329,13 +243,11 @@
 			</script>            
 		</section>
 
-
 		<div id="send_msg_container"></div>
+		<!------------------------------------------->
 		
 		
-       	<!--///////////////////////////////////////////////////////////////////////////////////////////// 
-							F O O T E R
-		/////////////////////////////////////////////////////////////////////////////////////////////-->
+       	<!--	F O O T E R	-->
 		<footer>
 			<div class="container-fluid">
                     
@@ -386,5 +298,114 @@
 				</div>
 			</div>
 		</footer>
+		<!------------------------------------------->
+		
+		
+		<script type="text/javascript">
+			function onLoad() {
+				document.addEventListener("deviceready", onDeviceReady, false);
+			}
+					
+			function onDeviceReady() {
+				var fbLoginSuccess = function (userData) {
+					console.log("UserInfo: ", userData);
+					facebookConnectPlugin.getAccessToken(function(token) {
+						console.log("Token: " + token);
+					});
+					
+					/* Saving userData*/
+					localStorage.setItem('id', userData.id);
+					localStorage.setItem('name', userData.name);
+					localStorage.setItem('phoneNumber', "undefined");
+					localStorage.setItem('email', userData.email);
+					localStorage.setItem('picture', userData.picture.data.url);
+					localStorage.setItem('gender', userData.gender);						
+
+					//Save details in my database
+					//var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/signin.php");
+					var ajax = ajaxObj("POST", "./php/signin.php");
+					ajax.onreadystatechange = function() {
+						if(ajaxReturn(ajax) == true) {
+							if(ajax.responseText.slice(-8) === 'inserted'){
+								window.location.assign("html/profile.html?" + localStorage.getItem("id"));
+							}
+						}
+					}
+					ajax.send('fblogin=' + '' + '&id='+ userData.id + '&name=' + userData.name + '&picture=' + encodeURIComponent(userData.picture.data.url) + '&phonenumber=' + "undefined" + '&email=' + userData.email + '&gender=' + userData.gender);
+
+				}
+				facebookConnectPlugin.login(["public_profile"], fbLoginSuccess, function loginError(error) {console.error(error)});
+			}
+					
+			/*function statusChangeCallback(response) {
+							console.log('statusChangeCallback');
+							console.log(response);
+							// The response object is returned with a status field that lets the app know the current login status of the person.
+
+							// Full docs on the response object can be found in the documentation for FB.getLoginStatus().
+							if (response.status === 'connected') {
+								testAPI();
+							}
+						}
+					// This function is called when someone finishes with the LoginButton.  See the onlogin handler attached to it in the sample code below.
+					function checkLoginState() {
+							FB.getLoginStatus(function(response) {
+								statusChangeCallback(response);
+							});
+						}
+
+					window.fbAsyncInit = function() {
+							FB.init({
+								appId      : '1842810965963847',
+								cookie     : true,
+								xfbml      : true,
+								version    : 'v2.8'
+							});
+
+							FB.getLoginStatus(function(response) {
+								statusChangeCallback(response);
+							});
+						};
+
+					// Load the SDK asynchronously
+					(function(d, s, id) {
+						var js, fjs = d.getElementsByTagName(s)[0];
+						if (d.getElementById(id)) return;
+						js = d.createElement(s); js.id = id;
+						js.src = "https://connect.facebook.net/en_US/sdk.js";
+						fjs.parentNode.insertBefore(js, fjs);
+					}
+					 (document, 'script', 'facebook-jssdk'));
+
+					// Here we run a very simple test of the Graph API after login is successful
+					// See statusChangeCallback() for when this call is made.
+					function testAPI() {
+						console.log('Welcome!  Fetching your information.... ');
+						FB.api('/me?fields=email,name,gender,picture.width(150).height(150)', function(response) {
+							console.log('Successful login for: ' + response.name);
+							console.log('user_friends: ' + response.user_friends);
+							localStorage.setItem('id', response.id);
+							localStorage.setItem('name', response.name);
+							localStorage.setItem('phoneNumber', "undefined");
+							localStorage.setItem('email', response.email);
+							localStorage.setItem('picture', response.picture.data.url);
+							localStorage.setItem('gender', response.gender);
+							console.log(JSON.stringify(response));
+							//console.log(response.picture.data.url);						
+								
+							//Save details in my database
+							//var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/signin.php");
+							var ajax = ajaxObj("POST", "./php/signin.php");
+							ajax.onreadystatechange = function() {
+								if(ajaxReturn(ajax) == true) {
+									if(ajax.responseText.slice(-8) === 'inserted'){
+										window.location.assign("html/profile.html?" + localStorage.getItem("id"));
+									}
+								}
+							}
+							ajax.send('fblogin=' + '' + '&id='+ response.id + '&name=' + response.name + '&picture=' + encodeURIComponent(response.picture.data.url) + '&phonenumber=' + "undefined" + '&email=' + response.email + '&gender=' + response.gender);
+						});
+					}*/					
+		</script>
 	</body>
 </html>

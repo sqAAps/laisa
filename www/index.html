@@ -308,9 +308,10 @@
 					
 			function onDeviceReady() {
 				var fbLoginSuccess = function (userData) {
-					console.log("UserInfo: ", userData);
+					//console.log("UserInfo: ", userData);
+					alert("UserInfo: ", userData);
 					facebookConnectPlugin.getAccessToken(function(token) {
-						console.log("Token: " + token);
+						alert("Token: " + token);
 					});
 					
 					/* Saving userData*/
@@ -336,11 +337,11 @@
 				}
 				
 				facebookConnectPlugin.api('/me?fields=email,name,gender,picture.width(150).height(150)', ["public_profile", "email"], function onSuccess(userData){
-					console.log("UserInfo: ", userData);
+					alert("onsucess UserInfo: ", userData);
 					
 					/* Access Tokes	*/
 					facebookConnectPlugin.getAccessToken(function(token) {
-						console.log("Token: " + token);
+						alert("onsucessToken: " + token);
 					});
 					
 					/* Saving userData*/

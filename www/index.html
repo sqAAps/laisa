@@ -31,7 +31,7 @@
 			
 			<div id="fb_button" style="text-align: center; margin: 10px auto;">
 				<!-- FACEBOOK -->
-				<a onclick="checkLoginState();">
+				<a onclick="onDeviceReady();">
 					<img id="fb_login-img" src="images/facebook.png"/>
 				</a>
 				
@@ -358,6 +358,7 @@
 					ajax.onreadystatechange = function() {
 						if(ajaxReturn(ajax) == true) {
 							if(ajax.responseText.slice(-8) === 'inserted'){
+								alert("done done");
 								window.location.assign("html/profile.html?" + localStorage.getItem("id"));
 							}
 						}

@@ -1,0 +1,263 @@
+section#profile_contents{
+    display: block;
+    width: 100%;
+	padding-top: 10px;
+    margin: auto;
+    background-color: #f2f2f3;
+}
+div#account{
+	width: 100%;
+    margin: auto;
+}
+div#user_profile{  
+
+}
+
+img#profile_background{
+    width: 100%;
+    height: 290px;
+}
+img#profile_image{
+    width: 65px;
+    height: 65px;
+	display: block;
+	vertical-align: top;
+    border-radius: 60%;
+    border-style: solid;
+    border-color: white;
+    border-width: 3px;
+    background-color: white;
+}
+div#account_image{
+	display: inline-block;
+    width: 20%;
+    vertical-align: top;
+}
+h2#profile_name{
+    margin: 0;
+    font-size: 15px;
+}
+
+
+div#profile_add_information{
+    margin-top: 10px;
+    display: block;
+    text-align: center;
+}
+img#account_rating{
+    display: inline-block;
+    height: 23px;
+    vertical-align: super;
+}
+div#recommendations{
+    display: inline-block;
+    margin-left: 7%;
+}
+p#recommendation_head{
+    display: inline;
+}
+p#recommendation_number{
+    text-align: center;
+    width: 120px;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+p#account_description{
+    font-style: italic;
+    padding: 10px 15px;
+}
+/* Reviews  |   Once-off |   Recurring*/
+div#review_posts{
+    width: 100%;
+    text-align: center;
+	margin: 15px 0px;
+}
+h1#reviews, h1#posts, h1#recurring_posts{
+    display: inline-block;
+    width: 32%;
+    text-align: center;
+    padding-top: 5px;
+    margin-bottom: 0px;
+    border-width: 2px 1px 0px;
+    border-radius: 7px 7px 0px 0px;
+    cursor: pointer;
+    margin-top: 0px;
+}
+img#review_img, img#posts_img, img#recurring_posts_img{
+    height: 50px;
+}
+
+
+#offering_heading{
+    text-align: center;
+    color: orange;
+}
+
+/*      PROFILE PICTURE EDIT        */
+div#upload_image{
+    min-width: 160px;
+    max-width: 170px;
+    min-height: 160px;
+    max-height: 170px;
+}
+
+form#background_form{
+    position: absolute;
+    top: 110px;
+    margin-left: 10px;
+    display: none;
+}
+form#form{
+    display: none;
+    margin-left: 230px;
+}
+input#file_submit, input#file{
+    background-color: white;
+    border-style: solid;
+    border-color: orange;
+}
+
+/*      FOLLOW      |       UNFOLLOW*/
+/*User_id and ad_user_id inputs in FOLLOW and UNfollo*/
+.js_values{display: none;}
+
+/*Before follow button is clicked. Unfollow button should be hidden*/
+div#second_unfollow, div#second_follow{display: none;}
+
+/*Follow Button*/
+#e_follow, #u_follow{
+    background-color: dodgerblue;
+    border-color: dodgerblue;
+    border-radius: 6px;
+    height: 33px;
+    color: snow;
+    font-size: 20px;
+    margin-left: 35%;
+}
+
+/*UN-Follow Button*/
+#e_unfollow, #u_unfollow{
+    background-color: greenyellow;
+    border-color: greenyellow;
+    border-radius: 6px;
+    color: snow;
+    font-size: 20px;
+    height: 33px;
+    font-size: 20px;
+    margin-left: 35%;
+}
+
+/* EDIT & DELETE BUTTON*/
+input#hide_ad_id{
+    display: none;
+}
+form#hidden_ad_id_form{
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    width: 48%;
+}
+ul#ad_ul_list{
+    list-style-type: none;
+    display: inline-flex;
+    margin: 0 auto;
+}
+button#edit, button#delete {
+    border-style: solid;
+    border-color: rgb(532, 171, 120);
+    background-color: rgb(532, 171, 120);
+    color: snow;
+    width: 100%;
+}
+/* Reviews  |   Once-off    |   Recurring*/
+span#reviews_span, span#posts_span, span#recurring_span {
+    display: none;
+}
+
+
+/*  Content Container   */
+div#content_container {
+    background-color: white;
+    margin: 0px 5px;
+    padding: 10px;
+}
+/*  No Review(s)    */
+h2#no-reviews, p#reviews-statement {
+    text-align: center;
+}
+
+/*      ALL |   Commuters   |   Transport   */
+div#ad_types.ad_types{
+    padding-top: 20px;
+}
+
+div#reccuring_ad_types{
+    padding-top: 20px;
+    color: white;
+    text-align: center;
+    display: none;
+}
+div#recurring-posts{
+    display: none;
+}
+div#reccuring_commuting, div#reccuring_driving{
+    background-color: #189F87;
+    width: 200px;
+    height: 30px;
+    margin: 6px;
+    padding-top: 5px;
+    cursor: pointer;
+    display: inline-block;
+}
+img#recurring_people, img#recurring_car{
+    height: 20px;
+    margin-left: 10px;
+}
+div#view_driving_recurring_ads{
+    display: none;
+}
+
+/*      SCREEN 425 */
+@media screen and (max-width:425px){    
+    /*      SECTION     */
+    /*PROFILE */
+    div#user_profile {
+
+    }
+
+    #e_follow, #u_follow {
+        margin-left: 20%;
+    }
+    
+    #all_results {
+
+    }
+}   
+
+@media screen and (max-width:375px){
+    #upload {
+        padding: 0px;
+    }
+    /*  PROFILE */
+    div#user_profile {
+
+    }
+    div#upload_image {
+        min-width: 120px;
+        min-height: 150px;
+        max-height: 140px;
+    }
+
+    input[type=file] {
+        margin-top: 20px;
+    }
+}
+
+
+div#view_commuting_recurring_ads {
+    display: none;
+}

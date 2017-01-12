@@ -67,6 +67,18 @@
                         {
                             "xml": "<feature name=\"File\"><param name=\"android-package\" value=\"org.apache.cordova.file.FileUtils\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Globalization\"><param name=\"android-package\" value=\"org.apache.cordova.globalization.Globalization\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"WebViewDebug\"><param name=\"android-package\" value=\"com.jamiestarke.webviewdebug.WebViewDebug\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -76,6 +88,10 @@
                     "/*": [
                         {
                             "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
                             "count": 1
                         }
                     ],
@@ -182,6 +198,21 @@
             "PACKAGE_NAME": "za.co.sqaaps.laisa"
         },
         "cordova-plugin-file": {
+            "PACKAGE_NAME": "za.co.sqaaps.laisa"
+        },
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "za.co.sqaaps.laisa"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "za.co.sqaaps.laisa"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "za.co.sqaaps.laisa"
+        },
+        "cordova-plugin-globalization": {
+            "PACKAGE_NAME": "za.co.sqaaps.laisa"
+        },
+        "com.jamiestarke.webviewdebug": {
             "PACKAGE_NAME": "za.co.sqaaps.laisa"
         }
     },
@@ -394,6 +425,35 @@
                 "cordova"
             ],
             "runs": true
+        },
+        {
+            "file": "plugins/cordova-plugin-network-information/www/network.js",
+            "id": "cordova-plugin-network-information.network",
+            "clobbers": [
+                "navigator.connection",
+                "navigator.network.connection"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-network-information/www/Connection.js",
+            "id": "cordova-plugin-network-information.Connection",
+            "clobbers": [
+                "Connection"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-globalization/www/GlobalizationError.js",
+            "id": "cordova-plugin-globalization.GlobalizationError",
+            "clobbers": [
+                "window.GlobalizationError"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-globalization/www/globalization.js",
+            "id": "cordova-plugin-globalization.globalization",
+            "clobbers": [
+                "navigator.globalization"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -406,6 +466,11 @@
         "com.google.playservices": "21.0.1",
         "com.orcasinc.pushplugin": "2.5.9",
         "cordova-plugin-facebook4": "1.7.4",
-        "cordova-plugin-file": "4.1.1"
+        "cordova-plugin-file": "4.1.1",
+        "cordova-plugin-compat": "1.1.0",
+        "cordova-plugin-console": "1.0.5",
+        "cordova-plugin-network-information": "1.3.1",
+        "cordova-plugin-globalization": "1.0.5",
+        "com.jamiestarke.webviewdebug": "1.0.8"
     }
 }

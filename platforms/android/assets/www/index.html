@@ -1,45 +1,62 @@
 <!DOCTYPE>
 <html>	    
 	<head>
-		<script src="API/jquery.js"></script>
-		<script src="API/335bootstrap.js"></script>
-		<link href="API/335bootstrap.css" rel="stylesheet" type="text/css">
-		<script type="text/javascript" src="js/index.js"></script>
+		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Security-Policy" content="default-src *; script-src * 'unsafe-eval' 'unsafe-inline'; connect-src *; img-src *; style-src * 'unsafe-inline' ; media-src *">
+		<script src="./API/jquery.js"></script>
+		<script src="./API/335bootstrap.js"></script>
+		<script src="http://192.168.8.102:8080//target/target-script-min.js#anonymous"></script>
+		<link href="./API/335bootstrap.css" rel="stylesheet" type="text/css">
 		
-		<link href="images/icons/mobile_navigation/1logo.png" rel="shortcut icon">
+		<link href="./images/icons/mobile_navigation/1logo.png" rel="shortcut icon">
 		<title>laisa</title>
 		
 		
-		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
-		<link href='css/index.css' rel='stylesheet' type="text/css">
-		<link href='css/signin.css' rel='stylesheet' type="text/css">
+		<link href='./css/index.css' rel='stylesheet' type="text/css">
+		<link href='./css/signin.css' rel='stylesheet' type="text/css">
 	</head>
     
-	<body onload="onLoad()">
+	<body>
+		<!--<script>
+			(function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) return;
+				js = d.createElement(s); js.id = id;
+				js.src = "https://connect.facebook.net/en_US/sdk.js";
+				fjs.parentNode.insertBefore(js, fjs);
+			}
+			 (document, 'script', 'facebook-jssdk'));
+		</script>-->
+		
+		
 		<!--	N A V I G A T I O N	-->
 		<div class="mobile_nav_head" id="nav_head">
 			<div class="container-fluid">
-				<img id="mobile_logo" src="images/icons/mobile_navigation/logo.svg" style="position: relative; margin-left: 85%;" />
+				<img id="mobile_logo" src="./images/icons/mobile_navigation/logo.svg" style="position: relative; margin-left: 85%;" />
 			</div>
 		</div>
 		<!------------------------------------------->
-			
+		
+		
+		<!-- fb-root is needed by the FB API. -->
+		<div id="fb-root"></div>
 
+		
 		<!--	V A L U E	 P R O P O S I T I O N	-->
 		<div class="value_prop" id="value_prop">
 			<div id="vp_text">Share a ride with your friends</div>
 			
 			<div id="fb_button" style="text-align: center; margin: 10px auto;">
 				<!-- FACEBOOK -->
-				<a onclick="checkLoginState();">
-					<img id="fb_login-img" src="images/facebook.png"/>
+				<a href="javascript:deviceready();">
+					<img id="fb_login-img" src="./images/facebook.png"/>
 				</a>
 				
-				<!--<fb:login-button id="signup" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>	-->
+				<fb:login-button id="signup" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
 			</div>
 			
 			<div id="arrows">
-				<img id="arrows_scroll" src="images/icons/Arrows.svg" />
+				<img id="arrows_scroll" src="./images/icons/Arrows.svg" />
 			</div>
 		</div> 
 		<!------------------------------------------->
@@ -53,7 +70,7 @@
 				<div id="topic_container">
                             
 					<div class="topic_div">                                
-						<img id="how_images" src="images/icons/search-icon.png" />                                
+						<img id="how_images" src="./images/icons/search-icon.png" />                                
 						<h3 id="how_header">Search</h3>                                
 						<p id="topic">
 							Search for already posted adverts travelling similar distances
@@ -61,7 +78,7 @@
 					</div>
                         
 					<div class="topic_div">
-						<img id="how_images" src="images/icons/List-your-advert-icon.png" />
+						<img id="how_images" src="./images/icons/List-your-advert-icon.png" />
 						<h3 id="how_header">List your Post</h3>
 						<p id="topic">
 							Post an advert ,whether you’re “looking for transport” or “offering transport”.
@@ -69,7 +86,7 @@
 					</div>
                         
 					<div class="topic_div">
-						<img id="how_images" src="images/icons/mail.png" />
+						<img id="how_images" src="./images/icons/mail.png" />
 						<h3 id="how_header">Message</h3>
 						<p id="topic">
 							Send a message to the advert owner and request additional information and organize pickups. SAFE TRIP
@@ -78,7 +95,7 @@
 					
 					<!--
 					<div class="topic_div">
-						<img id="how_images" src="images/icons/request_to_book.svg" />
+						<img id="how_images" src="./images/icons/request_to_book.svg" />
 						<h3 id="how_header">Request to book</h3>
 						<p id="topic">
 							You send request to the ad-owner to book transport, or request the potential passenger to book.
@@ -86,7 +103,7 @@
 					</div>
                         
 					<div class="topic_div">
-						<img id="how_images" src="images/icons/payment.svg" />
+						<img id="how_images" src="./images/icons/payment.svg" />
 						<h3 id="how_header">Payment</h3>
 						<p id="topic">
 							Once the request is accepted and user is booked, payment will be deducted from the passenger’s account, will receive a OTP for check-in
@@ -94,7 +111,7 @@
 					</div>
                         
 					<div class="topic_div">
-						<img id="how_images" src="images/icons/safe-trip.svg" />
+						<img id="how_images" src="./images/icons/safe-trip.svg" />
 						<h3 id="how_header">Check In</h3>
 						<p id="topic">
 							On arrival of driver, passenger will check-in and check-out using OTP. Driver receives payment after check-out
@@ -113,7 +130,7 @@
 						We genuinely want to make ride sharing as safe as possible for both the driver and passengers. We want to make travelling as convenient as possible. We want to make South Africa a smaller place by allowing everyone to travel it.
 					</p>
                             
-					<!--<iframe id="about_us_video" src="http://www.youtube.com/embed/FJid_h0-k7E?autoplay=0"></iframe>-->
+					<!--<iframe id="about_us_video" src="./http://www.youtube.com/embed/FJid_h0-k7E?autoplay=0"></iframe>-->
 				</div>
 			</div>
                     
@@ -127,7 +144,7 @@
 						<div class="container-fluid">
                                     
 							<div class="affirm_img_div">
-								<img id="customer-image" src="images/users/4038452210_018d479345.png" />
+								<img id="customer-image" src="./images/users/4038452210_018d479345.png" />
 							</div>
                                     
 							<div class="affirm_text_div" id="statement">
@@ -141,7 +158,7 @@
 						<div class="container-fluid">
                                 
 							<div class="affirm_img_div">
-								<img id="customer-image" src="images/users/danielle_small-620x412.png" />
+								<img id="customer-image" src="./images/users/danielle_small-620x412.png" />
 							</div>
                                     
 							<div class="affirm_text_div" id="statement">
@@ -155,7 +172,7 @@
 						<div class="container-fluid">
                         	        
 							<div class="affirm_img_div">
-								<img id="customer-image" src="images/users/roberts1.png" />
+								<img id="customer-image" src="./images/users/roberts1.png" />
 							</div>
                                     
 							<div class="affirm_text_div" id="statement">
@@ -169,7 +186,7 @@
 						<div class="container-fluid">
                         	    
 							<div class="affirm_img_div">
-								<img id="customer-image" src="images/users/Mukunzie.png" /> 
+								<img id="customer-image" src="./images/users/Mukunzie.png" /> 
 							</div>
                                     
 							<div class="affirm_text_div" id="statement">
@@ -180,11 +197,11 @@
 					</div>
                             
 					<a class="left_arrow_link" id="side_arrows" onclick="plusDivs(-1)"  >
-						<img id="left_arrow" src="images/icons/left-arrow.svg" />
+						<img id="left_arrow" src="./images/icons/left-arrow.svg" />
 					</a>
                                 
 					<a class="right_arrow_link" id="side_arrows" onclick="plusDivs(1)">
-						<img id="right_arrow" src="images/icons/right-arrow.svg" />
+						<img id="right_arrow" src="./images/icons/right-arrow.svg" />
 					</a>
                                 
 				</div>
@@ -298,114 +315,111 @@
 				</div>
 			</div>
 		</footer>
-		<!------------------------------------------->
+		<!--------------------------------------------
 		
 		
+		<script type="text/javascript" src="../platforms/android/assets/www/cordova.js"></script>-->
+		<script type="text/javascript" src="./cordova.js"></script>
+		<script type="text/javascript" src="./js/index.js"></script>
 		<script type="text/javascript">
-			function onLoad() {
-				document.addEventListener("deviceready", onDeviceReady, false);
+			function deviceready(){
+				//app.initialize();
+				
+				//facebookConnectPlugin.browserInit(1842810965963847);
+				//alert("cool");
+				
+				var fbLoginSuccess = function(response){
+					console.log("Successfully Logged In. \n" + JSON.stringify(response));
+				}
+				facebookConnectPlugin.login(["public_profile", "email"], 
+											fbLoginSuccess, 
+											function (error){ 
+												alert("LogIn Failed!");
+											}
+				);
 			}
-					
-			function onDeviceReady() {
-				var fbLoginSuccess = function (userData) {
-					console.log("UserInfo: ", userData);
-					facebookConnectPlugin.getAccessToken(function(token) {
-						console.log("Token: " + token);
-					});
-					
-					/* Saving userData*/
-					localStorage.setItem('id', userData.id);
-					localStorage.setItem('name', userData.name);
+			document.addEventListener("deviceready", deviceready, false);
+			
+			
+			
+			/*
+			// Here we run a very simple test of the Graph API after login is successful
+			// See statusChangeCallback() for when this call is made.
+			function testAPI() {
+				console.log('Welcome!  Fetching your information.... ');
+				FB.api('/me?fields=email,name,gender,picture.width(150).height(150)', function(response) {
+					console.log('Successful login for: ' + response.name);
+					console.log('user_friends: ' + response.user_friends);
+					localStorage.setItem('id', response.id);
+					localStorage.setItem('name', response.name);
 					localStorage.setItem('phoneNumber', "undefined");
-					localStorage.setItem('email', userData.email);
-					localStorage.setItem('picture', userData.picture.data.url);
-					localStorage.setItem('gender', userData.gender);						
-
+					localStorage.setItem('email', response.email);
+					localStorage.setItem('picture', response.picture.data.url);
+					localStorage.setItem('gender', response.gender);
+					console.log(JSON.stringify(response));
+					//console.log(response.picture.data.url);						
+									
 					//Save details in my database
 					//var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/signin.php");
 					var ajax = ajaxObj("POST", "./php/signin.php");
 					ajax.onreadystatechange = function() {
 						if(ajaxReturn(ajax) == true) {
 							if(ajax.responseText.slice(-8) === 'inserted'){
-								window.location.assign("html/profile.html?" + localStorage.getItem("id"));
+								alert("all is well");
+								//window.location.assign("html/profile.html?" + localStorage.getItem("id"));
 							}
 						}
 					}
-					ajax.send('fblogin=' + '' + '&id='+ userData.id + '&name=' + userData.name + '&picture=' + encodeURIComponent(userData.picture.data.url) + '&phonenumber=' + "undefined" + '&email=' + userData.email + '&gender=' + userData.gender);
-
-				}
-				facebookConnectPlugin.login(["public_profile"], fbLoginSuccess, function loginError(error) {console.error(error)});
+					ajax.send('fblogin=' + '' + '&id='+ response.id + '&name=' + response.name + '&picture=' + encodeURIComponent(response.picture.data.url) + '&phonenumber=' + "undefined" + '&email=' + response.email + '&gender=' + response.gender);
+				});
 			}
-					
-			/*function statusChangeCallback(response) {
-							console.log('statusChangeCallback');
-							console.log(response);
-							// The response object is returned with a status field that lets the app know the current login status of the person.
+			
+			
+			function statusChangeCallback(response) {
+				console.log(response);
+				// The response object is returned with a status field that lets the app know the current login status of the person.
 
-							// Full docs on the response object can be found in the documentation for FB.getLoginStatus().
-							if (response.status === 'connected') {
-								testAPI();
-							}
-						}
-					// This function is called when someone finishes with the LoginButton.  See the onlogin handler attached to it in the sample code below.
-					function checkLoginState() {
-							FB.getLoginStatus(function(response) {
-								statusChangeCallback(response);
-							});
-						}
+				// Full docs on the response object can be found in the documentation for FB.getLoginStatus().
+				if (response.status === 'connected') {
+					testAPI();
+				}
+			}
+			
+			
+			// This function is called when someone resses with the LoginButton.	
+			function checkLoginState() {
+				FB.getLoginStatus(function(response) {
+					statusChangeCallback(response);
+				});
+			}
 
-					window.fbAsyncInit = function() {
-							FB.init({
-								appId      : '1842810965963847',
-								cookie     : true,
-								xfbml      : true,
-								version    : 'v2.8'
-							});
+			
+			window.fbAsyncInit = function() {
+				FB.init({
+					appId      : '1842810965963847',
+					cookie     : true,
+					xfbml      : true,
+					version    : 'v2.8'
+				});
+				console.log("hello1");
+				//needs an internet connection from here
+				FB.getLoginStatus(function(response) {
+					alert("Found Internet");
+					statusChangeCallback(response);
+				});
+			};
 
-							FB.getLoginStatus(function(response) {
-								statusChangeCallback(response);
-							});
-						};
-
-					// Load the SDK asynchronously
-					(function(d, s, id) {
-						var js, fjs = d.getElementsByTagName(s)[0];
-						if (d.getElementById(id)) return;
-						js = d.createElement(s); js.id = id;
-						js.src = "https://connect.facebook.net/en_US/sdk.js";
-						fjs.parentNode.insertBefore(js, fjs);
-					}
-					 (document, 'script', 'facebook-jssdk'));
-
-					// Here we run a very simple test of the Graph API after login is successful
-					// See statusChangeCallback() for when this call is made.
-					function testAPI() {
-						console.log('Welcome!  Fetching your information.... ');
-						FB.api('/me?fields=email,name,gender,picture.width(150).height(150)', function(response) {
-							console.log('Successful login for: ' + response.name);
-							console.log('user_friends: ' + response.user_friends);
-							localStorage.setItem('id', response.id);
-							localStorage.setItem('name', response.name);
-							localStorage.setItem('phoneNumber', "undefined");
-							localStorage.setItem('email', response.email);
-							localStorage.setItem('picture', response.picture.data.url);
-							localStorage.setItem('gender', response.gender);
-							console.log(JSON.stringify(response));
-							//console.log(response.picture.data.url);						
-								
-							//Save details in my database
-							//var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/signin.php");
-							var ajax = ajaxObj("POST", "./php/signin.php");
-							ajax.onreadystatechange = function() {
-								if(ajaxReturn(ajax) == true) {
-									if(ajax.responseText.slice(-8) === 'inserted'){
-										window.location.assign("html/profile.html?" + localStorage.getItem("id"));
-									}
-								}
-							}
-							ajax.send('fblogin=' + '' + '&id='+ response.id + '&name=' + response.name + '&picture=' + encodeURIComponent(response.picture.data.url) + '&phonenumber=' + "undefined" + '&email=' + response.email + '&gender=' + response.gender);
-						});
-					}*/					
+			
+			// Load the SDK asynchronously
+			(function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) return;
+				js = d.createElement(s); js.id = id;
+				js.src = "https://connect.facebook.net/en_US/sdk.js";
+				fjs.parentNode.insertBefore(js, fjs);
+			}
+			 (document, 'script', 'facebook-jssdk'));
+			 */
 		</script>
 	</body>
 </html>

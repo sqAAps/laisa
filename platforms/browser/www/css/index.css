@@ -1,0 +1,949 @@
+/*  MOBILE    NAVIGATION BAR      */
+div#profile_head{
+	margin-top: 40px;
+}
+.mobile_nav_head{
+    position: fixed;
+    background-color: #189F87;
+    width: 100%;
+    padding: 5px 0px 10px 0px;
+    z-index: 2;
+	top: 0px;
+}
+img#more{
+    display: block;
+    height: 20px;
+    background-color: white;
+    position: fixed;
+    top: 45px;
+    margin-left: 30px;
+}
+
+/*  PROFILE */
+div#profile_menu_button{
+    width: 330px;
+    right: 0px;
+    top: 65px;
+    background-color: rgba(65,65,66,0.98);
+    position: fixed;
+    z-index: 1;
+    display: none;
+}
+div#account_details{
+    display: inline-block;
+    width: 78%;
+    vertical-align: top;
+	padding-left: 2%;
+}
+div#account_status{
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 30px;
+}
+
+div#user_account_header{
+    border-style: solid;
+    border-color: #595a5c;
+    border-width: 0px 0px 3px 0px;
+    margin-top: 5px;
+    padding-bottom: 5px;
+}
+img#profile_picture{
+    width: 42px;
+    height: 42px;
+    margin: 7px 35px;
+    border-radius: 60%;
+}
+span#session_username{
+    color: white;
+    font-size: 17px;
+    font-family: inherit;
+}
+span#session_login{
+    
+}
+a#session_username{
+    color: white;
+    font-size: 17px;
+    font-family: inherit;
+    border-style: solid;
+    border-width: 1px;
+    padding: 2px 4px;
+}
+ul#profile_menu_ul{
+    list-style-type: none;
+    padding-left: 0;
+}
+li#profile_menu_li{
+    padding: 5px;
+    color: white;
+    border-color: #595a5c;
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+}
+img#profile_menu_li_img{
+    width: 50px;
+    margin: 0px 25px;
+    height: 25px;
+}
+span#profile_menu_li_head{
+    color: white;
+    font-size: 15px;
+}
+div#logout_div{
+    margin: 20px 107px;
+}
+span#logout_span{
+    color: white;
+    border-style: solid;
+    border-color: white;
+    padding: 5px;
+    font-family: sans-serif;
+    border-width: 1px
+}
+
+
+/*  Search Menu*/
+div#search_menu_button{
+    height: 100%;
+    width: 100%;
+    right: 0;
+    top: 40px;
+    background-color: rgba(65,65,66,0.98);
+    position: fixed;
+    z-index: 1;
+    display: none;
+}
+div#search_menu_container{
+    width: 85%;
+}
+h4#search_menu_header{
+    text-align: center;
+    border-style: solid;
+    border-width: 1px;
+    color: white;
+}
+input#search_menu_departure, input#search_menu_destination, input#search_menu_date{
+    margin-bottom: 10px;
+    padding-left: 10px;
+    width: 100%;
+    border-style: none;
+    height: 25px;
+}
+span#span_search_menu_offering_looking{
+    color: white;
+}
+button#search_menu_search{
+    width: 100%;
+    height: 25px;
+    margin-top: 10px;
+    background-color: rgb(54, 242, 135);
+    color: snow;
+    border-color: rgb(54, 242, 135);
+}
+
+
+/*  DESKTOP NAVIGATION */
+.nav_head{
+    position: fixed;
+    background-color: #189F87;
+    width: 100%;
+    height: 65px;
+    padding: 0px;
+    z-index: 1;
+    top: 0px;
+    margin: 0px;
+}
+.nav_items{
+    display: inline-block;
+}
+li#index_all_posts.nav_items{
+    color: white;
+    height: 100%;
+    width: 10%;
+    text-align: center;
+    vertical-align: top;
+    cursor: pointer;
+    background-color: rgba(0,0,0,0.3);
+}
+span#all_posts{
+    display: block;
+    margin-top: 16px;
+    font-size: 19px;
+    font-family: monospace;
+}
+.logo{
+    width: 100px;
+    margin-top: 4px;
+}
+
+/*Profile*/
+.left_logout{
+    float: right;
+}
+#profile{
+    padding: 0px;
+    background-color:  darkcyan;
+    height: 65px;
+}
+
+#nav_image{
+    height: 100%;
+    width: 75px;
+}
+
+/*Upload*/
+#upload{
+    padding: 8px;
+    background-color: rgba(0,0,0,0.3);
+    height: 100%;
+    margin-right: 5%;
+}
+.post_ad{
+    color: snow;
+    font-size: 16px;
+    
+    width: 80px;
+    margin: 8px 0px;
+    
+    border-width: 1px;
+    border-style: solid;
+    background-color: #189F87;
+    border-color: lawngreen;
+}
+
+
+
+/*      BODY        */
+
+
+
+div#booking_mother_div{
+    width: 100%;
+    height: 100%;
+    opacity: .95;
+    display: none;
+    position: fixed;
+    background-color: #313131;
+    overflow: auto;
+    z-index: 2;
+}
+div#booking_form_div{
+    position: absolute;
+    left: 35%;
+    top: 17%;
+    width: 250px;
+    height: 355px;;
+}
+form#request_to_book_form{
+    height: 100%;
+    background-color: white;
+}
+h3#request_head{
+    color: white;
+    background-color: turquoise;
+    margin: 0;
+    text-align: center;
+    padding: 10px;
+    border-width: 0px 0px 1px 0px;
+    border-style: solid;
+}
+input#session_username, input#ad_owner_username, textarea#request_to_book_message, button#send_request_button{
+    display: block;
+    margin: 15px auto;
+    width: 90%;
+}
+button#send_request_button{
+    background-color: FFC31E;
+    border-style: none;
+    height: 30px;
+    color: white;
+    font-size: 17px;
+}
+
+#mobile_user_results{display: none;}
+#left{
+    float: left;
+    height: 145px;
+    width: 225px;
+    margin-left: 4px;
+    border-width: 0px 2px 0px 0px;
+    border-style: groove;
+}
+#right{
+    float: right;    
+    margin-top: 5px;
+}
+#search_for_friends_label{
+    font-size: 16px;
+}
+input#look_for_friends{
+    background-color: orange;
+    color: snow;
+    border-color: orange;
+    border-radius: 100px;
+}
+
+/*ADS*/
+.all_ads{
+    color: snow;
+    font-size: 16px;
+    
+    width: 90px;
+    height: 40px;
+    
+    border-radius: 10px;
+    background-color: orange;
+    border-color: orange;
+}
+#all_adverts{
+    padding-left: 20px;
+}
+#ad_info{
+    margin:7px 0px 6px 80%;
+}
+#ad_owner_info_div{
+    background-color: lightgray;
+    width: 104%;
+    position: relative;
+    top: 7px;
+    left: -10px;
+    display: none;
+}
+#ad_owner_info{
+    padding: 3px;
+}
+#ad_info_close{
+    float: right;
+    margin-right: 5px;
+}
+/*  Post/ad Profile Picture  */
+img#profile_image_of_ad_user{
+	width: 60px;
+    height: 60px;
+    display: block;
+    margin: auto;
+    
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 100%;
+    border-color: white;
+}
+img#rating{
+    width: 100%;
+}
+img#send_email{
+    height: 38px;
+    display: block;
+    margin: auto;
+    margin-top: 15px;
+}
+button.request_to_book{
+    color: white;
+    border-width: 0px;
+    height: 30px;
+    width: 49%;
+    display: inline-block;
+}
+button.add_to_wishlist{
+    color: white;
+    border-width: 0px;
+    height: 30px;
+    width: 49%;
+    display: inline-block;
+}
+img.heart{
+    width: 24px;
+}
+img.addedwishlist{
+    display: none;
+    width: 24px;
+}
+input#ad_id, input#ad_type, input#ad_owner_id{
+    display: none;
+}
+form#hidden_form{
+    display: inline;
+}
+/*ads counter*/
+.js_values{display: none;}
+
+
+
+/*      SECTION     */
+section.body_contents{
+    margin-left: 250px;
+    background-color: #fafafa;
+}
+div#ad_types.ad_types{
+    color: white;
+    display: none;
+}
+#ad_types{
+    text-align: center;
+}
+span#index_all_ads{
+    color: orange;
+}
+
+div#index_all_ads, div#index_wanted_ads, div#index_offered_ads {
+    background-color: #189F87;
+    width: 200px;
+    height: 32px;
+    margin: 6px;
+    padding-top: 5px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+}
+img#people, img#car{
+    height: 20px;
+    margin-left: 10px;
+}
+
+
+
+div#lefty{
+	width: 100%;
+    display: block;
+    padding: 5px 2%;
+    vertical-align: top;
+}
+div#profile_imgs{
+	width: 20%;
+    display: inline-block;
+}
+div#righty_departure_and_destination{
+	width: 78%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+
+
+div#righty{
+	display: block;
+    width: 100%;
+    padding: 10px 2%;
+}
+img#departure_destination_image{
+	width: 3%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+/* Post/ad  departure and destination div */
+div#post_departure_and_destination{
+    display: inline-block;
+    width: 95%;
+    vertical-align: top;
+}
+p#post_departure_tag{
+    border-bottom: 1px solid orange;
+    margin: 0px;
+}
+
+/* Post/ad  date,time,amout */
+p#post_destination_tag{
+    padding-top: 4px;
+}
+span#post_departure, span#post_destination, span#more_information_text{
+    color: #6e6f71;
+}
+
+span#post_date, span#post_time, span#post_amount{
+    color: #6e6f71;
+}
+/* Post/ad  description*/
+span#post_more_information{
+    font-style: italic;
+}
+
+
+div.view_all_wanted_ads, div.view_all_offered_ads{
+    display: block;
+}
+div#container{
+	border-radius: 10px;
+    background-color: white;
+    border: 1px solid gainsboro
+}
+/*  Post/ad container   */
+#all_results{
+    border-style: solid;
+    border-width: 0px 0px 2px 0px;
+    border-color: #2FCC72;
+    margin: 0 auto;
+    width: 100%;
+    margin-bottom: 40px;
+	padding-bottom: 20px;
+	background-color: white;
+
+}
+/* Commuters Looking for transport | Transport from "" to ""*/
+h2#results_heading{
+    border-style: solid;
+    border-width: 2px 0px;
+    border-color: #d1d2d3;
+    color: slategrey;
+    text-align: center;
+    padding: 7px 0px;
+    margin: 10px 0px;
+    font-size: 16px;
+}
+
+/*          ASIDE           */
+aside.friend_box{
+    width: 240px;
+    top: 65px;
+    bottom: 10px;
+    position: fixed;
+}
+div#profile_window{
+    width: 100%;
+    height: 160px;
+    margin-top: 30px;
+    background-color: #189F87;
+}
+img#user_background{
+    width: 100%;
+    height: 60%;
+    margin-top: 2px;
+}
+div#user_details{
+    height: 40%;
+    width: 100%;
+}
+img#nav_profile_image{
+    width: 60px;
+    height: 60px;
+    border-style: solid;
+    border-color: grey;
+    border-width: 1px;
+    border-radius: 100%;
+    position: absolute;
+    margin: -20px 0px 0px 15px;
+}
+span#user_p_information{
+    color: white;
+    font-size: 19px;
+    position: absolute;
+    margin: 10px 0px 0px 90px;
+}
+/* SEARCH */
+form#search_form.search_form{
+    width: 80%;
+    margin: auto;
+}
+h2#search_title{
+    margin-top: 35px;
+    border-style: ridge;
+    border-width: 1px;
+    text-align: center;
+}
+#destination_input, #departure_input, #date_input, #transport{
+    margin-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+}
+span#offering_looking{
+    padding-left: 10px;
+}
+input[type="radio"]{
+    float: left;
+}
+input#search, #search {
+    border-color: rgb(54, 242, 135);
+    background-color: rgb(54, 242, 135);
+    color: snow;
+    margin-top: 10px;
+    width: 100%;
+    font-size: 18px;
+}
+/* Search for friends*/
+h4#search_friends_label{
+    margin-top: 40px;
+}
+input#name{
+    width: 100%;
+    border-radius: 15px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #189F87;
+    margin-bottom: 4px
+}
+input#look{
+    border-radius: 3px;
+    width: 100%;
+    border-color: dodgerblue;
+    background-color: dodgerblue;
+    color: snow;
+    margin-top: 10px;
+}
+
+
+/*ALL ADS*/
+#offering_heading{
+    text-align: center;
+    color: black;
+    display: block;
+}
+/* S E N D M E S S A G E */
+div.send_container{
+	position: fixed;
+    top: 0px;
+    z-index: 2;
+    background-color: rgba(65,65,66,0.98);
+    height: 100%;
+    width: 100%;
+}
+div.send_message_div{
+	background-color: gainsboro;
+    margin: 20% 5%;
+    border-radius: 10px 10px 0px 0px;
+}
+div.send_head{
+	background-color: #189F87;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    border-radius: 10px 10px 0px 0px;
+}
+textarea.send_text{
+	width: 90%;
+    display: block;
+    margin: 10px auto;
+    border: 1px solid gainsboro;
+    height: 30%;
+    padding: 1%;
+}
+input.send_button, input.cancel_button{
+	background-color: white;
+    color: black;
+    margin: 10px 5%;
+    border: 2px outset white;
+    border-radius: 5px;
+    font-family: monospace;
+    font-size: 16px;
+}
+
+/*      FOOTER      */
+footer{    
+    background-color: #189F87;
+    position: relative;
+    width: 100%;
+}
+#footer_info{
+    text-align: center;
+}
+.footer_items{
+    list-style-type: none;
+    text-decoration: none;
+    display: inline-block;
+    color: white;
+    padding: 1% 5%;
+    font-size: 17px;
+}
+li#contact_us.footer_items{
+    border-width: 0px 0px 2px 0px;
+    border-style: solid;
+    cursor: pointer;
+}
+div#contact_us_form{
+    margin: 10px;
+    display: none;
+    margin-bottom: 50px;
+}
+
+h2#contact_us_heading{
+    text-align: center;
+    color: white;
+}
+form#contact_us{
+    margin-left: 15%;
+    font-weight: normal;
+}
+label#name_label, label#email_label, label#message_label {
+    width: 15%;
+    color: white;
+}
+input#name_input, input#email_input, textarea#message_input {
+    border-radius: 15px;
+    border-width: 0px;
+    width: 50%;
+    margin: 10px;
+    padding: 2px
+}
+label#message_label{
+    position: absolute;
+}
+textarea#message_input {
+    margin-left: 17%;
+}
+button#submit_contact_us_form{
+    border-width: 0;
+    color: white;
+    font-size: 17px;
+    background-color: lawngreen;
+    height: 33px;
+    width: 80px;
+    margin: 0 auto;
+    margin-left: 17%;
+}
+p#physical_information{
+    color: white;
+    margin-top: 15px;
+}
+a#footer_links{
+    color: white;
+}
+
+
+/*          SCREEN      856     */
+@media screen and (max-width:856px){
+    aside.friend_box {
+        width: 170px;
+    }
+    section.body_contents {
+        margin-left: 180px;
+    }
+    iv#index_all_ads, div#index_wanted_ads, div#index_offered_ads {             
+        width: 160px;
+        margin: 0px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/*          SCREEN      768     */
+@media screen and (max-width:768px){
+    /*  ASIDE   */
+    aside.friend_box {
+        width: 160px;
+    }
+    div#profile_window {
+        height: 125px
+    }
+    span#user_p_information {
+        margin: 30px 0px 0px 8px;
+    }
+    img#nav_profile_image {
+        width: 49px;
+        height: 49px;
+    }
+    
+    
+    
+    /*  SECTION   */
+    section.body_contents {
+        margin-left: 170px;
+    }
+    #ad_info {
+        margin: 0px 0px 5px 80%;
+    }
+    /*  Post/ad container   */
+    #all_results {
+    }
+    div#lefty {
+
+    }
+    div#righty {
+    }
+    p#post_destination_tag, p#post_departure_tag {
+        font-size: 13px
+    }
+    
+    /* Post/ad  date,time,amout */
+    p#post_information{
+        margin-bottom: 4px;
+    }
+    .footer_items{
+        padding: 0px 2%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*          SCREEN      660     */
+@media screen and (max-width:660px){        
+    aside.friend_box{
+        display: none;
+    }
+    section.body_contents{
+        width: 100%;
+        margin-left: 0px;
+    }
+    /*Nav Bar*/
+    .nav_head {
+        display: none;
+    }
+    div.mobile_nav_head{
+        display: block;
+    }
+
+    
+    div#profile_menu_button {
+    height: 100%;
+    width: 100%;
+    top: 45px;
+    }
+    
+    img#profile_menu, img#search_menu{
+        display: block;
+    }
+    img#profile_menu{
+        float: left;
+        width: 30px;
+        height: 30px;
+    }
+    img#close_menu1{
+        float: left;
+        width: 30px;
+        height: 30px;
+        display: none;
+    }
+    img#mobile_logo{
+        width: 62px;
+        height: 35px;
+        display: inline-block;
+        position: absolute;
+        right: 45%
+    }
+    img#search_menu{
+        float: right;
+        width: 50px;
+        height: 30px;
+    }
+    img#close_menu2{
+        display: none;
+        float: right;
+        width: 50px;
+        height: 30px;
+    }
+    
+    section.signin{
+        display: none;
+    }
+    
+    h1#intro_header {
+        padding: 40px 0px 0px 0px;
+        font-size: 30px;
+        
+    }
+    
+}
+
+
+
+
+
+
+
+
+/*          SCREEN      425     */
+@media screen and (max-width:425px){
+    /* ALL | Wanted |   Offered */
+    div#index_all_ads, div#index_wanted_ads, div#index_offered_ads {
+        width: 90%;
+        height: 27px;
+        margin: 4px;
+    }
+    
+    /* Commuters Looking for transport | Transport from "" to ""*/
+    
+    /*  Post/ad container   */
+    #all_results {
+    }
+    
+    /*  Post/ad Profile Picture  */
+    img#profile_image_of_ad_user{
+    }
+    /* Post/ad  departure and destination div */
+    div#post_departure_and_destination{
+        margin-left: 0px;
+    }
+    
+    
+    /* Post/ad  description */
+    span#post_more_information {
+        font-size: 13px
+    }
+    
+    div#arrows{
+        left: 45%;
+    }
+    .footer_items{
+        font-size: 12px;
+    }
+    h2#contact_us_heading{
+        font-size: 20px;
+    }
+    label#name_label, label#email_label, label#message_label{
+        width: 40px;
+        color: white;
+        font-size: 13px;
+    }
+    input#name_input, input#email_input, textarea#message_input{
+        border-radius: 0px;
+        border-width: 0px;
+        width: 180px;
+        height: 20px;
+        margin: 10px 25px;
+        font-size: 14px;
+    }
+    textarea#message_input{
+        margin-left: 70px;
+        height: 100px;
+        font-size: 12px;
+    }
+    button#submit_contact_us_form{
+        height: 25px;
+        font-size: 15px;
+        margin-left: 70px;
+    }
+    div#contact_us_form{
+        margin-bottom: 0px;
+    }
+    h1#affirmation_header {
+        font-size: 28px;
+        padding-top: 45px;
+    }
+    div.slideshow_container{
+        margin-top: 45px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/*          SCREEN      320     */
+@media screen and (max-width:320px){
+    /*  Post/ad Profile Picture  */
+    img#profile_image_of_ad_user{
+    }
+}

@@ -34,8 +34,19 @@
     <access origin="https://api.facebook.com" />
     <access origin="https://*.fbcdn.net" />
     <access origin="https://*.akamaihd.net" />
+    <preference name="android-minSdkVersion" value="15" />
     <feature name="File">
         <param name="android-package" value="org.apache.cordova.file.FileUtils" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="NetworkStatus">
+        <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+    </feature>
+    <feature name="Globalization">
+        <param name="android-package" value="org.apache.cordova.globalization.Globalization" />
+    </feature>
+    <feature name="WebViewDebug">
+        <param name="android-package" value="com.jamiestarke.webviewdebug.WebViewDebug" />
         <param name="onload" value="true" />
     </feature>
     <icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
@@ -56,8 +67,8 @@
     <splash density="port-xhdpi" src="www/res/screen/android/drawable-port-xhdpi-screen.png" />
     <splash density="port-xxhdpi" src="www/res/screen/android/drawable-port-xxhdpi-screen.png" />
     <splash density="port-xxxhdpi" src="www/res/screen/android/drawable-port-xxxhdpi-screen.png" />
-    <allow-intent href="market:*" />
-    <allow-navigation href="*" />
+    <allow-navigation href="http://*/*" />
+    <allow-navigation href="https://*/*" />
     <name>laisa</name>
     <description>
         Shara a ride with friends
@@ -67,7 +78,9 @@
     </author>
     <content src="index.html" />
     <preference name="DisallowOverscroll" value="true" />
-    <preference name="android-minSdkVersion" value="15" />
+    <preference name="android-minSdkVersion" value="19" />
+    <preference name="android-build-tool" value="gradle" />
+    <preference name="phonegap-version" value="cli-6.3.3" />
     <icon src="icon.png" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

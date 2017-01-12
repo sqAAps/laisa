@@ -1,0 +1,53 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "za.co.sqaaps.laisa"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "za.co.sqaaps.laisa"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "za.co.sqaaps.laisa"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "za.co.sqaaps.laisa"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "za.co.sqaaps.laisa"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "za.co.sqaaps.laisa"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "za.co.sqaaps.laisa"
+        },
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "za.co.sqaaps.laisa"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "za.co.sqaaps.laisa"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "za.co.sqaaps.laisa"
+        },
+        "cordova-plugin-globalization": {
+            "PACKAGE_NAME": "za.co.sqaaps.laisa"
+        },
+        "com.jamiestarke.webviewdebug": {
+            "PACKAGE_NAME": "za.co.sqaaps.laisa"
+        },
+        "cordova-plugin-facebook4": {
+            "APP_ID": "1842810965963847",
+            "APP_NAME": "laisa",
+            "PACKAGE_NAME": "za.co.sqaaps.laisa"
+        }
+    },
+    "dependent_plugins": {}
+}

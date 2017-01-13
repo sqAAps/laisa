@@ -48,11 +48,11 @@
 			
 			<div id="fb_button" style="text-align: center; margin: 10px auto;">
 				<!-- FACEBOOK -->
-				<a href="javascript:deviceready();">
+				<a href="javascript:fblogin();">
 					<img id="fb_login-img" src="./images/facebook.png"/>
 				</a>
 				
-				<fb:login-button id="signup" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+				<!--<fb:login-button id="signup" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>-->
 			</div>
 			
 			<div id="arrows">
@@ -323,6 +323,13 @@
 		<script type="text/javascript" src="./js/index.js"></script>
 		<script type="text/javascript">
 			function deviceready(){
+				if (localStorage.getItem("id") != null){
+					window.location.assign("html/profile.html?" + localStorage.getItem("id"));
+				}
+			}
+			document.addEventListener("deviceready", deviceready, false);
+			
+			function fblogin(){
 				var fbLoginSuccess = function(response){
 					console.log("Successfully Logged In. \n" + JSON.stringify(response));
 					
@@ -345,7 +352,7 @@
 							if(ajaxReturn(ajax) == true) {
 								if(ajax.responseText.slice(-8) === 'inserted'){
 									alert("all is well");
-									//window.location.assign("html/profile.html?" + localStorage.getItem("id"));
+									window.location.assign("html/profile.html?" + localStorage.getItem("id"));
 								}
 							}
 						}
@@ -367,8 +374,6 @@
 											}
 				);
 			}
-			document.addEventListener("deviceready", deviceready, false);
-			
 			
 			
 			/*

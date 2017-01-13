@@ -1,7 +1,6 @@
 <?php
-header('Access-Control-Allow-Origin: *');
-require_once './connect.inc.php';
 require_once './core.inc.php';
+require_once './connect.inc.php';
 require './view.php';
 global $connection;
 
@@ -52,7 +51,7 @@ if(isset($_POST['profile'])){
 								</h2>
 
 								<p id="account_personal_details">
-									<?php echo 'PHONE: '.$phoneNumber.'<br>'.$email.'<br><strong>'.$gender.'</strong>'; ?>
+									<?php echo 'Mobile<strong>:</strong> '.$phoneNumber.'<br>'.$email.'<br><strong>'.$gender.'</strong>'; ?>
 								</p>
 							</div>
 						</div>
@@ -162,17 +161,9 @@ if (isset($_POST['delete'])) {
     // delete the entry 
     $query = "DELETE FROM `adverts` WHERE `id`='".mysqli_real_escape_string($connection, $ad_id)."'"; 
     
-	mysqli_query($connection, $query);
-	header('Location: ../html/profile.html');
-    /*if ($query_run = mysqli_query($connection, $query)){
-        // redirect back to the view page
-        header('Location: ../../View_my_profile/viewmyprofile.php/'.getuserfield('firstName').'.'.getuserfield('surname').'');
-    }
-    // if id isn't set, or isn't valid, redirect back to view page
-    else {
-        header('Location: ../../View_my_profile/viewmyprofile.php/'.getuserfield('firstName').'.'.getuserfield('surname').'');
-        echo 'Could not delete entry';
-    }*/
+	if($query_run = mysqli_query($connection, $query)){
+		echo "deleted";
+	}
 }
 
 

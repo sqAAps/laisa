@@ -189,6 +189,7 @@
 				
 				window.location.assign("./wishlist.html?"+id);
 			}
+			
 			function inbox(){
 				var page_url = window.location.href;
 				var page_url_split = page_url.split("?");
@@ -202,6 +203,18 @@
 				var page_url_split = page_url.split("?");
 				var id = page_url_split[1];
 				window.location.assign("./profile.html?"+id);
+			}
+			
+			function delete_post(ad_id){
+				var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/profile.php");
+				ajax.onreadystatechange = function() {
+					if(ajaxReturn(ajax) == true) {
+						if(ajax.responseText.slice(-8) === 'deleted'){
+							window.location.assign("./profile.html?" + localStorage.getItem("id"));
+						}
+					}
+				}
+				ajax.send('delete=' + ad_id + '&user_id='+ localStorage.getItem("id"));
 			}
 		</script>
     </body>

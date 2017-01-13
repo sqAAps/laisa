@@ -12,7 +12,7 @@ div#search_results_div{
     background-repeat: no-repeat;
 }
 div#vp_text{
-	padding-top: 55px;
+	padding-top: 65px;
     color: white;
     font-family: cursive;
     text-align: center;
@@ -46,11 +46,9 @@ div#with{
     vertical-align: top
 }
 div#arrows{
-    margin: 0 auto;
-    width: 0px;
-    cursor: pointer;
-    position: absolute;
-    bottom: 0;
+	position: absolute;
+    bottom: 20px;
+    left: 45%;
 }
 img#arrows_scroll{
     opacity: 0.5;
@@ -141,10 +139,10 @@ button#register{
 section.posts_from_users{
 
 }
-h1#how_it_works_header{
+h2#how_it_works_header{
     text-align: center;
     margin: 0;
-    padding: 40px 0px 20px 0px;
+    padding: 5px 0px;
 	font-family: sans-serif;
 }
 
@@ -153,10 +151,15 @@ div#topic_div.container-fluid{
     display: inline-block;
 }
 div.topic_div {
-    display: inline-block;
-	width: 90%;
-    margin-left: 5%;
+	display: inline-block;
+    width: 100%;
+    background-color: #189F87;
+    padding: 0px 2%;
     vertical-align: top;
+    border-style: solid;
+    border-color: white;
+    border-width: 1px 0px;
+    padding-top: 4px;
 }
 img#how_images{
     height: 65px;
@@ -170,23 +173,23 @@ h3#how_header{
 }
 p#topic{
     text-align: center;
+	color: white;
 }
 
 div#introduction{
     background-color: #f1f1f2;
-    padding-bottom: 60px;
+    padding-bottom: 20px;
     position: relative;
 }
-h1#intro_header{
-    text-align: center;
-    padding: 40px
+h3#intro_header{
+	text-align: center;
+    margin: 0px;
+    padding: 15px 0px 10px 0px;
 }
 p#intro_paragraph{
     text-align: center;
-    width: 80%;
-    display: block;
+    width: 90%;
     margin: auto;
-    margin-bottom: 30px;
 }
 iframe#about_us_video{
     border-style: solid;
@@ -199,30 +202,29 @@ iframe#about_us_video{
 }
 
 div.slideshow_container{
-    position: relative;
-    width: 80%;
+	position: relative;
+    width: 98%;
     display: block;
     margin: auto;
-    margin-top: 80px;
-    padding-bottom: 80px;
+    margin-top: 25px;
 }
 div#affirmations{
     background-image: url(../images/users_background.png);
     position: relative;
-	height: 100%;
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
-h1#affirmation_header{
+h3#affirmation_header{
     color: white;
     text-align: center;
-    padding-top: 60px;
-    margin-top: 0px
+    padding-top: 30;
+    margin-top: 0px;
 }
 div.customer-slides{
     width: 90%;
     display: block;
-    margin: auto
+    margin: auto;
+	padding-bottom: 30px;
 }
 img#customer-image{
     width: 160px;
@@ -306,21 +308,10 @@ p#error_messages{
     }
     p#topic {
     }
-    h1#intro_header {
-        font-size: 25px;
-    }
-    h1#affirmation_header {
-        font-size: 25px;
-    }
-    div.slideshow_container{
-        width: 95%;
-    }
     #customer_container {
         width: 26%
     }
     img#customer-image {
         width: 100%;
-    }
-    div.customer-slides {
     }
 }

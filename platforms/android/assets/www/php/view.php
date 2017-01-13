@@ -1,7 +1,6 @@
 <?php    
-header('Access-Control-Allow-Origin: *');
-require_once 'core.inc.php';
-require 'connect.inc.php';
+require_once './core.inc.php';
+require './connect.inc.php';
 global $connection;
 
 
@@ -138,11 +137,9 @@ function view_my_ads($USERID){
                                     '</form>
                                     
                                      
-                                    <form id="hidden_ad_id_form" method="post" action="../php/profile.php">
+                                    <form id="hidden_ad_id_form" method="post" >
                                         <input id="hide_ad_id" type="text" name="delete" value='.$ad_id.'>'.
-                                        /*<a href="../php/profile.php/'.getusername($USERID).'.'.getusersurname($USERID).'">*/
-                                            '<button class="" id="delete" type="submit" >Delete</button>'.
-                                        /*</a>*/                                    
+										'<button class="" id="delete" type="button" onclick="delete_post('.$ad_id.')" >Delete</button>'.                                   
                                     '</form>';
                                     ?>
                                 </div>
@@ -609,5 +606,4 @@ function view_wishlist(){
             <?php
     }
 }
-
 ?>

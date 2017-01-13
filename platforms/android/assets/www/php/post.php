@@ -1,5 +1,5 @@
 <?php
-header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Origin: $http_origin");
 require 'connect.inc.php';
 require 'core.inc.php';
 global $connection;

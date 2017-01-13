@@ -156,7 +156,7 @@
 							ajax.onreadystatechange = function() {
 								if(ajaxReturn(ajax) == true) {
 									if( ajax.responseText.slice(-5) === "added"){
-										window.location.assign("profile.html");	
+										window.location.assign("./profile.html?" + localStorage.getItem("id"));
 									}else{
 										_("search_results").innerHTML = ajax.responseText;
 									}

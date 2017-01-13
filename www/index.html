@@ -323,13 +323,14 @@
 		<script type="text/javascript" src="./js/index.js"></script>
 		<script type="text/javascript">
 			function deviceready(){
-				//app.initialize();
+				app.initialize();
 				
 				facebookConnectPlugin.browserInit(1842810965963847);
 				//alert("cool");
 				
 				var fbLoginSuccess = function(response){
 					console.log("Successfully Logged In. \n" + JSON.stringify(response));
+					alert("login success")
 				}
 				facebookConnectPlugin.login(["public_profile", "email"], 
 											fbLoginSuccess, 

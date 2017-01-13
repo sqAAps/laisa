@@ -323,19 +323,47 @@
 		<script type="text/javascript" src="./js/index.js"></script>
 		<script type="text/javascript">
 			function deviceready(){
-				app.initialize();
-				
-				facebookConnectPlugin.browserInit(1842810965963847);
-				//alert("cool");
-				
 				var fbLoginSuccess = function(response){
 					console.log("Successfully Logged In. \n" + JSON.stringify(response));
-					alert("login success")
+					
+					var authResponse = response.authResponse;
+					
+					var fbdetails = function(profile){
+						console.log('Successful login for: ' + profile.name);
+						localStorage.setItem('id', profile.id);
+						localStorage.setItem('name', profile.name);
+						localStorage.setItem('phoneNumber', "undefined");
+						localStorage.setItem('email', profile.email);
+						localStorage.setItem('picture', profile.picture.data.url);
+						localStorage.setItem('gender', profile.gender);
+						console.log(JSON.stringify(profile));
+						//console.log(response.picture.data.url);						
+
+						//Save details in my database
+						var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/signin.php");
+						ajax.onreadystatechange = function() {
+							if(ajaxReturn(ajax) == true) {
+								if(ajax.responseText.slice(-8) === 'inserted'){
+									alert("all is well");
+									//window.location.assign("html/profile.html?" + localStorage.getItem("id"));
+								}
+							}
+						}
+						ajax.send('fblogin=' + '' + '&id='+ profile.id + '&name=' + profile.name + '&picture=' + encodeURIComponent(profile.picture.data.url) + '&phonenumber=' + "undefined" + '&email=' + profile.email + '&gender=' + profile.gender);
+					};
+					facebookConnectPlugin.api('/me?fields=email,name,gender,picture.width(150).height(150)&access_token=' + authResponse.accessToken, 
+											 null, 
+											 fbdetails, 
+											 function (error){ 
+												alert("Failed to save your information!");
+											}
+					);
 				}
+				
 				facebookConnectPlugin.login(["public_profile", "email"], 
 											fbLoginSuccess, 
 											function (error){ 
-												alert("LogIn Failed!");
+												alert("Please check your connection!");
 											}
 				);
 			}

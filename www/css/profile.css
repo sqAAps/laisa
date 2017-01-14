@@ -1,3 +1,6 @@
+body{
+	background-color: #F1F1F1;
+}
 section#profile_contents{
     display: block;
     width: 100%;
@@ -7,11 +10,8 @@ section#profile_contents{
 div#account{
 	width: 100%;
     margin: auto;
-	padding: 10px 0px 0px 0px;
+	padding: 20px 0px 10px 0px;
     background-color: white;
-}
-div#user_profile{  
-
 }
 
 img#profile_background{
@@ -221,32 +221,13 @@ img#recurring_people, img#recurring_car{
 div#view_driving_recurring_ads{
     display: none;
 }
-
-/*      SCREEN 425 */
-@media screen and (max-width:425px){    
-    /*      SECTION     */
-    /*PROFILE */
-    div#user_profile {
-
-    }
-
-    #e_follow, #u_follow {
-        margin-left: 20%;
-    }
-    
-    #all_results {
-
-    }
-}   
+   
 
 @media screen and (max-width:375px){
     #upload {
         padding: 0px;
     }
     /*  PROFILE */
-    div#user_profile {
-
-    }
     div#upload_image {
         min-width: 120px;
         min-height: 150px;

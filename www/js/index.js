@@ -173,13 +173,14 @@ $("img#arrows_scroll").mouseleave(function() {
 
 /*	M O B I L E		M E N U	*/
 function open_profile_menu(){
+	$('div#profile_menu_button').slideDown("slow", "linear")
+	
 	$('img#profile_menu').hide();
     $('img#search_menu').hide();    
     $('img#close_menu1').show();
-    $('div#profile_menu_button').toggle();
 }
 function close_profile_menu(){
-    $('div#profile_menu_button').hide();
+    $('div#profile_menu_button').slideUp("slow", "swing");
     
     $('img#search_menu').show();    
     $('img#close_menu1').hide();
@@ -187,7 +188,7 @@ function close_profile_menu(){
 }
 
 function open_search_menu(){
-    $('div#search_menu_button').toggle();
+	$('div#search_menu_button').slideDown("slow", "linear");
     
     $('img#profile_menu').hide();
     $('img#search_menu').hide();
@@ -195,7 +196,8 @@ function open_search_menu(){
 }
 	
 function close_search_menu(){
-    $('div#search_menu_button').hide();
+	$('div#search_menu_button').slideUp("slow", "swing");
+	
     
     $('img#search_menu').show();    
     $('img#close_menu2').hide();
@@ -212,7 +214,7 @@ $("img#more").on('click', function(){
 
 
 
-//      Footer
+//      F O O T E R
 $('li#contact_us.footer_items').on('click', function () {
     
     $('div#contact_us_form').toggle();
@@ -221,6 +223,28 @@ $('li#contact_us.footer_items').on('click', function () {
         scrollTop: $("div#contact_us_form").offset().top},
         'slow');
 });
+function submitForm(){
+				_("submit").disabled = true;
+				_("status").innerHTML = 'please wait ...';
+                        
+				var formdata = new FormData();
+				formdata.append( "fullName", _("name_input").value );
+				formdata.append( "email", _("email_input").value );
+				formdata.append( "message", _("message_input").value );
+                        
+				var ajax = new XMLHttpRequest();
+				ajax.open( "POST", "http://www.sqaaps.co.za/php/laisa/signin.php/send_email.php" );
+				ajax.onreadystatechange = function() {
+					if(ajax.readyState == 4 && ajax.status == 200) {
+						if(ajax.responseText == "success"){
+							alert('Message Sent');
+						} else {
+							alert('Message Failed To Send');
+						}
+					}
+				}
+				ajax.send(formdata);
+			}
 
 
 
@@ -247,3 +271,4 @@ function fillinginfields() {
             document.getElementById('post_ad').style.border = "2px solid green";
     }
 }
+

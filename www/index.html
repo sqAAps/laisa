@@ -355,29 +355,6 @@
 											}
 				);
 			}
-			
-			function submitForm(){
-				_("submit").disabled = true;
-				_("status").innerHTML = 'please wait ...';
-                        
-				var formdata = new FormData();
-				formdata.append( "fullName", _("name_input").value );
-				formdata.append( "email", _("email_input").value );
-				formdata.append( "message", _("message_input").value );
-                        
-				var ajax = new XMLHttpRequest();
-				ajax.open( "POST", "http://www.sqaaps.co.za/php/laisa/signin.php/send_email.php" );
-				ajax.onreadystatechange = function() {
-					if(ajax.readyState == 4 && ajax.status == 200) {
-						if(ajax.responseText == "success"){
-							alert('Message Sent');
-						} else {
-							alert('Message Failed To Send');
-						}
-					}
-				}
-				ajax.send(formdata);
-			}
 		</script>
 	</body>
 </html>

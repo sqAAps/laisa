@@ -209,7 +209,7 @@
 				var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/profile.php");
 				ajax.onreadystatechange = function() {
 					if(ajaxReturn(ajax) == true) {
-						if(ajax.responseText.slice(-8) === 'deleted'){
+						if(ajax.responseText.slice(-7) === 'deleted'){
 							window.location.assign("./profile.html?" + localStorage.getItem("id"));
 						}
 					}

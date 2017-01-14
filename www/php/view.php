@@ -23,7 +23,7 @@ function view_my_ads($USERID){
 	//$ad_user_id = get_ad_user_id();
     $ad_user_id = $USERID;
     
-    $welcome = '<h2 id="results_heading"> Offered transport Post</h2>';
+    $welcome = '<h2 id="results_heading"> Offering Transport</h2>';
     
     $type = 'o';
     //Searching MY OFFERED ads
@@ -244,7 +244,7 @@ function view_my_ads($USERID){
                     AND `date` NOT LIKE '%".mysqli_real_escape_string($connection, 'Friday')."%'
                     AND `date` NOT LIKE '%".mysqli_real_escape_string($connection, 'Saturday')."%'
                 ORDER BY `date`  ";
-        $welcome = '<h2 id="results_heading">Looking for transport Posts</h2>';
+        $welcome = '<h2 id="results_heading">Seeking Transport</h2>';
     }
 }
 

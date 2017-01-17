@@ -1,6 +1,6 @@
 <?php
-require './connect.inc.php';
 require './core.inc.php';
+require './connect.inc.php';
 error_reporting(E_ALL);
 global $connection;
 
@@ -15,7 +15,7 @@ if(isset($_POST['wishlist'])){
             ?>
             <h2 id="no_result_head">No Result(s)</h2>
             <p id="no_result_news">
-                Find posts you are interested in here by clicking "heart" on each of them.
+                Find posts you are interested here BY adding Wishlist.
             </p>
             <?php
         } 

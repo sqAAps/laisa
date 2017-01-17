@@ -294,6 +294,9 @@ input#look_for_friends{
 }
 
 /*ADS*/
+div#search_results{
+	margin-bottom: 50px;
+}
 .all_ads{
     color: snow;
     font-size: 16px;
@@ -494,11 +497,11 @@ h2#results_heading{
     border-style: solid;
     border-width: 2px 0px;
     border-color: #d1d2d3;
-    color: slategrey;
+    color: #414042;
     text-align: center;
     padding: 7px 0px;
-    margin: 10px 0px;
-    font-size: 16px;
+    margin: 20px 0px;
+    font-size: 19px;
 }
 
 /*          ASIDE           */

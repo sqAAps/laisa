@@ -96,11 +96,11 @@
 
 					<br>                                            
 					<input id="search_menu_offering_transport" type="radio" name="type" value="o" checked/>
-					<span id="span_search_menu_offering_looking"> I am looking for Transport</span>
+					<span id="span_search_menu_offering_looking"> I'm looking for Transport</span>
 							
 					<br>
 					<input id="search_menu_offering_passenger" type="radio" name="type" value="w" />
-					<span id="span_search_menu_offering_looking"> I am looking for Passengers</span>
+					<span id="span_search_menu_offering_looking"> I'm looking for Passengers</span>
 
 					<p id="validate_status"></p>
 
@@ -209,6 +209,8 @@
 					ajax.onreadystatechange = function() {
 						if(ajaxReturn(ajax) == true) {
 							_("search_results").innerHTML = ajax.responseText;
+							_("view_all_ads").style.display = "none"
+							status.innerHTML = '';
 						}
 					}
 					ajax.send("departure="+departure+"&destination="+destination+"&date="+date+"&type="+type+"&html="+'');

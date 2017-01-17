@@ -56,8 +56,14 @@ function view_my_ads($USERID){
             <?php               
     
             // User offered adverts are NOT found in the `offered` database
-            if($query_num_rows==0){
-                echo '<h2 id="no-reviews">No result(s)<h2>';
+            if($query_num_rows == 0){
+				if($_SESSION['user_id'] === $USERID){
+                	echo '<h2 id="no-reviews">No result(s)<h2>
+					<p>This is where all the your travel plans are posted. You can use this area to view, edit and/or delete your travel plans.</p>';
+				}else{
+					echo '<h2 id="no-reviews">No result(s)<h2>
+					<p>User has not posted any travel plans</p>';
+				}
             } 
             
             //User offered adverts Are found in the `offered` database

@@ -48,12 +48,12 @@
 				//var ajax = ajaxObj("POST", "../php/wishlist.php");	
 				ajax.onreadystatechange = function() {
 					if(ajaxReturn(ajax) == true) {
-						if(ajax.response === 'deleted'){
-							window.location.assign("./wishlist.html");
+						if(ajax.responseslice(-7) === 'deleted'){
+							window.location.assign("./wishlist.html?" + localStorage.getItem("id"));
 						}
 					}
 				}
-				ajax.send("delete_from_wishlist=" + id);
+				ajax.send("delete_from_wishlist=" + id + "&session_user=" + localStorage.getItem("id"));
 			}
 			
 			function profile(){
@@ -64,9 +64,18 @@
 			}
 			
 			/*	W I S H L I S T */
-			function add_to_wishlist(id) {
-				var ajax = ajaxObj("POST", "../php/profile.php");
-				ajax.send("add_to_wishlist=" + id);
+			function delete_from_wishlist(id){
+				var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/wishlist.php");
+				//var ajax = ajaxObj("POST", "../php/profile.php");
+				
+				ajax.onreadystatechange = function() {
+					if(ajaxReturn(ajax) == true) {
+						if(ajax.responseText.slice(-8) === 'wishlist'){
+							window.location.assign("./wishlist.html?"+id);
+						}
+					}
+				}
+				ajax.send("delete_from_wishlist=" + id + "&session_user=" + localStorage.getItem("id"));
 			}
 		</script>
     </body>

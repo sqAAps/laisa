@@ -169,26 +169,30 @@ if (isset($_POST['delete'])) {
 }
 
 
-if(isset($_POST['add_to_wishlist'])){
-	$ad_id = $_POST['add_to_wishlist'];
+if(isset($_POST['addtowishlist'])){
+	$ad_id = $_POST['addtowishlist'];
+	$user_id = $_POST['session_user'];
 	
-	$query = "SELECT * FROM `wishlist` WHERE `session_user_id`='".mysqli_real_escape_string($connection, $_SESSION['user_id'])."' AND `ad_id`='".mysqli_real_escape_string($connection, $ad_id)."'";
+	$query = "SELECT * FROM `wishlist` WHERE `session_user_id`='".mysqli_real_escape_string($connection, $user_id)."' AND `ad_id`='".mysqli_real_escape_string($connection, $ad_id)."'";
 	if ($query_run = mysqli_query($connection, $query)) {
 		$query_num_rows = mysqli_num_rows($query_run);
          
 		//Add to wishlist
-		if($query_num_rows===0){
+		if($query_num_rows === 0){
 			$query2 = "  INSERT INTO `wishlist` VALUES 
                                         (
                                         '',
-                                        '".mysqli_real_escape_string($connection, $_SESSION['user_id'])."',
+                                        '".mysqli_real_escape_string($connection, $user_id)."',
                                         '".mysqli_real_escape_string($connection, $ad_id)."'
                                         )
                                         ";
 			if(mysqli_query($connection, $query2)){
-				echo 'Added to Wishlist';
+				echo 'wishlist';
 				exit();
 			}
+		} else{
+			echo 'wishlist';
+			exit();
 		}
 	}
 }

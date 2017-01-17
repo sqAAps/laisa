@@ -141,12 +141,7 @@ if(isset($_POST['html']) && isset($_POST['departure']) && isset($_POST['destinat
 							
 
 							<!--    ADD TO WISH LIST SCRIPT   -->    
-							<script type="text/javascript">
-								function add_to_wishlist(id){
-									var ad_id = id;
-									$.post('index.php', {ad_id: ad_id, status:"wishlist"});
-								}
-							</script>
+							
 
 						</div>
 					</div>

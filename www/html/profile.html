@@ -1,10 +1,9 @@
 <!DOCTYPE>
 <html>
-    <title>Namela</title>
     <head>
-		<script type="text/javascript" src="../API/jquery.js"></script>
+		<script src="../API/jquery.js"></script>
 		<script src="../API/335bootstrap.js"></script>
-		<script type="text/javascript" src="../js/index.js"></script>
+		<script src="../js/index.js"></script>
 		<link rel="stylesheet" href="../API/335bootstrap.css">
 		<link href="../images/icons/mobile_navigation/1logo.png" rel="shortcut icon">
 		<title>laisa</title>
@@ -45,26 +44,29 @@
 			<div class="container-fluid">
               
 				<ul id="profile_menu_ul">
-					<a href="javascript:add_post()" style="text-decoration:none">
-						<li id="profile_menu_li">
+					<li class="profile_menu_li">
+						<a href="javascript:add_post()" style="text-decoration:none">
 							<img id="profile_menu_li_img" src="../images/icons/profile_menu/add_post.svg"/>
 							<span id="profile_menu_li_head">Add Post</span>
-						</li>
-					</a>
+						</a>
+					</li>
+					
                    
-					<a href="javascript:inbox()" style="text-decoration:none">
-						<li id="profile_menu_li">
+					<li class="profile_menu_li">
+						<a href="javascript:inbox()" style="text-decoration:none;">
 							<img id="profile_menu_li_img" src="../images/icons/profile_menu/inbox.svg"/>
 							<span id="profile_menu_li_head">Inbox</span>
-						</li>
-					</a>
+						</a>
+					</li>
 					
-					<a href="javascript:wishlist()" style="text-decoration:none">
-						<li id="profile_menu_li">
+					
+					<li class="profile_menu_li">
+						<a href="javascript:wishlist()" style="text-decoration:none;">
 							<img id="profile_menu_li_img" src="../images/icons/profile_menu/wishlist.svg"/>
 							<span id="profile_menu_li_head">Wish List</span>
-                        </li>
-					</a>
+						</a>
+                    </li>
+					
 				</ul>
                      
 				<!--
@@ -118,6 +120,14 @@
 		
 		<div id="send_msg_container"></div>
 		
+		<!--Wishlist div-->
+		<div class="wishlist_body_cover" id="wishlist_body_cover">
+			<div class="wishlist_div">
+				<h3 class="wishlist_div_head">Wishlist</h3>
+				<p class="wishlist_div_p">Added to Wishlist</p>
+			</div>
+		</div>
+		
 		
 		<!--J A V A S C R I P T-->
         <script type="text/javascript">
@@ -152,6 +162,20 @@
 				var id = page_url_split[1];
 				
 				window.location.assign("./wishlist.html?"+id);
+			}
+			function add_to_wishlist(id){
+				var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/profile.php");
+				//var ajax = ajaxObj("POST", "../php/profile.php");
+				
+				ajax.onreadystatechange = function() {
+					if(ajaxReturn(ajax) == true) {
+						if(ajax.responseText.slice(-8) === 'wishlist'){
+							_("wishlist_body_cover").style.display = "block";
+							$("#wishlist_body_cover").fadeOut("7000");
+						}
+					}
+				}
+				ajax.send("addtowishlist=" + id + "&session_user=" + localStorage.getItem("id"));
 			}
 			
 			function inbox(){

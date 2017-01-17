@@ -129,6 +129,13 @@
 				status.innerHTML = 'please wait ...';
 				var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/inbox.php");
 				//var ajax = ajaxObj("POST", "../php/inbox.php");
+				ajax.onreadystatechange = function() {
+					if(ajaxReturn(ajax) == true) {
+						if(ajax.responseslice(-7) === 'deleted'){
+							window.location.assign("./inbox.html?" + localStorage.getItem("id"));
+						}
+					}
+				}
 				ajax.send("delete_msg=" + id);
 				
 				messages();

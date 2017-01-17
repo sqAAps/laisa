@@ -60,9 +60,7 @@ span#session_username{
     font-size: 17px;
     font-family: inherit;
 }
-span#session_login{
-    
-}
+
 a#session_username{
     color: white;
     font-size: 17px;
@@ -76,7 +74,7 @@ ul#profile_menu_ul{
     padding-left: 0;
 	padding-top: 20px;
 }
-li#profile_menu_li{
+li.profile_menu_li{
     padding: 5px;
     color: white;
     border-color: #595a5c;
@@ -429,7 +427,7 @@ div#righty_departure_and_destination{
 	width: 100%;
     display: inline-block;
     vertical-align: top;
-	margin-bottom: 5px;
+	margin-bottom: 7px;
 }
 
 
@@ -449,7 +447,7 @@ img#departure_destination_image{
 /* Post/ad  departure and destination div */
 div#post_departure_and_destination{
     display: inline-block;
-    width: 95%;
+    width: 94%;
     vertical-align: top;
 }
 p#post_departure_tag{
@@ -490,7 +488,7 @@ div#container{
     width: 95%;
     margin-bottom: 20px;
     background-color: white;
-
+	font-size: 17px;
 }
 /* Commuters Looking for transport | Transport from "" to ""*/
 h2#results_heading{
@@ -607,38 +605,40 @@ div.send_container{
 	position: fixed;
     top: 0px;
     z-index: 2;
-    background-color: rgba(65,65,66,0.98);
+    background-color: rgba(65,65,66,0.8);
     height: 100%;
     width: 100%;
 }
 div.send_message_div{
-	background-color: gainsboro;
-    margin: 20% 5%;
-    border-radius: 10px 10px 0px 0px;
+	background-color: #F1F1F1;
+    margin: auto;
+    width: 80%;
+    margin-top: 25%;
 }
 div.send_head{
-	background-color: #189F87;
+	background-color: #93DBC7;
     color: white;
-    font-size: 25px;
+    font-size: 23px;
     text-align: center;
-    border-radius: 10px 10px 0px 0px;
+    padding: 5px 0px 8px 0px;
+    border-bottom: 2px solid #FFCC69;
 }
 textarea.send_text{
-	width: 90%;
+	width: 85%;
     display: block;
-    margin: 10px auto;
-    border: 1px solid gainsboro;
+    margin: auto;
+    margin-top: 20px;
+    border: 0px solid gainsboro;
     height: 30%;
-    padding: 1%;
+    padding: 5px 3%;
 }
 input.send_button, input.cancel_button{
-	background-color: white;
-    color: black;
-    margin: 10px 5%;
-    border: 2px outset white;
-    border-radius: 5px;
-    font-family: monospace;
-    font-size: 16px;
+	background-color: #10A96D;
+    color: white;
+    margin: 15px 8%;
+    border: 2px outset #10A96D;
+    border-radius: 2px;
+    width: 34%;
 }
 
 /*      FOOTER      */

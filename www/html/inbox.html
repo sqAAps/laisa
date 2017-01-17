@@ -120,7 +120,7 @@
 						_("messages").innerHTML = ajax.responseText;
 					}
 				}
-				ajax.send("inbox="+'');
+				ajax.send("inbox=" + localStorage.getItem("id"));
 			}
 			window.onload = messages;
 			
@@ -129,7 +129,7 @@
 				status.innerHTML = 'please wait ...';
 				var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/inbox.php");
 				//var ajax = ajaxObj("POST", "../php/inbox.php");
-				ajax.send("delete_msg="+id);
+				ajax.send("delete_msg=" + id);
 				
 				messages();
 			}
@@ -208,54 +208,5 @@
 				window.location.assign("./profile.html?"+id);
 			}
 		</script>
-		
-		
-		
-        <!--            FOOTER          -->
-        <footer>    
-				<ul id="footer_info">
-					<li class="footer_items" id="about_us">
-						About Us
-                    </li>
-                    
-					<li class="footer_items" id="privacy">
-						Privacy & Terms
-                    </li>
-                    
-					<li class="footer_items" id="Careers">
-						Careers
-                    </li>
-                    
-					<li class="footer_items" id="contact_us">
-						Contact Us
-                    </li>
-				</ul>
-                
-				<div id="contact_us_form">
-					<h2 id="contact_us_heading">Contact Us</h2>
-                     
-					<form id="contact_us" name="contact_us" method="post" onsubmit="submitForm(); return false;">
-						<p id="physical_information">
-							email: info@sqaaps.co.za
-							<br>
-							Tel: 079 866 5832
-						</p>
-						
-						<label id="name_label" for="name_input">Name:</label>
-						<input id="name_input" type="text" name="name_input" placeholder="  Full Name" />
-                        
-						<br>
-						<label id="email_label" for="email_input">Email:</label>
-						<input id="email_input" type="email" name="email_input" placeholder=" name@company.co.za" />
-                        
-						<br>
-						<label id="message_label" for="message_input">Message:</label>
-						<textarea id="message_input" name="message_input" rows="10" cols="30" placeholder="  type ypur message..."></textarea>
-                            
-						<br>
-						<button id="submit_contact_us_form" type="submit" name="submit_contact_us_form">Submit</button>
-					</form>                    
-				</div>
-		</footer>
     </body>
 </html>

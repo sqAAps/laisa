@@ -1,5 +1,4 @@
 <?php
-//header('Access-Control-Allow-Origin: *');
 $mysql_host = 'localhost';
 $mysql_user = 'sqaapbms_namela';
 $mysql_pass = 'i9M56JOD8P';

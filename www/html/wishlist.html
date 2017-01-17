@@ -14,7 +14,7 @@
         <link href='../css/profile.css' rel='stylesheet' type="text/css">
     </head>
         
-    <body id="dabody" style="background-color: #f2f2f3;">
+    <body id="dabody" style="background-color: white;">
                 
 		<!--Mobile Navigation bar-->
 		<div class="mobile_nav_head" id="nav_head">
@@ -26,11 +26,12 @@
 		</div>
 		
 		<!--	W I S H L I S T	-->
+		<h2 id="wishlist_head">Wishlist</h2>
 		<div id="wishlist"></div>
 		
 		<script type="text/javascript">
 			function wishlist(){
-				var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/login.php");
+				var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/wishlist.php");
 				//var ajax = ajaxObj("POST", "../php/wishlist.php");
 				
 				ajax.onreadystatechange = function() {
@@ -60,6 +61,12 @@
 				var page_url_split = page_url.split("?");
 				var id = page_url_split[1];
 				window.location.assign("./profile.html?"+id);
+			}
+			
+			/*	W I S H L I S T */
+			function add_to_wishlist(id) {
+				var ajax = ajaxObj("POST", "../php/profile.php");
+				ajax.send("add_to_wishlist=" + id);
 			}
 		</script>
     </body>

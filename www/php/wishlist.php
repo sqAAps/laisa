@@ -1,5 +1,4 @@
 <?php
-header('Access-Control-Allow-Origin: *');
 require './connect.inc.php';
 require './core.inc.php';
 error_reporting(E_ALL);
@@ -14,8 +13,8 @@ if(isset($_POST['wishlist'])){
 
         if($query_num_rows === 0){
             ?>
-            <h2 id="no_result_head">No results</h2>
-            <p id="no_reseult_news">
+            <h2 id="no_result_head">No Result(s)</h2>
+            <p id="no_result_news">
                 Find posts you are interested in here by clicking "heart" on each of them.
             </p>
             <?php

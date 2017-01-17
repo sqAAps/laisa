@@ -67,12 +67,13 @@
 					</a>
 				</ul>
                      
+				<!--
 				<div id="logout_div">
-<!--					<a href="../php/signout.php">-->
 					<a href="http://www.sqaaps.co.za/php/laisa/signout.php">
 						<span id="logout_span">Logout</span>
 					</a>
 				</div>
+				-->
 			</div>
 		</div>                
                 
@@ -80,7 +81,7 @@
 		<div id="search_menu_button">
 			<div class="container-fluid" id="search_menu_container">
 						
-				<h4 id="search_menu_header">Search</h4>
+				<h4 id="search_menu_header">Search Travel Plans</h4>
 						
 				<form id="mobile_search_menu_form" name="mobile_search_menu_form" action="" method="POST">
 
@@ -95,11 +96,11 @@
 
 					<br>                                            
 					<input id="search_menu_offering_transport" type="radio" name="type" value="o" checked/>
-					<span id="span_search_menu_offering_looking"> Transport</span>
+					<span id="span_search_menu_offering_looking"> I am looking for Transport</span>
 							
 					<br>
 					<input id="search_menu_offering_passenger" type="radio" name="type" value="w" />
-					<span id="span_search_menu_offering_looking"> Commuters/Passgeners</span>
+					<span id="span_search_menu_offering_looking"> I am looking for Passengers</span>
 
 					<p id="validate_status"></p>
 
@@ -110,52 +111,15 @@
 			</div>
 		</div>
 		
-		<script type="text/javascript">
-			function search(){
-				_("search_menu_button").style.display = "none";
-				_("close_menu2").style.display = "none";
-				
-				_("search_menu").style.display = "block";
-				_("profile_menu").style.display = "block";
-				
-				var departure = _("search_menu_departure").value;
-				var destination = _("search_menu_destination").value;
-				var date = _("search_menu_date").value;
-								
-				if(_("search_menu_offering_transport").checked){
-					var type = "o";
-				} else{
-					var type = "w";
-				}
-				
-				var status = _("validate_status");
-				
-				if(departure == "" || destination == "" || date == ""){
-					status.innerHTML = '<span style="color: #ff0000;font-family: sans-serif;margin-left: 15px;font-size: 15px;">Fill out all of the form data</span>';
-				} else {			
-					status.innerHTML = 'please wait ...';
-					var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/search.php");
-					//var ajax = ajaxObj("POST", "../php/search.php");
-					ajax.onreadystatechange = function() {
-						if(ajaxReturn(ajax) == true) {
-							_("search_results").innerHTML = ajax.responseText;
-						}
-					}
-					ajax.send("departure="+departure+"&destination="+destination+"&date="+date+"&type="+type+"&html="+'');
-				}
-			}
-		</script>
 		
-		<!--///////////////////////////////////////////////////////////////////////////////////////////// 
-						P R O F I L E
-		/////////////////////////////////////////////////////////////////////////////////////////////-->
+		<!--P R O F I L E-->
 		<div id="profile_head"></div>
         
 		
 		<div id="send_msg_container"></div>
-		<!--///////////////////////////////////////////////////////////////////////////////////////////// 
-						J A V A S C R I P T
-		/////////////////////////////////////////////////////////////////////////////////////////////-->
+		
+		
+		<!--J A V A S C R I P T-->
         <script type="text/javascript">
 			function profile_fn(){
 				var page_url = window.location.href;
@@ -170,7 +134,7 @@
 						_("profile_head").innerHTML = ajax.responseText;
 					}
 				}
-				ajax.send("profile=" + id);
+				ajax.send("profile=" + id + "&session_user=" + localStorage.getItem("id"));
 			}
 			window.onload = profile_fn;
 			
@@ -215,6 +179,90 @@
 					}
 				}
 				ajax.send('delete=' + ad_id + '&user_id='+ localStorage.getItem("id"));
+			}
+			
+			function search(){
+				_("search_menu_button").style.display = "none";
+				_("close_menu2").style.display = "none";
+				
+				_("search_menu").style.display = "block";
+				_("profile_menu").style.display = "block";
+				
+				var departure = _("search_menu_departure").value;
+				var destination = _("search_menu_destination").value;
+				var date = _("search_menu_date").value;
+								
+				if(_("search_menu_offering_transport").checked){
+					var type = "o";
+				} else{
+					var type = "w";
+				}
+				
+				var status = _("validate_status");
+				
+				if(departure == "" || destination == "" || date == ""){
+					status.innerHTML = '<span style="color: #ff0000;font-family: sans-serif;margin-left: 15px;font-size: 15px;">Fill out all of the form data</span>';
+				} else {			
+					status.innerHTML = 'please wait ...';
+					var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/search.php");
+					//var ajax = ajaxObj("POST", "../php/search.php");
+					ajax.onreadystatechange = function() {
+						if(ajaxReturn(ajax) == true) {
+							_("search_results").innerHTML = ajax.responseText;
+						}
+					}
+					ajax.send("departure="+departure+"&destination="+destination+"&date="+date+"&type="+type+"&html="+'');
+				}
+			}
+			
+			function submitForm() {
+				var fullName = _("name_input").value;
+				var email = _("email_input").value;
+				var message = _("message_input").value;
+
+				if(fullName == "" || email == "" || message == ""){
+					if(fullName == ""){
+						_("name_input").style.border = "2px solid red";
+					}else{
+						_("name_input").style.border = "1px solid gainsboro";
+					}
+					
+					if(email == ""){
+						_("email_input").style.border = "2px solid red";
+					} else{
+						_("email_input").style.border = "1px solid gainsboro";
+					}
+					
+					if(message == ""){
+						_("message_input").style.border = "2px solid red";
+					}else{
+						_("message_input").style.border = "1px solid gainsboro";
+					}
+				}else{
+					_("submit_contact_us_form").disabled = true;
+					_("submit_contact_us_form").innerHTML = 'please wait ...';
+					
+					//var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/signin.php/send_email.php" );
+					var ajax = ajaxObj("POST", "../php/send_email.php");
+					ajax.onreadystatechange = function() {
+						if(ajax.readyState === 4 && ajax.status === 200) {
+							if(ajax.responseText === "success"){
+								alert('Message Sent');
+								$('#contact_us_form').slideUp("fast", "linear");
+							} else {
+								alert('Message Failed To Send. Try again later.');
+							}
+							_("submit_contact_us_form").disabled = false;
+							_("submit_contact_us_form").innerHTML = 'Submit';
+						}
+					}
+					ajax.send("email=" + "" + "&fullName=" + fullName + "&email=" + email + "&message=" + message);
+				}
+			}
+			
+			function show_contact(){
+				$('div#contact_us_form').toggle();
+				$('html,body').animate({scrollTop: $("div#contact_us_form").offset().top}, 'slow');
 			}
 		</script>
     </body>

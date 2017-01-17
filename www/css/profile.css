@@ -169,8 +169,8 @@ ul#ad_ul_list{
 }
 button#edit, button#delete {
     border-style: solid;
-    border-color: rgb(532, 171, 120);
-    background-color: rgb(532, 171, 120);
+    border-color: #FFBB31;
+    background-color: #FFBB31;
     color: snow;
     width: 100%;
 }
@@ -242,4 +242,27 @@ div#view_driving_recurring_ads{
 
 div#view_commuting_recurring_ads {
     display: none;
+}
+
+
+/*	W I S H L I S T	*/
+h2#wishlist_head{
+	margin: auto;
+    margin-top: 80px;
+    background-color: #93DBC7;
+    color: white;
+    padding: 5px 0px;
+    width: 80%;
+    text-align: center;
+    border: 1px solid #93DBC7;
+    border-radius: 100px;
+}
+div#wishlist{
+	padding-top: 10px;
+    border-top: 1px solid #93DBC7;
+    margin-top: 25px;
+	margin-bottom: 40px;
+}
+h2#no_result_head, p#no_result_news{
+	text-align: center;
 }

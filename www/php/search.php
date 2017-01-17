@@ -1,7 +1,6 @@
 <?php
-header("Access-Control-Allow-Origin: $http_origin");
-require_once 'core.inc.php';
-require 'connect.inc.php';
+require_once './core.inc.php';
+require './connect.inc.php';
 global $connection;
 
 $output = '';

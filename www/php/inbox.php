@@ -1,7 +1,6 @@
 <?php
-header("Access-Control-Allow-Origin: $http_origin");
-require 'connect.inc.php';
 require 'core.inc.php';
+require 'connect.inc.php';
 require 'view.php';
 global $connection;
 error_reporting(E_ALL);
@@ -51,12 +50,12 @@ if(isset($_POST['delete_msg'])){
 
 
 if(isset($_POST['inbox'])){
+	$_SESSION['user_id'] = $_POST['inbox'];
 	?>
+	<h2 id="message_header">Messages</h2>
 	<table id="table_container">
             <tr>
                 <td id="table_container_td">
-                    <h2 id="message_header">Messages</h2>
-        
                     <!-- START THE PM FORM AND DISPLAY LIST -->
                     <form name="myform" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
                         

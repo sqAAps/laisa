@@ -29,14 +29,7 @@ function view_my_ads($USERID){
     //Searching MY OFFERED ads
     $query = "SELECT * FROM `adverts` 
                 WHERE `user_id`='".mysqli_real_escape_string($connection, $USERID)."'
-                AND `type`='".mysqli_real_escape_string($connection, $type)."' 
-                AND `date` NOT LIKE '%".mysqli_real_escape_string($connection, 'Sunday')."%' 
-                AND `date` NOT LIKE '%".mysqli_real_escape_string($connection, 'Monday')."%' 
-                AND `date` NOT LIKE '%".mysqli_real_escape_string($connection, 'Tuesday')."%' 
-                AND `date` NOT LIKE '%".mysqli_real_escape_string($connection, 'Wednesday')."%' 
-                AND `date` NOT LIKE '%".mysqli_real_escape_string($connection, 'Thursday')."%'
-                AND `date` NOT LIKE '%".mysqli_real_escape_string($connection, 'Friday')."%'
-                AND `date` NOT LIKE '%".mysqli_real_escape_string($connection, 'Saturday')."%'
+                AND `type`='".mysqli_real_escape_string($connection, $type)."'
             ORDER BY `date`  ";
     
     
@@ -57,13 +50,7 @@ function view_my_ads($USERID){
     
             // User offered adverts are NOT found in the `offered` database
             if($query_num_rows == 0){
-				if($_SESSION['user_id'] === $USERID){
-                	echo '<h2 id="no-reviews">No result(s)<h2>
-					<p>This is where all the your travel plans are posted. You can use this area to view, edit and/or delete your travel plans.</p>';
-				}else{
-					echo '<h2 id="no-reviews">No result(s)<h2>
-					<p>User has not posted any travel plans</p>';
-				}
+				echo '<h2 id="no-reviews">No Result(s)<h2>';
             } 
             
             //User offered adverts Are found in the `offered` database
@@ -241,14 +228,7 @@ function view_my_ads($USERID){
         $type = 'w';
         $query = "SELECT * FROM `adverts` 
                     WHERE `user_id`='".mysqli_real_escape_string($connection, $USERID)."' 
-                    AND `type`='".mysqli_real_escape_string($connection, $type)."'  
-                    AND `date` NOT LIKE '%".mysqli_real_escape_string($connection, 'Sunday')."%' 
-                    AND `date` NOT LIKE '%".mysqli_real_escape_string($connection, 'Monday')."%' 
-                    AND `date` NOT LIKE '%".mysqli_real_escape_string($connection, 'Tuesday')."%' 
-                    AND `date` NOT LIKE '%".mysqli_real_escape_string($connection, 'Wednesday')."%' 
-                    AND `date` NOT LIKE '%".mysqli_real_escape_string($connection, 'Thursday')."%'
-                    AND `date` NOT LIKE '%".mysqli_real_escape_string($connection, 'Friday')."%'
-                    AND `date` NOT LIKE '%".mysqli_real_escape_string($connection, 'Saturday')."%'
+                    AND `type`='".mysqli_real_escape_string($connection, $type)."'
                 ORDER BY `date`  ";
         $welcome = '<h2 id="results_heading">Seeking Transport</h2>';
     }

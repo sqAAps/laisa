@@ -329,8 +329,7 @@ div#search_results{
 }
 /*  Post/ad Profile Picture  */
 img#profile_image_of_ad_user{
-	width: 60px;
-    height: 60px;
+	width: 100%;
     display: block;
     margin: auto;
     
@@ -416,18 +415,25 @@ img#people, img#car{
 div#lefty{
 	width: 100%;
     display: block;
-    padding: 5px 2%;
+    padding: 5px 2% 0px 2%;
     vertical-align: top;
 }
 div#profile_imgs{
 	width: 20%;
     display: inline-block;
 }
+div#profile_info{
+	display: inline-block;
+    vertical-align: top;
+    padding-top: 5px;
+}
+h4#profile_name{
+	margin: 0px;
+}
 div#righty_departure_and_destination{
 	width: 100%;
     display: inline-block;
     vertical-align: top;
-	margin-bottom: 7px;
 }
 
 
@@ -435,7 +441,7 @@ div#righty_departure_and_destination{
 div#righty{
 	display: block;
     width: 100%;
-    padding: 10px 2%;
+    padding: 5px 2% 10px 3%;
 }
 img#departure_destination_image{
 	width: 3%;
@@ -449,15 +455,18 @@ div#post_departure_and_destination{
     display: inline-block;
     width: 94%;
     vertical-align: top;
+	margin-bottom: 5px;
 }
 p#post_departure_tag{
     border-bottom: 1px solid orange;
     margin: 0px;
+	font-size: 16px;
 }
 
 /* Post/ad  date,time,amout */
 p#post_destination_tag{
     padding-top: 4px;
+	margin-bottom: 0px;
 }
 span#post_departure, span#post_destination, span#more_information_text{
     color: #6e6f71;
@@ -478,7 +487,6 @@ div.view_all_wanted_ads, div.view_all_offered_ads{
 div#container{
 	border-radius: 10px;
     background-color: white;
-    border: 1px solid gainsboro
 }
 /*  Post/ad container   */
 #all_results{
@@ -562,7 +570,7 @@ span#offering_looking{
 }
 input[type="radio"]{
     float: left;
-    margin-top: 6px;
+    margin-top: 5px;
 }
 input#search, #search {
     border-color: rgb(54, 242, 135);
@@ -690,7 +698,7 @@ label#message_label{
     position: absolute;
 }
 textarea#message_input {
-	margin-left: 27%;
+	margin-left: 26%;
     width: 70%;
 }
 button#submit_contact_us_form{
@@ -759,11 +767,7 @@ a#footer_links{
     }
     #ad_info {
         margin: 0px 0px 5px 80%;
-    }
-    /*  Post/ad container   */
-    p#post_destination_tag, p#post_departure_tag {
-        font-size: 13px
-    }
+	}
     
     /* Post/ad  date,time,amout */
     p#post_information{
@@ -890,7 +894,10 @@ a#footer_links{
 
 /*          SCREEN      320     */
 @media screen and (max-width:320px){
-    /*  Post/ad Profile Picture  */
-    img#profile_image_of_ad_user{
+	p#post_destination_tag, p#post_departure_tag {
+        font-size: 14px
     }
+	div#righty {
+    	font-size: 14px;
+	}
 }

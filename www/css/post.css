@@ -38,6 +38,7 @@ form#recurring_form{
 }
 label#date_label, label#time_label{
 	margin-left: 7%;
+	font-size: 19px;
 }
 label#days_label{
     margin-left: 27px;
@@ -48,13 +49,14 @@ input#autocomplete, input#autocomplete2, input#amount_input, textarea#descriptio
     display: block;
     margin: auto;
     margin-top: 10px;
-	height: 30px;
+	height: 35px;
 }
 textarea#description_input {
 	min-height: 100px;
 }
 input#date_input{
     width: 70%;
+	font-size: 19px;
 }
 div#days_input{
     display: inline-block;
@@ -68,7 +70,7 @@ li.type_list_items{
 }
 span.radio_text{
 	margin-left: 3%;
-	font-size: 16px;
+	font-size: 18px;
 }
 div#time_div{
 	margin-left: 7%;

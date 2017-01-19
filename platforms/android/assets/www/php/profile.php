@@ -15,6 +15,8 @@ if(isset($_SESSION['user_id'])){
 
 if(isset($_POST['profile'])){
 	$ad_user_id = $_POST['profile'];
+	$session_user = $_POST['session_user'];
+	$_SESSION['user_id'] = $_POST['session_user'];
 	
 	function view_my_profile($USERID){ 
 		global $connection;
@@ -67,8 +69,8 @@ if(isset($_POST['profile'])){
 	<section id="profile_contents">  
 		<div class="" id="user_profile">      
 			<?php
-			if (isset($_SESSION['user_id']) && $_SESSION['user_id'] === $ad_user_id){
-				$profile = view_my_profile($_SESSION['user_id']);
+			if ($session_user === $ad_user_id){
+				$profile = view_my_profile($session_user);
 				
 				?>
 				<!--	P R I N T	S E A R C H		R E S U L T S-->		
@@ -76,7 +78,7 @@ if(isset($_POST['profile'])){
 				
 				<!--	V I E W		A L L		P O S T S-->
 				<div class="view_all_ads" id="view_all_ads">
-					<?php   view_my_ads($user_id); ?>
+					<?php   view_my_ads($session_user); ?>
                 </div>
 				<?php
 			}else{
@@ -96,51 +98,51 @@ if(isset($_POST['profile'])){
 	</section>
             
 	<!--            FOOTER          -->
-	<footer>
-            <div class="container-fluid">
+	<footer>    
+		<ul id="footer_info">
+			<li class="footer_items" id="about_us">
+				About Us
+			</li>
                     
-                <ul id="footer_info">
-                    <li class="footer_items" id="about_us">
-                        <a id="footer_links" href="../about_us/about_us.php#company_info?">About Us</a>
-                    </li>
-                    <li class="footer_items" id="privacy">
-                        <a id="footer_links" href="../about_us/about_us.php#terms_info">Privacy & Terms</a>
-                    </li>
-                    <li class="footer_items" id="Careers">
-                        <a id="footer_links" href="../about_us/about_us.php#careers_info">Careers</a>
-                    </li>
-                    <li class="footer_items" id="contact_us">
-                        Contact Us
-                    </li>
-                </ul>
+			<li class="footer_items" id="privacy">
+				Privacy & Terms
+			</li>
+                    
+			<li class="footer_items" id="Careers">
+				Careers
+			</li>
+                    
+			<li class="footer_items" id="contact_us">
+				<a href="javascript:show_contact()" style="text-decoration:none;color:white;">Contact Us</a>
+			</li>
+		</ul>
                 
-                <div id="contact_us_form">
-                    <h2 id="contact_us_heading">Contact Us</h2>
+		<div id="contact_us_form">
+			<h2 id="contact_us_heading">Contact Us</h2>
+                     
+			<form id="contact_us" name="contact_us" method="post" onsubmit="submitForm(); return false;">
+				<p id="physical_information">
+					email: info@sqaaps.co.za
+					<br>
+					Tel: 079 866 5832
+				</p>
+						
+				<label id="name_label" for="name_input">Name:</label>
+				<input id="name_input" type="text" name="name_input" placeholder="  Full Name" />
                         
-                    <form id="contact_us" name="contact_us" method="post">
-                        <label id="name_label" for="name_input">Name:</label>
-                        <input id="name_input" type="text" name="name_input" />
+				<br>
+				<label id="email_label" for="email_input">Email:</label>
+				<input id="email_input" type="email" name="email_input" placeholder=" name@company.co.za" />
                         
-                        <br>
-                        <label id="email_label" for="email_input">Email:</label>
-                        <input id="email_input" type="email" name="email_input" />
-                        
-                        <br>
-                        <label id="message_label" for="message_input">Message:</label>
-                        <textarea id="message_input" name="message_input" rows="10" cols="50"></textarea>
+				<br>
+				<label id="message_label" for="message_input">Message:</label>
+				<textarea id="message_input" name="message_input" rows="10" cols="30" placeholder="  type ypur message..."></textarea>
                             
-                        <br>
-                        <button id="submit_contact_us_form" type="submit" name="submit_contact_us_form">Submit</button>
-                            
-                        <p id="physical_information">
-                            email: info@namela.co.za
-                            <br>Tel: 011 283 2044/3854
-                            <br>Physical Address: 12 Rivonia drive, Sandton
-                        </p>
-                    </form>                    
-                </div>
-            </div>
-        </footer>
+				<br>
+				<button id="submit_contact_us_form" type="button" name="submit_contact_us_form" onclick="submitForm()">Submit</button>
+			</form>                    
+		</div>
+	</footer>
         
         
 	<script src="../js/universal.js"></script>
@@ -167,26 +169,30 @@ if (isset($_POST['delete'])) {
 }
 
 
-if(isset($_POST['add_to_wishlist'])){
-	$ad_id = $_POST['add_to_wishlist'];
+if(isset($_POST['addtowishlist'])){
+	$ad_id = $_POST['addtowishlist'];
+	$user_id = $_POST['session_user'];
 	
-	$query = "SELECT * FROM `wishlist` WHERE `session_user_id`='".mysqli_real_escape_string($connection, $_SESSION['user_id'])."' AND `ad_id`='".mysqli_real_escape_string($connection, $ad_id)."'";
+	$query = "SELECT * FROM `wishlist` WHERE `session_user_id`='".mysqli_real_escape_string($connection, $user_id)."' AND `ad_id`='".mysqli_real_escape_string($connection, $ad_id)."'";
 	if ($query_run = mysqli_query($connection, $query)) {
 		$query_num_rows = mysqli_num_rows($query_run);
          
 		//Add to wishlist
-		if($query_num_rows===0){
+		if($query_num_rows === 0){
 			$query2 = "  INSERT INTO `wishlist` VALUES 
                                         (
                                         '',
-                                        '".mysqli_real_escape_string($connection, $_SESSION['user_id'])."',
+                                        '".mysqli_real_escape_string($connection, $user_id)."',
                                         '".mysqli_real_escape_string($connection, $ad_id)."'
                                         )
                                         ";
 			if(mysqli_query($connection, $query2)){
-				echo 'Added to Wishlist';
+				echo 'wishlist';
 				exit();
 			}
+		} else{
+			echo 'wishlist';
+			exit();
 		}
 	}
 }

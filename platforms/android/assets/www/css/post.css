@@ -1,18 +1,22 @@
 section#post_ad_section{
     width: 100%;
-    margin-top: 40px;
+    margin-top: 25px;
     padding-bottom: 40px;
 }
 div#post_container.container-fluid{
-    padding-bottom: 15px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #bceadf;
-    background-color: white;
+    padding-top: 15px;
+    border-top: 1px solid #93DBC7;
 }
 h2#post_ad_heading{
 	text-align: center;
-    margin: 5px;
+    margin: auto;
+    margin-top: 80px;
+    background-color: #93DBC7;
+    color: white;
+    padding: 5px 0px;
+    border: 1px solid #93DBC7;
+    border-radius: 100px;
+    width: 80%;
 }
 div#one-time, div#recurring{
     display: inline-block;
@@ -34,6 +38,7 @@ form#recurring_form{
 }
 label#date_label, label#time_label{
 	margin-left: 7%;
+	font-size: 19px;
 }
 label#days_label{
     margin-left: 27px;
@@ -44,9 +49,14 @@ input#autocomplete, input#autocomplete2, input#amount_input, textarea#descriptio
     display: block;
     margin: auto;
     margin-top: 10px;
+	height: 35px;
+}
+textarea#description_input {
+	min-height: 100px;
 }
 input#date_input{
     width: 70%;
+	font-size: 19px;
 }
 div#days_input{
     display: inline-block;
@@ -60,6 +70,7 @@ li.type_list_items{
 }
 span.radio_text{
 	margin-left: 3%;
+	font-size: 18px;
 }
 div#time_div{
 	margin-left: 7%;
@@ -69,12 +80,12 @@ button#post_ad {
 	width: 86%;
     height: 30px;
     font-size: 17px;
-    background-color: lawngreen;
+    background-color: #10A96D;
     color: white;
-    border-color: lawngreen;
+    border-color: #10A96D;
     display: block;
     margin: auto;
-	margin-top: 10px;
+    margin-top: 20px;
 }
 
 #validate-status {

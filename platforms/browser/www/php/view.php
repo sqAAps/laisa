@@ -1,7 +1,6 @@
 <?php    
-header('Access-Control-Allow-Origin: *');
-require_once 'core.inc.php';
-require 'connect.inc.php';
+require_once './core.inc.php';
+require './connect.inc.php';
 global $connection;
 
 
@@ -24,20 +23,13 @@ function view_my_ads($USERID){
 	//$ad_user_id = get_ad_user_id();
     $ad_user_id = $USERID;
     
-    $welcome = '<h2 id="results_heading"> Offered transport Post</h2>';
+    $welcome = '<h2 id="results_heading"> Offering Transport</h2>';
     
     $type = 'o';
     //Searching MY OFFERED ads
     $query = "SELECT * FROM `adverts` 
                 WHERE `user_id`='".mysqli_real_escape_string($connection, $USERID)."'
-                AND `type`='".mysqli_real_escape_string($connection, $type)."' 
-                AND `date` NOT LIKE '%".mysqli_real_escape_string($connection, 'Sunday')."%' 
-                AND `date` NOT LIKE '%".mysqli_real_escape_string($connection, 'Monday')."%' 
-                AND `date` NOT LIKE '%".mysqli_real_escape_string($connection, 'Tuesday')."%' 
-                AND `date` NOT LIKE '%".mysqli_real_escape_string($connection, 'Wednesday')."%' 
-                AND `date` NOT LIKE '%".mysqli_real_escape_string($connection, 'Thursday')."%'
-                AND `date` NOT LIKE '%".mysqli_real_escape_string($connection, 'Friday')."%'
-                AND `date` NOT LIKE '%".mysqli_real_escape_string($connection, 'Saturday')."%'
+                AND `type`='".mysqli_real_escape_string($connection, $type)."'
             ORDER BY `date`  ";
     
     
@@ -57,8 +49,8 @@ function view_my_ads($USERID){
             <?php               
     
             // User offered adverts are NOT found in the `offered` database
-            if($query_num_rows==0){
-                echo '<h2 id="no-reviews">No result(s)<h2>';
+            if($query_num_rows == 0){
+				echo '<h2 id="no-reviews">No Result(s)<h2>';
             } 
             
             //User offered adverts Are found in the `offered` database
@@ -138,11 +130,9 @@ function view_my_ads($USERID){
                                     '</form>
                                     
                                      
-                                    <form id="hidden_ad_id_form" method="post" action="../php/profile.php">
+                                    <form id="hidden_ad_id_form" method="post" >
                                         <input id="hide_ad_id" type="text" name="delete" value='.$ad_id.'>'.
-                                        /*<a href="../php/profile.php/'.getusername($USERID).'.'.getusersurname($USERID).'">*/
-                                            '<button class="" id="delete" type="submit" >Delete</button>'.
-                                        /*</a>*/                                    
+										'<button class="" id="delete" type="button" onclick="delete_post('.$ad_id.')" >Delete</button>'.                                   
                                     '</form>';
                                     ?>
                                 </div>
@@ -238,16 +228,9 @@ function view_my_ads($USERID){
         $type = 'w';
         $query = "SELECT * FROM `adverts` 
                     WHERE `user_id`='".mysqli_real_escape_string($connection, $USERID)."' 
-                    AND `type`='".mysqli_real_escape_string($connection, $type)."'  
-                    AND `date` NOT LIKE '%".mysqli_real_escape_string($connection, 'Sunday')."%' 
-                    AND `date` NOT LIKE '%".mysqli_real_escape_string($connection, 'Monday')."%' 
-                    AND `date` NOT LIKE '%".mysqli_real_escape_string($connection, 'Tuesday')."%' 
-                    AND `date` NOT LIKE '%".mysqli_real_escape_string($connection, 'Wednesday')."%' 
-                    AND `date` NOT LIKE '%".mysqli_real_escape_string($connection, 'Thursday')."%'
-                    AND `date` NOT LIKE '%".mysqli_real_escape_string($connection, 'Friday')."%'
-                    AND `date` NOT LIKE '%".mysqli_real_escape_string($connection, 'Saturday')."%'
+                    AND `type`='".mysqli_real_escape_string($connection, $type)."'
                 ORDER BY `date`  ";
-        $welcome = '<h2 id="results_heading">Looking for transport Posts</h2>';
+        $welcome = '<h2 id="results_heading">Seeking Transport</h2>';
     }
 }
 
@@ -609,5 +592,4 @@ function view_wishlist(){
             <?php
     }
 }
-
 ?>

@@ -1,8 +1,7 @@
 <?php
-header('Access-Control-Allow-Origin: *');
-require 'connect.inc.php';
-require 'core.inc.php';
-require 'view.php';
+require './core.inc.php';
+require './connect.inc.php';
+require './view.php';
 global $connection;
 error_reporting(E_ALL);
 
@@ -46,17 +45,20 @@ if(isset($_POST['delete_msg'])){
 	
 	$query = mysqli_query($connection, "DELETE from `messages` WHERE id='$msg_id'");
 	
-	$query_run = mysqli_query($connection, $query);
+	if($query_run = mysqli_query($connection, $query)){
+		echo "deleted";
+		exit();
+	}
 }
 
 
 if(isset($_POST['inbox'])){
+	$_SESSION['user_id'] = $_POST['inbox'];
 	?>
+	<h2 id="message_header">Messages</h2>
 	<table id="table_container">
             <tr>
                 <td id="table_container_td">
-                    <h2 id="message_header">Messages</h2>
-        
                     <!-- START THE PM FORM AND DISPLAY LIST -->
                     <form name="myform" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
                         
@@ -107,11 +109,10 @@ if(isset($_POST['inbox'])){
                                 $fr_id = $row['sender_id'];    
 
                                 // SQL - Collect username for sender inside loop
-                                $ret = mysqli_query($connection, "SELECT id, nameFROM users WHERE id='$fr_id' LIMIT 1");
-                                while($raw = mysqli_fetch_array($ret)){ 
-                                    $Sid = $raw['id']; 
-                                    $Fname = $raw['firstName']; 
-                                    $Sname = $Fname; 
+								$query = "SELECT `name` FROM `users` WHERE `id`='$fr_id' LIMIT 1";
+                                $query_run = mysqli_query($connection, $query);
+                                while($raw = mysqli_fetch_array($query_run)){
+                                    $Fname = $raw['name'];
                                 }
 
                                 ?>
@@ -119,14 +120,14 @@ if(isset($_POST['inbox'])){
                                     <tr>
                                         <td id="sender_image_container">
                                             <?php                            
-                                            $images = glob("../images/users/".$Sid."*.{jpeg,jpg,png}", GLOB_BRACE);
+                                            $images = glob("../images/users/".$fr_id."*.{jpeg,jpg,png}", GLOB_BRACE);
                                             foreach($images as $image){
                                                 $message_sender_profile_picture_name = basename($image);
                                             }
                                             if(!isset($user_profile_background_name)){
                                                 $user_profile_background_name = "defaults.svg";
                                             }
-                                            echo '<a href="../view_my_profile/viewmyprofile.php/'.getusername($Sid).'">
+                                            echo '<a href="../view_my_profile/viewmyprofile.php/'.getusername($fr_id).'">
                                                 <img id="message_image" src="../images/users/'.$message_sender_profile_picture_name.'"/>
                                             </a>';
                                             ?>
@@ -134,7 +135,7 @@ if(isset($_POST['inbox'])){
 
                                         <td id="sender_message_container">
 											<?php
-											echo '<a id="sender_name" href="../view_my_profile/viewmyprofile.php/'.getusername($Sid).'">'.$Sname.'</a>';
+											echo '<a id="sender_name" href="../view_my_profile/viewmyprofile.php/'.getusername($fr_id).'">'.$Sname.'</a>';
 											?>
                                             <span class="toggle" style="padding:3px;">
                                                 <br>

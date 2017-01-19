@@ -1,7 +1,6 @@
 <?php
-header('Access-Control-Allow-Origin: *');
-require 'connect.inc.php';
 require 'core.inc.php';
+require 'connect.inc.php';
 global $connection;
 
 $user_id = $_SESSION['user_id'];

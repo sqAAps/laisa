@@ -1,10 +1,9 @@
 <!DOCTYPE>
 <html>
-    <title>Namela</title>
     <head>
-		<script type="text/javascript" src="../API/jquery.js"></script>
+		<script src="../API/jquery.js"></script>
 		<script src="../API/335bootstrap.js"></script>
-		<script type="text/javascript" src="../js/index.js"></script>
+		<script src="../js/index.js"></script>
 		<link rel="stylesheet" href="../API/335bootstrap.css">
 		<link href="../images/icons/mobile_navigation/1logo.png" rel="shortcut icon">
 		<title>laisa</title>
@@ -45,34 +44,38 @@
 			<div class="container-fluid">
               
 				<ul id="profile_menu_ul">
-					<a href="javascript:add_post()" style="text-decoration:none">
-						<li id="profile_menu_li">
+					<li class="profile_menu_li">
+						<a href="javascript:add_post()" style="text-decoration:none">
 							<img id="profile_menu_li_img" src="../images/icons/profile_menu/add_post.svg"/>
 							<span id="profile_menu_li_head">Add Post</span>
-						</li>
-					</a>
+						</a>
+					</li>
+					
                    
-					<a href="javascript:inbox()" style="text-decoration:none">
-						<li id="profile_menu_li">
+					<li class="profile_menu_li">
+						<a href="javascript:inbox()" style="text-decoration:none;">
 							<img id="profile_menu_li_img" src="../images/icons/profile_menu/inbox.svg"/>
 							<span id="profile_menu_li_head">Inbox</span>
-						</li>
-					</a>
+						</a>
+					</li>
 					
-					<a href="javascript:wishlist()" style="text-decoration:none">
-						<li id="profile_menu_li">
+					
+					<li class="profile_menu_li">
+						<a href="javascript:wishlist()" style="text-decoration:none;">
 							<img id="profile_menu_li_img" src="../images/icons/profile_menu/wishlist.svg"/>
 							<span id="profile_menu_li_head">Wish List</span>
-                        </li>
-					</a>
+						</a>
+                    </li>
+					
 				</ul>
                      
+				<!--
 				<div id="logout_div">
-<!--					<a href="../php/signout.php">-->
 					<a href="http://www.sqaaps.co.za/php/laisa/signout.php">
 						<span id="logout_span">Logout</span>
 					</a>
 				</div>
+				-->
 			</div>
 		</div>                
                 
@@ -80,7 +83,7 @@
 		<div id="search_menu_button">
 			<div class="container-fluid" id="search_menu_container">
 						
-				<h4 id="search_menu_header">Search</h4>
+				<h4 id="search_menu_header">Search Travel Plans</h4>
 						
 				<form id="mobile_search_menu_form" name="mobile_search_menu_form" action="" method="POST">
 
@@ -95,11 +98,11 @@
 
 					<br>                                            
 					<input id="search_menu_offering_transport" type="radio" name="type" value="o" checked/>
-					<span id="span_search_menu_offering_looking"> Transport</span>
+					<span id="span_search_menu_offering_looking"> I'm looking for Transport</span>
 							
 					<br>
 					<input id="search_menu_offering_passenger" type="radio" name="type" value="w" />
-					<span id="span_search_menu_offering_looking"> Commuters/Passgeners</span>
+					<span id="span_search_menu_offering_looking"> I'm looking for Passengers</span>
 
 					<p id="validate_status"></p>
 
@@ -110,7 +113,98 @@
 			</div>
 		</div>
 		
-		<script type="text/javascript">
+		
+		<!--P R O F I L E-->
+		<div id="profile_head"></div>
+        
+		
+		<div id="send_msg_container"></div>
+		
+		<!--Wishlist div-->
+		<div class="wishlist_body_cover" id="wishlist_body_cover">
+			<div class="wishlist_div">
+				<h3 class="wishlist_div_head">Wishlist</h3>
+				<p class="wishlist_div_p">Added to Wishlist</p>
+			</div>
+		</div>
+		
+		
+		<!--J A V A S C R I P T-->
+        <script type="text/javascript">
+			function profile_fn(){
+				var page_url = window.location.href;
+				var page_url_split = page_url.split("?");
+				var id = page_url_split[1];
+				
+				var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/profile.php");
+				//var ajax = ajaxObj("POST", "../php/profile.php");
+				
+				ajax.onreadystatechange = function() {
+					if(ajaxReturn(ajax) == true) {
+						_("profile_head").innerHTML = ajax.responseText;
+					}
+				}
+				ajax.send("profile=" + id + "&session_user=" + localStorage.getItem("id"));
+			}
+			window.onload = profile_fn;
+			
+			function add_post(){
+				var page_url = window.location.href;
+				var page_url_split = page_url.split("?");
+				var id = page_url_split[1];
+				
+				window.location.assign("./post.html?"+id);
+			}
+			
+			function wishlist(){
+				var page_url = window.location.href;
+				var page_url_split = page_url.split("?");
+				var id = page_url_split[1];
+				
+				window.location.assign("./wishlist.html?"+id);
+			}
+			function add_to_wishlist(id){
+				var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/profile.php");
+				//var ajax = ajaxObj("POST", "../php/profile.php");
+				
+				ajax.onreadystatechange = function() {
+					if(ajaxReturn(ajax) == true) {
+						if(ajax.responseText.slice(-8) === 'wishlist'){
+							_("wishlist_body_cover").style.display = "block";
+							$("#wishlist_body_cover").fadeOut("7000");
+						}
+					}
+				}
+				ajax.send("addtowishlist=" + id + "&session_user=" + localStorage.getItem("id"));
+			}
+			
+			function inbox(){
+				var page_url = window.location.href;
+				var page_url_split = page_url.split("?");
+				var id = page_url_split[1];
+				
+				window.location.assign("./inbox.html?"+id);
+			}
+			
+			function profile(){
+				var page_url = window.location.href;
+				var page_url_split = page_url.split("?");
+				var id = page_url_split[1];
+				window.location.assign("./profile.html?"+id);
+			}
+			
+			function delete_post(ad_id){
+				var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/profile.php");
+				ajax.onreadystatechange = function() {
+					if(ajaxReturn(ajax) == true) {
+						if(ajax.responseText.slice(-7) === 'deleted'){
+							window.location.assign("./profile.html?" + localStorage.getItem("id"));
+						}
+					}
+				}
+				ajax.send('delete=' + ad_id + '&user_id='+ localStorage.getItem("id"));
+			}
+			
 			function search(){
 				_("search_menu_button").style.display = "none";
 				_("close_menu2").style.display = "none";
@@ -139,82 +233,62 @@
 					ajax.onreadystatechange = function() {
 						if(ajaxReturn(ajax) == true) {
 							_("search_results").innerHTML = ajax.responseText;
+							_("view_all_ads").style.display = "none"
+							status.innerHTML = '';
 						}
 					}
 					ajax.send("departure="+departure+"&destination="+destination+"&date="+date+"&type="+type+"&html="+'');
 				}
 			}
-		</script>
-		
-		<!--///////////////////////////////////////////////////////////////////////////////////////////// 
-						P R O F I L E
-		/////////////////////////////////////////////////////////////////////////////////////////////-->
-		<div id="profile_head"></div>
-        
-		
-		<div id="send_msg_container"></div>
-		<!--///////////////////////////////////////////////////////////////////////////////////////////// 
-						J A V A S C R I P T
-		/////////////////////////////////////////////////////////////////////////////////////////////-->
-        <script type="text/javascript">
-			function profile_fn(){
-				var page_url = window.location.href;
-				var page_url_split = page_url.split("?");
-				var id = page_url_split[1];
-				
-				var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/profile.php");
-				//var ajax = ajaxObj("POST", "../php/profile.php");
-				
-				ajax.onreadystatechange = function() {
-					if(ajaxReturn(ajax) == true) {
-						_("profile_head").innerHTML = ajax.responseText;
+			
+			function submitForm() {
+				var fullName = _("name_input").value;
+				var email = _("email_input").value;
+				var message = _("message_input").value;
+
+				if(fullName == "" || email == "" || message == ""){
+					if(fullName == ""){
+						_("name_input").style.border = "2px solid red";
+					}else{
+						_("name_input").style.border = "1px solid gainsboro";
 					}
-				}
-				ajax.send("profile=" + id);
-			}
-			window.onload = profile_fn;
-			
-			function add_post(){
-				var page_url = window.location.href;
-				var page_url_split = page_url.split("?");
-				var id = page_url_split[1];
-				
-				window.location.assign("./post.html?"+id);
-			}
-			
-			function wishlist(){
-				var page_url = window.location.href;
-				var page_url_split = page_url.split("?");
-				var id = page_url_split[1];
-				
-				window.location.assign("./wishlist.html?"+id);
-			}
-			
-			function inbox(){
-				var page_url = window.location.href;
-				var page_url_split = page_url.split("?");
-				var id = page_url_split[1];
-				
-				window.location.assign("./inbox.html?"+id);
-			}
-			
-			function profile(){
-				var page_url = window.location.href;
-				var page_url_split = page_url.split("?");
-				var id = page_url_split[1];
-				window.location.assign("./profile.html?"+id);
-			}
-			
-			function delete_post(ad_id){
-				var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/profile.php");
-				ajax.onreadystatechange = function() {
-					if(ajaxReturn(ajax) == true) {
-						if(ajax.responseText.slice(-8) === 'deleted'){
-							window.location.assign("./profile.html?" + localStorage.getItem("id"));
+					
+					if(email == ""){
+						_("email_input").style.border = "2px solid red";
+					} else{
+						_("email_input").style.border = "1px solid gainsboro";
+					}
+					
+					if(message == ""){
+						_("message_input").style.border = "2px solid red";
+					}else{
+						_("message_input").style.border = "1px solid gainsboro";
+					}
+				}else{
+					_("submit_contact_us_form").disabled = true;
+					_("submit_contact_us_form").innerHTML = 'please wait ...';
+					
+					//var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/signin.php/send_email.php" );
+					var ajax = ajaxObj("POST", "../php/send_email.php");
+					ajax.onreadystatechange = function() {
+						if(ajax.readyState === 4 && ajax.status === 200) {
+							if(ajax.responseText === "success"){
+								alert('Message Sent');
+								$('#contact_us_form').slideUp("fast", "linear");
+							} else {
+								alert('Message Failed To Send. Try again later.');
+							}
+							_("submit_contact_us_form").disabled = false;
+							_("submit_contact_us_form").innerHTML = 'Submit';
 						}
 					}
+					ajax.send("email=" + "" + "&fullName=" + fullName + "&email=" + email + "&message=" + message);
 				}
-				ajax.send('delete=' + ad_id + '&user_id='+ localStorage.getItem("id"));
+			}
+			
+			function show_contact(){
+				$('div#contact_us_form').toggle();
+				$('html,body').animate({scrollTop: $("div#contact_us_form").offset().top}, 'slow');
 			}
 		</script>
     </body>

@@ -1,3 +1,6 @@
+body{
+	background-color: #F1F1F1;
+}
 section#profile_contents{
     display: block;
     width: 100%;
@@ -7,11 +10,8 @@ section#profile_contents{
 div#account{
 	width: 100%;
     margin: auto;
-	padding: 10px 0px 0px 0px;
+	padding: 20px 0px 10px 0px;
     background-color: white;
-}
-div#user_profile{  
-
 }
 
 img#profile_background{
@@ -169,8 +169,8 @@ ul#ad_ul_list{
 }
 button#edit, button#delete {
     border-style: solid;
-    border-color: rgb(532, 171, 120);
-    background-color: rgb(532, 171, 120);
+    border-color: #FFBB31;
+    background-color: #FFBB31;
     color: snow;
     width: 100%;
 }
@@ -221,32 +221,13 @@ img#recurring_people, img#recurring_car{
 div#view_driving_recurring_ads{
     display: none;
 }
-
-/*      SCREEN 425 */
-@media screen and (max-width:425px){    
-    /*      SECTION     */
-    /*PROFILE */
-    div#user_profile {
-
-    }
-
-    #e_follow, #u_follow {
-        margin-left: 20%;
-    }
-    
-    #all_results {
-
-    }
-}   
+   
 
 @media screen and (max-width:375px){
     #upload {
         padding: 0px;
     }
     /*  PROFILE */
-    div#user_profile {
-
-    }
     div#upload_image {
         min-width: 120px;
         min-height: 150px;
@@ -261,4 +242,57 @@ div#view_driving_recurring_ads{
 
 div#view_commuting_recurring_ads {
     display: none;
+}
+
+
+/*	W I S H L I S T	*/
+div.wishlist_body_cover{
+	position: fixed;
+    z-index: 2;
+    height: 100%;
+    background-color: rgba(65,65,65,0.8);
+    top: 0px;
+    width: 100%;
+	display: none;
+}
+div.wishlist_div{
+	margin: auto;
+    margin-top: 45%;
+    width: 70%;
+    background-color: snow;
+    text-align: center;
+	padding-bottom: 10px;
+}
+h3.wishlist_div_head{
+	background-color: #93DBC7;
+    border-bottom: 2px solid #FFCC69;
+    margin: 0px;
+    padding: 10px 0px;
+    color: white;
+}
+p.wishlist_div_p{
+	color: #414042;
+    padding: 10px 0px 15px 0px;
+    font-size: 20px;
+    font-family: sans-serif;
+}
+h2#wishlist_head{
+	margin: auto;
+    margin-top: 80px;
+    background-color: #93DBC7;
+    color: white;
+    padding: 5px 0px;
+    width: 80%;
+    text-align: center;
+    border: 1px solid #93DBC7;
+    border-radius: 100px;
+}
+div#wishlist{
+	padding-top: 10px;
+    border-top: 1px solid #93DBC7;
+    margin-top: 25px;
+	margin-bottom: 40px;
+}
+h2#no_result_head, p#no_result_news{
+	text-align: center;
 }

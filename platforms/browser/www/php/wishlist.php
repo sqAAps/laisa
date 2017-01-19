@@ -1,7 +1,6 @@
 <?php
-header('Access-Control-Allow-Origin: *');
-require './connect.inc.php';
 require './core.inc.php';
+require './connect.inc.php';
 error_reporting(E_ALL);
 global $connection;
 
@@ -14,22 +13,14 @@ if(isset($_POST['wishlist'])){
 
         if($query_num_rows === 0){
             ?>
-            <h2 id="no_result_head">No results</h2>
-            <p id="no_reseult_news">
-                Find posts you are interested in here by clicking "heart" on each of them.
+            <h2 id="no_result_head">No Result(s)</h2>
+            <p id="no_result_news">
+                Find posts you are interested here by adding to Wishlist.
             </p>
             <?php
         } 
                 
         else if ($query_num_rows>0) {
-            ?>
-            <html>
-                <span class="offering_heading" id="offering_heading">
-                    <?php  echo '<h2 id="results_heading">WISHLIST</h2>'; ?>
-                </span>
-            </html>
-            <?php
-            
             //Search and echo all database results
             while ($rows = mysqli_fetch_array($query_run)) {
                 $ad_id = $rows ['ad_id'];
@@ -129,7 +120,7 @@ if(isset($_POST['wishlist'])){
 								<button type="button" id="<?php echo $ad_id; ?>" class="request_to_book" onclick="send_message(<?php echo $ad_id; ?>)"> Send Message</button>
 
 								<!--    Delete TO WISH LIST    -->
-								<button type="button" id="<?php echo $ad_id; ?>" class="add_to_wishlist" onclick="delete_from_wishlist(<?php echo $ad_id; ?>)">REMOVE</button>
+								<button type="button" id="<?php echo $ad_id; ?>" class="add_to_wishlist" onclick="delete_from_wishlist(<?php echo $ad_id; ?>)">Remove</button>
 							</div>
 						</div>
 					</div>
@@ -147,12 +138,16 @@ if(isset($_POST['wishlist'])){
             <?php
     }
 }
-            
+
 if(isset($_POST['delete_from_wishlist'])){
-	$query2 = "DELETE FROM `wishlist` WHERE `session_user_id`='".mysqli_real_escape_string($connection, $_SESSION['user_id'])."' AND `ad_id`='".mysqli_real_escape_string($connection, $_POST['delete_from_wishlist'])."'";
-                                
-	if (mysqli_query($connection, $query2)){
+	$ad_id = $_POST['delete_from_wishlist'];
+	$user_id = $_POST['session_user'];
+	
+	$query = "DELETE FROM `wishlist` WHERE `session_user_id`='".mysqli_real_escape_string($connection, $user_id)."' AND `ad_id`='".mysqli_real_escape_string($connection, $ad_id)."'";
+	if (mysqli_query($connection, $query)){
 		echo 'deleted';
 		exit();
 	}
+	exit();
 }
+?>

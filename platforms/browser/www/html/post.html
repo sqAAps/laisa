@@ -24,11 +24,11 @@
 		</div>                
         
         
-        
+        <h2 id="post_ad_heading">Travel Plan</h2>
         <section id="post_ad_section">
             <div class="container-fluid" id="post_container">
                 
-                <h2 id="post_ad_heading">Post Travel plan</h2>
+                
                 <!--<div id="one-time">Once-off Plan</div>
                 <div id="recurring">Recurring</div>-->
                 
@@ -47,7 +47,7 @@
                             <input id="radio_input_transport" type="radio" name="type" value="o" checked><span class="radio_text">Offering Transport</span>
                         </li>
                         <li class="type_list_items">
-                            <input id="radio_input_commuter" type="radio" name="type" value="w"><span class="radio_text">Looking for Transport</span>
+                            <input id="radio_input_commuter" type="radio" name="type" value="w"><span class="radio_text">Seeking Transport</span>
                         </li>
                     </ul>
                                                                                                                     
@@ -109,7 +109,7 @@
                     
                     <div id="validate_status"></div>
                     
-                    <button class="" id="post_ad" name="post_ad" type="button" onclick="addpost()">Post Ad</button>
+                    <button class="" id="post_ad" name="post_ad" type="button" onclick="addpost()">Submit</button>
                 </form>
 				
 				<script type="text/javascript">
@@ -156,7 +156,7 @@
 							ajax.onreadystatechange = function() {
 								if(ajaxReturn(ajax) == true) {
 									if( ajax.responseText.slice(-5) === "added"){
-										window.location.assign("profile.html");	
+										window.location.assign("./profile.html?" + localStorage.getItem("id"));
 									}else{
 										_("search_results").innerHTML = ajax.responseText;
 									}
@@ -170,61 +170,9 @@
 				
             </div>
         </section>
-        
-        
-        
-        <!--            FOOTER          -->
-        <footer>
-            <div class="container-fluid">
-                 <ul id="footer_info">
-                        <li class="footer_items" id="about_us">
-                            About Us
-                        </li>
-                        <li class="footer_items" id="privacy">
-                            Privacy & Terms
-                        </li>
-                        <li class="footer_items" id="Careers">
-                            Careers
-                        </li>
-                        <li class="footer_items" id="contact_us">
-                            Contact Us
-                        </li>
-                </ul>
-                
-                <div id="contact_us_form">
-                    <h2 id="contact_us_heading">Contact Us</h2>
-                        
-                    <form id="contact_us" name="contact_us" method="post">
-                        <label id="name_label" for="name_input">Name:</label>
-                        <input id="name_input" type="text" name="name_input" />
-                        
-                        <br>
-                        <label id="email_label" for="email_input">Email:</label>
-                        <input id="email_input" type="email" name="email_input" />
-                        
-                        <br>
-                        <label id="message_label" for="message_input">Message:</label>
-                        <textarea id="message_input" name="message_input" rows="10" cols="50"></textarea>
-                            
-                        <br>
-                        <button id="submit_contact_us_form" type="submit" name="submit_contact_us_form">Submit</button>
-                            
-                        <p id="physical_information">
-                            email: info@namela.co.za
-                            <br>
-                            Tel: 011 283 2044/3854
-                            <br>
-                            Physical Address: 12 Rivonia drive, Sandton
-                        </p>
-                    </form>                    
-                </div>
-            
-            </div>    
-        </footer>
-        
-        
-        
-         <!--<script type="text/javascript" src="../../js/ad.js"></script>-->
+		
+		
+		
        	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUwakWff-5NOHsFTlxgWr4uSWb9Syjroo&libraries=places&callback=initAutocomplete"
         async defer></script>
 		<!--google maps API-->

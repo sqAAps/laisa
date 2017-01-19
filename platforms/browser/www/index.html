@@ -5,7 +5,7 @@
 		<meta http-equiv="Content-Security-Policy" content="default-src *; script-src * 'unsafe-eval' 'unsafe-inline'; connect-src *; img-src *; style-src * 'unsafe-inline' ; media-src *">
 		<script src="./API/jquery.js"></script>
 		<script src="./API/335bootstrap.js"></script>
-		<script src="http://192.168.8.102:8080//target/target-script-min.js#anonymous"></script>
+		<!--<script src="http://192.168.8.102:8080//target/target-script-min.js#anonymous"></script>-->
 		<link href="./API/335bootstrap.css" rel="stylesheet" type="text/css">
 		
 		<link href="./images/icons/mobile_navigation/1logo.png" rel="shortcut icon">
@@ -17,18 +17,6 @@
 	</head>
     
 	<body>
-		<!--<script>
-			(function(d, s, id) {
-				var js, fjs = d.getElementsByTagName(s)[0];
-				if (d.getElementById(id)) return;
-				js = d.createElement(s); js.id = id;
-				js.src = "https://connect.facebook.net/en_US/sdk.js";
-				fjs.parentNode.insertBefore(js, fjs);
-			}
-			 (document, 'script', 'facebook-jssdk'));
-		</script>-->
-		
-		
 		<!--	N A V I G A T I O N	-->
 		<div class="mobile_nav_head" id="nav_head">
 			<div class="container-fluid">
@@ -48,11 +36,11 @@
 			
 			<div id="fb_button" style="text-align: center; margin: 10px auto;">
 				<!-- FACEBOOK -->
-				<a href="javascript:deviceready();">
+				<a href="javascript:fblogin();">
 					<img id="fb_login-img" src="./images/facebook.png"/>
 				</a>
 				
-				<fb:login-button id="signup" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+				<!--<fb:login-button id="signup" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>-->
 			</div>
 			
 			<div id="arrows">
@@ -65,7 +53,7 @@
 		<!--	B O D Y		S E C T I O N	-->
 		<section class="posts_from_users" id="posts_from_users">
 			<div id="how_it_works">
-				<h1 id="how_it_works_header">How it works</h1>
+				<h2 id="how_it_works_header">How It Works</h1>
                     
 				<div id="topic_container">
                             
@@ -124,7 +112,7 @@
                     
 			<div id="introduction">
 				<div id="container-fluid">
-					<h1 id="intro_header">What makes us different</h1>
+					<h3 id="intro_header">What Makes Us Different</h1>
                     	        
 					<p id="intro_paragraph">
 						We genuinely want to make ride sharing as safe as possible for both the driver and passengers. We want to make travelling as convenient as possible. We want to make South Africa a smaller place by allowing everyone to travel it.
@@ -135,7 +123,7 @@
 			</div>
                     
 			<div id="affirmations">
-				<h1 id="affirmation_header">What our customers say...</h1>
+				<h3 id="affirmation_header">What Our Customers Say</h3>
                             
                         
 				<div class="slideshow_container">
@@ -265,9 +253,7 @@
 		
 		
        	<!--	F O O T E R	-->
-		<footer>
-			<div class="container-fluid">
-                    
+		<footer>    
 				<ul id="footer_info">
 					<li class="footer_items" id="about_us">
 						About Us
@@ -288,138 +274,89 @@
                 
 				<div id="contact_us_form">
 					<h2 id="contact_us_heading">Contact Us</h2>
-                        
-					<form id="contact_us" name="contact_us" method="post">
+                     
+					<form id="contact_us" name="contact_us" method="post" onsubmit="submitForm(); return false;">
+						<p id="physical_information">
+							email: info@sqaaps.co.za
+							<br>
+							Tel: 079 866 5832
+						</p>
+						
 						<label id="name_label" for="name_input">Name:</label>
-						<input id="name_input" type="text" name="name_input" />
+						<input id="name_input" type="text" name="name_input" placeholder="  Full Name" />
                         
 						<br>
 						<label id="email_label" for="email_input">Email:</label>
-						<input id="email_input" type="email" name="email_input" />
+						<input id="email_input" type="email" name="email_input" placeholder=" name@company.co.za" />
                         
 						<br>
 						<label id="message_label" for="message_input">Message:</label>
-						<textarea id="message_input" name="message_input" rows="10" cols="50"></textarea>
+						<textarea id="message_input" name="message_input" rows="10" cols="30" placeholder="  type ypur message..."></textarea>
                             
 						<br>
 						<button id="submit_contact_us_form" type="submit" name="submit_contact_us_form">Submit</button>
-                                                      
-						<p id="physical_information">
-							email: info@namela.co.za
-							<br>
-							Tel: 011 283 2044/3854
-							<br>
-							Physical Address: 12 Rivonia drive, Sandton
-                        </p>
 					</form>                    
 				</div>
-			</div>
 		</footer>
-		<!--------------------------------------------
+		<!-------------------------------------------->
 		
 		
-		<script type="text/javascript" src="../platforms/android/assets/www/cordova.js"></script>-->
 		<script type="text/javascript" src="./cordova.js"></script>
 		<script type="text/javascript" src="./js/index.js"></script>
 		<script type="text/javascript">
 			function deviceready(){
-				//app.initialize();
+				navigator.splashscreen.hide();
 				
-				//facebookConnectPlugin.browserInit(1842810965963847);
-				//alert("cool");
-				
-				var fbLoginSuccess = function(response){
-					console.log("Successfully Logged In. \n" + JSON.stringify(response));
+				if (localStorage.getItem("id") != null){
+					window.location.assign("html/profile.html?" + localStorage.getItem("id"));
 				}
-				facebookConnectPlugin.login(["public_profile", "email"], 
-											fbLoginSuccess, 
-											function (error){ 
-												alert("LogIn Failed!");
-											}
-				);
 			}
 			document.addEventListener("deviceready", deviceready, false);
 			
-			
-			
-			/*
-			// Here we run a very simple test of the Graph API after login is successful
-			// See statusChangeCallback() for when this call is made.
-			function testAPI() {
-				console.log('Welcome!  Fetching your information.... ');
-				FB.api('/me?fields=email,name,gender,picture.width(150).height(150)', function(response) {
-					console.log('Successful login for: ' + response.name);
-					console.log('user_friends: ' + response.user_friends);
-					localStorage.setItem('id', response.id);
-					localStorage.setItem('name', response.name);
-					localStorage.setItem('phoneNumber', "undefined");
-					localStorage.setItem('email', response.email);
-					localStorage.setItem('picture', response.picture.data.url);
-					localStorage.setItem('gender', response.gender);
-					console.log(JSON.stringify(response));
-					//console.log(response.picture.data.url);						
-									
-					//Save details in my database
-					//var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/signin.php");
-					var ajax = ajaxObj("POST", "./php/signin.php");
-					ajax.onreadystatechange = function() {
-						if(ajaxReturn(ajax) == true) {
-							if(ajax.responseText.slice(-8) === 'inserted'){
-								alert("all is well");
-								//window.location.assign("html/profile.html?" + localStorage.getItem("id"));
+			function fblogin(){
+				var fbLoginSuccess = function(response){
+					console.log("Successfully Logged In. \n" + JSON.stringify(response));
+					
+					var authResponse = response.authResponse;
+					
+					var fbdetails = function(profile){
+						console.log('Successful login for: ' + profile.name);
+						localStorage.setItem('id', profile.id);
+						localStorage.setItem('name', profile.name);
+						localStorage.setItem('phoneNumber', "undefined");
+						localStorage.setItem('email', profile.email);
+						localStorage.setItem('picture', profile.picture.data.url);
+						localStorage.setItem('gender', profile.gender);
+						console.log(JSON.stringify(profile));
+						//console.log(response.picture.data.url);						
+
+						//Save details in my database
+						var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/signin.php");
+						ajax.onreadystatechange = function() {
+							if(ajaxReturn(ajax) == true) {
+								if(ajax.responseText.slice(-8) === 'inserted'){
+									window.location.assign("html/profile.html?" + localStorage.getItem("id"));
+								}
 							}
 						}
-					}
-					ajax.send('fblogin=' + '' + '&id='+ response.id + '&name=' + response.name + '&picture=' + encodeURIComponent(response.picture.data.url) + '&phonenumber=' + "undefined" + '&email=' + response.email + '&gender=' + response.gender);
-				});
-			}
-			
-			
-			function statusChangeCallback(response) {
-				console.log(response);
-				// The response object is returned with a status field that lets the app know the current login status of the person.
-
-				// Full docs on the response object can be found in the documentation for FB.getLoginStatus().
-				if (response.status === 'connected') {
-					testAPI();
+						ajax.send('fblogin=' + '' + '&id='+ profile.id + '&name=' + profile.name + '&picture=' + encodeURIComponent(profile.picture.data.url) + '&phonenumber=' + "undefined" + '&email=' + profile.email + '&gender=' + profile.gender);
+					};
+					facebookConnectPlugin.api('/me?fields=email,name,gender,picture.width(150).height(150)&access_token=' + authResponse.accessToken, 
+											 null, 
+											 fbdetails, 
+											 function (error){ 
+												alert("Failed to save your information!");
+											}
+					);
 				}
+				
+				facebookConnectPlugin.login(["public_profile", "email"], 
+											fbLoginSuccess, 
+											function (error){ 
+												alert("Please check your connection!");
+											}
+				);
 			}
-			
-			
-			// This function is called when someone resses with the LoginButton.	
-			function checkLoginState() {
-				FB.getLoginStatus(function(response) {
-					statusChangeCallback(response);
-				});
-			}
-
-			
-			window.fbAsyncInit = function() {
-				FB.init({
-					appId      : '1842810965963847',
-					cookie     : true,
-					xfbml      : true,
-					version    : 'v2.8'
-				});
-				console.log("hello1");
-				//needs an internet connection from here
-				FB.getLoginStatus(function(response) {
-					alert("Found Internet");
-					statusChangeCallback(response);
-				});
-			};
-
-			
-			// Load the SDK asynchronously
-			(function(d, s, id) {
-				var js, fjs = d.getElementsByTagName(s)[0];
-				if (d.getElementById(id)) return;
-				js = d.createElement(s); js.id = id;
-				js.src = "https://connect.facebook.net/en_US/sdk.js";
-				fjs.parentNode.insertBefore(js, fjs);
-			}
-			 (document, 'script', 'facebook-jssdk'));
-			 */
 		</script>
 	</body>
 </html>

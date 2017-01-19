@@ -60,9 +60,7 @@ span#session_username{
     font-size: 17px;
     font-family: inherit;
 }
-span#session_login{
-    
-}
+
 a#session_username{
     color: white;
     font-size: 17px;
@@ -76,7 +74,7 @@ ul#profile_menu_ul{
     padding-left: 0;
 	padding-top: 20px;
 }
-li#profile_menu_li{
+li.profile_menu_li{
     padding: 5px;
     color: white;
     border-color: #595a5c;
@@ -109,37 +107,45 @@ div#search_menu_button{
     height: 100%;
     width: 100%;
     right: 0;
-    top: 40px;
+    top: 55px;
     background-color: rgba(65,65,66,0.98);
     position: fixed;
     z-index: 1;
     display: none;
 }
 div#search_menu_container{
-    width: 85%;
+	width: 85%;
+    margin-top: 30px;
 }
 h4#search_menu_header{
-    text-align: center;
-    border-style: solid;
-    border-width: 1px;
+	text-align: center;
+    border: 1px solid white;
     color: white;
+    padding: 5px 0px;
+	margin-bottom: 20px;
+    font-size: 20px;
+    margin-bottom: 20px;
 }
 input#search_menu_departure, input#search_menu_destination, input#search_menu_date{
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     padding-left: 10px;
     width: 100%;
     border-style: none;
-    height: 25px;
+    height: 30px;
 }
 span#span_search_menu_offering_looking{
     color: white;
+    margin-left: 5px;
+    font-size: 18px;
 }
 button#search_menu_search{
     width: 100%;
-    height: 25px;
+    padding: 3px 0px;
+    font-size: 18px;
     margin-top: 10px;
     background-color: rgb(54, 242, 135);
     color: snow;
+    border-radius: 5px;
     border-color: rgb(54, 242, 135);
 }
 
@@ -286,6 +292,9 @@ input#look_for_friends{
 }
 
 /*ADS*/
+div#search_results{
+	margin-bottom: 50px;
+}
 .all_ads{
     color: snow;
     font-size: 16px;
@@ -320,8 +329,7 @@ input#look_for_friends{
 }
 /*  Post/ad Profile Picture  */
 img#profile_image_of_ad_user{
-	width: 60px;
-    height: 60px;
+	width: 100%;
     display: block;
     margin: auto;
     
@@ -407,15 +415,23 @@ img#people, img#car{
 div#lefty{
 	width: 100%;
     display: block;
-    padding: 5px 2%;
+    padding: 5px 2% 0px 2%;
     vertical-align: top;
 }
 div#profile_imgs{
 	width: 20%;
     display: inline-block;
 }
+div#profile_info{
+	display: inline-block;
+    vertical-align: top;
+    padding-top: 5px;
+}
+h4#profile_name{
+	margin: 0px;
+}
 div#righty_departure_and_destination{
-	width: 78%;
+	width: 100%;
     display: inline-block;
     vertical-align: top;
 }
@@ -425,31 +441,32 @@ div#righty_departure_and_destination{
 div#righty{
 	display: block;
     width: 100%;
-    padding: 10px 2%;
-	border-style: solid;
-    border-width: 1px 0px;
-    border-color: yellowgreen;
+    padding: 5px 2% 10px 3%;
 }
 img#departure_destination_image{
 	width: 3%;
     display: inline-block;
     vertical-align: top;
+	padding-top: 6px;
 }
 
 /* Post/ad  departure and destination div */
 div#post_departure_and_destination{
     display: inline-block;
-    width: 95%;
+    width: 94%;
     vertical-align: top;
+	margin-bottom: 5px;
 }
 p#post_departure_tag{
     border-bottom: 1px solid orange;
     margin: 0px;
+	font-size: 16px;
 }
 
 /* Post/ad  date,time,amout */
 p#post_destination_tag{
     padding-top: 4px;
+	margin-bottom: 0px;
 }
 span#post_departure, span#post_destination, span#more_information_text{
     color: #6e6f71;
@@ -470,30 +487,27 @@ div.view_all_wanted_ads, div.view_all_offered_ads{
 div#container{
 	border-radius: 10px;
     background-color: white;
-    border: 1px solid gainsboro
 }
 /*  Post/ad container   */
 #all_results{
-    border-style: solid;
-    border-width: 0px 0px 2px 0px;
-    border-color: #2FCC72;
+	border: 1px solid #d1d2d3;
+    border-radius: 8px;
     margin: 0 auto;
-    width: 100%;
-    margin-bottom: 40px;
-	padding-bottom: 20px;
-	background-color: white;
-
+    width: 95%;
+    margin-bottom: 20px;
+    background-color: white;
+	font-size: 17px;
 }
 /* Commuters Looking for transport | Transport from "" to ""*/
 h2#results_heading{
     border-style: solid;
     border-width: 2px 0px;
     border-color: #d1d2d3;
-    color: slategrey;
+    color: #414042;
     text-align: center;
     padding: 7px 0px;
-    margin: 10px 0px;
-    font-size: 16px;
+    margin: 20px 0px;
+    font-size: 19px;
 }
 
 /*          ASIDE           */
@@ -556,6 +570,7 @@ span#offering_looking{
 }
 input[type="radio"]{
     float: left;
+    margin-top: 5px;
 }
 input#search, #search {
     border-color: rgb(54, 242, 135);
@@ -598,38 +613,40 @@ div.send_container{
 	position: fixed;
     top: 0px;
     z-index: 2;
-    background-color: rgba(65,65,66,0.98);
+    background-color: rgba(65,65,66,0.8);
     height: 100%;
     width: 100%;
 }
 div.send_message_div{
-	background-color: gainsboro;
-    margin: 20% 5%;
-    border-radius: 10px 10px 0px 0px;
+	background-color: #F1F1F1;
+    margin: auto;
+    width: 80%;
+    margin-top: 25%;
 }
 div.send_head{
-	background-color: #189F87;
+	background-color: #93DBC7;
     color: white;
-    font-size: 25px;
+    font-size: 23px;
     text-align: center;
-    border-radius: 10px 10px 0px 0px;
+    padding: 5px 0px 8px 0px;
+    border-bottom: 2px solid #FFCC69;
 }
 textarea.send_text{
-	width: 90%;
+	width: 85%;
     display: block;
-    margin: 10px auto;
-    border: 1px solid gainsboro;
+    margin: auto;
+    margin-top: 20px;
+    border: 0px solid gainsboro;
     height: 30%;
-    padding: 1%;
+    padding: 5px 3%;
 }
 input.send_button, input.cancel_button{
-	background-color: white;
-    color: black;
-    margin: 10px 5%;
-    border: 2px outset white;
-    border-radius: 5px;
-    font-family: monospace;
-    font-size: 16px;
+	background-color: #10A96D;
+    color: white;
+    margin: 15px 8%;
+    border: 2px outset #10A96D;
+    border-radius: 2px;
+    width: 34%;
 }
 
 /*      FOOTER      */
@@ -681,7 +698,7 @@ label#message_label{
     position: absolute;
 }
 textarea#message_input {
-	margin-left: 27%;
+	margin-left: 26%;
     width: 70%;
 }
 button#submit_contact_us_form{
@@ -750,18 +767,7 @@ a#footer_links{
     }
     #ad_info {
         margin: 0px 0px 5px 80%;
-    }
-    /*  Post/ad container   */
-    #all_results {
-    }
-    div#lefty {
-
-    }
-    div#righty {
-    }
-    p#post_destination_tag, p#post_departure_tag {
-        font-size: 13px
-    }
+	}
     
     /* Post/ad  date,time,amout */
     p#post_information{
@@ -863,20 +869,6 @@ a#footer_links{
         margin: 4px;
     }
     
-    /* Commuters Looking for transport | Transport from "" to ""*/
-    
-    /*  Post/ad container   */
-    #all_results {
-    }
-    
-    /*  Post/ad Profile Picture  */
-    img#profile_image_of_ad_user{
-    }
-    /* Post/ad  departure and destination div */
-    div#post_departure_and_destination{
-        margin-left: 0px;
-    }
-    
     
     /* Post/ad  description */
     span#post_more_information {
@@ -902,7 +894,10 @@ a#footer_links{
 
 /*          SCREEN      320     */
 @media screen and (max-width:320px){
-    /*  Post/ad Profile Picture  */
-    img#profile_image_of_ad_user{
+	p#post_destination_tag, p#post_departure_tag {
+        font-size: 14px
     }
+	div#righty {
+    	font-size: 14px;
+	}
 }

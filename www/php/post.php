@@ -3,7 +3,7 @@ require 'core.inc.php';
 require 'connect.inc.php';
 global $connection;
 
-$user_id = $_SESSION['user_id'];
+$user_id = $_POST['id'];
 
 /*Check that each field exists and is submitted*/ 
 if (isset($_POST['departure'])&&

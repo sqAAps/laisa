@@ -101,15 +101,15 @@ if(isset($_POST['profile'])){
 	<footer>    
 		<ul id="footer_info">
 			<li class="footer_items" id="about_us">
-				About Us
+				<a href="./about.html" style="color:white;text-decoration:none">About Us</a>
 			</li>
                     
 			<li class="footer_items" id="privacy">
-				Privacy & Terms
+				<a href="./privacy.html" style="color:white;text-decoration:none">Privacy Policy</a>
 			</li>
                     
 			<li class="footer_items" id="Careers">
-				Careers
+				<a href="./privacy.html" style="color:white;text-decoration:none">Terms of Use</a>
 			</li>
                     
 			<li class="footer_items" id="contact_us">

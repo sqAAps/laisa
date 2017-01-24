@@ -155,27 +155,6 @@ function send_message(ad_id) {
 
 
 
-//ONclick Value Proposition arrows
-$("img#arrows_scroll").on('click', function () {
-    "use strict";
-	$('html,body').animate({
-        scrollTop: $("h1#how_it_works_header").offset().top
-	},
-						   'slow');
-});
-
-$("img#arrows_scroll").mouseenter(function () {
-    "use strict";
-	$("img#arrows_scroll").css("opacity", "1");
-});
-
-$("img#arrows_scroll").mouseleave(function () {
-    "use strict";
-	$("img#arrows_scroll").css("opacity", "0.5");
-});
-
-
-
 /*	M O B I L E		M E N U	*/
 function open_profile_menu() {
 	"use strict";

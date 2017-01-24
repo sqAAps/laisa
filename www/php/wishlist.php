@@ -15,7 +15,7 @@ if(isset($_POST['wishlist'])){
             ?>
             <h2 id="no_result_head">No Result(s)</h2>
             <p id="no_result_news">
-                Find posts you are interested here by adding to Wishlist.
+                There are (0) items in your wishlist.
             </p>
             <?php
         } 

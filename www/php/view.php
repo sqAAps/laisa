@@ -50,7 +50,24 @@ function view_my_ads($USERID){
     
             // User offered adverts are NOT found in the `offered` database
             if($query_num_rows == 0){
-				echo '<h2 id="no-reviews">No Result(s)<h2>';
+				if (isset($_SESSION['user_id']) && $_SESSION['user_id'] === $USERID){
+					if($type === "o"){
+						echo '<h2 id="no-reviews">No Result(s)</h2>
+				<p style="text-align:center;font-size:15px;padding:0px 5%;">You have not posted any Travel Plans offering transport. <br>Click "Add Post" (Top-Left) to post.</p>';
+					}else{
+						echo '<h2 id="no-reviews">No Result(s)</h2>
+				<p style="text-align:center;font-size:15px;padding:0px 5%;">You have not posted any Travel Plans seeking transport. 
+				<br>Click "Add Post" (Top-Left) to post.</p>';
+					}
+				}else{
+					if($type === "o"){
+						echo '<h2 id="no-reviews">No Result(s)</h2>
+				<p style="text-align:center;font-size:15px;padding:0px 5%;">This user has not posted any Travel Plans offering transport.</p>';
+					}else{
+					echo '<h2 id="no-reviews">No Result(s)</h2>
+				<p style="text-align:center;font-size:15px;padding:0px 5%;">This user has not posted any Travel Plans seeking transport.</p>';
+					}
+				}
             } 
             
             //User offered adverts Are found in the `offered` database
@@ -114,12 +131,11 @@ function view_my_ads($USERID){
                                     </p>
                                     
                                     <p id="post_information">
-                                        <span id="more_information_text">more information:</span>
+                                        <span id="more_information_text">More information:</span>
                                         <span id="post_more_information"><?php echo '" '.$description.' "'; ?></span>
                                     </p>
                                     
                                     <!--    Edit & Delete Advert-->
-                                    <br>
                                     <?php
                                     echo
                                     '<form id="hidden_ad_id_form" method="post" './*action="../edit/edit_my_ad.php/'.getusername($USERID).'.'.getusersurname($USERID).'*/'">'.

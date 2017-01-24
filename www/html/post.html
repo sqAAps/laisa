@@ -114,6 +114,10 @@
 				
 				<script type="text/javascript">
 					function addpost(){
+						var page_url = window.location.href;
+						var page_url_split = page_url.split("?");
+						var id = page_url_split[1];
+						
 						var departure = _("autocomplete").value;
 						var destination = _("autocomplete2").value;
 						
@@ -162,7 +166,7 @@
 									}
 								}
 							}
-							ajax.send("departure="+departure+"&destination="+destination+"&date="+date+"&type="+type+"&html="+''+"&time="+time+"&amount="+amount+"&description="+description);
+							ajax.send("departure=" + departure + "&destination=" + destination + "&date=" + date + "&type=" + type + "&html=" + '' + "&time=" + time + "&amount=" + amount + "&description=" + description + "&id=" + id);
 						}
 					}
 				</script>

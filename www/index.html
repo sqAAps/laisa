@@ -32,7 +32,7 @@
 		
 		<!--	V A L U E	 P R O P O S I T I O N	-->
 		<div class="value_prop" id="value_prop">
-			<div id="vp_text">Share a ride with your friends</div>
+			<div id="vp_text">Share a ride with your Friends</div>
 			
 			<div id="fb_button" style="text-align: center; margin: 10px auto;">
 				<!-- FACEBOOK -->
@@ -43,7 +43,7 @@
 				<!--<fb:login-button id="signup" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>-->
 			</div>
 			
-			<div id="arrows">
+			<div id="arrows" onclick="arrows();">
 				<img id="arrows_scroll" src="./images/icons/Arrows.svg" />
 			</div>
 		</div> 
@@ -79,34 +79,7 @@
 						<p id="topic">
 							Send a message to the advert owner and request additional information and organize pickups. SAFE TRIP
 						</p>
-					</div>
-					
-					<!--
-					<div class="topic_div">
-						<img id="how_images" src="./images/icons/request_to_book.svg" />
-						<h3 id="how_header">Request to book</h3>
-						<p id="topic">
-							You send request to the ad-owner to book transport, or request the potential passenger to book.
-						</p>
-					</div>
-                        
-					<div class="topic_div">
-						<img id="how_images" src="./images/icons/payment.svg" />
-						<h3 id="how_header">Payment</h3>
-						<p id="topic">
-							Once the request is accepted and user is booked, payment will be deducted from the passenger’s account, will receive a OTP for check-in
-						</p>
-					</div>
-                        
-					<div class="topic_div">
-						<img id="how_images" src="./images/icons/safe-trip.svg" />
-						<h3 id="how_header">Check In</h3>
-						<p id="topic">
-							On arrival of driver, passenger will check-in and check-out using OTP. Driver receives payment after check-out
-						</p>
-					</div>
-                     -->
-					
+					</div>			
 				</div>
 			</div>
                     
@@ -304,6 +277,10 @@
 		<script type="text/javascript" src="./cordova.js"></script>
 		<script type="text/javascript" src="./js/index.js"></script>
 		<script type="text/javascript">
+			function arrows(){
+				$('html,body').animate({scrollTop: $("#how_it_works_header").offset().top}, 'slow');
+			}
+			
 			function deviceready(){
 				navigator.splashscreen.hide();
 				

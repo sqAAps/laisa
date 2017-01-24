@@ -12,11 +12,12 @@ div#search_results_div{
     background-repeat: no-repeat;
 }
 div#vp_text{
-	padding-top: 65px;
+	padding-top: 70px;
+    padding-bottom: 10px;
     color: white;
     font-family: cursive;
     text-align: center;
-    font-size: 21px;
+    font-size: 23px;
     border-bottom: 1px solid;
 }
 /*	F A C E B O O K */
@@ -181,7 +182,7 @@ div#introduction{
     padding-bottom: 20px;
     position: relative;
 }
-h3#intro_header{
+#intro_header{
 	text-align: center;
     margin: 0px;
     padding: 15px 0px 10px 0px;

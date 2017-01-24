@@ -55,7 +55,6 @@ if(isset($_POST['delete_msg'])){
 if(isset($_POST['inbox'])){
 	$_SESSION['user_id'] = $_POST['inbox'];
 	?>
-	<h2 id="message_header">Messages</h2>
 	<table id="table_container">
             <tr>
                 <td id="table_container_td">

@@ -1,0 +1,13 @@
+div#heading_holder{
+	margin-top: 60px;
+    padding: 20px 5% 0px 5%;
+    border-bottom: 2px solid #93DBC7;
+}
+div.contract{
+	padding: 0px 5% 30px 5%;
+    border-bottom: 2px solid #93DBC7;
+    margin-bottom: 50px;
+}
+span#strong_terms{
+	font-weight: 600;
+}

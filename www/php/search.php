@@ -94,7 +94,7 @@ if(isset($_POST['html']) && isset($_POST['departure']) && isset($_POST['destinat
 								</div>
 								
 								<div id="righty_departure_and_destination">
-									<img id="departure_destination_image" src="../images/icons/posts/departure_destination.svg" />
+									<img id="departure_destination_image" src="../images/icons/posts/departure_destination.png" />
 
 									<div id="post_departure_and_destination">									
 										<p id="post_departure_tag">
@@ -135,8 +135,8 @@ if(isset($_POST['html']) && isset($_POST['departure']) && isset($_POST['destinat
 
 								<!--    ADD TO WISH LIST    -->
 								<button type="button" id="<?php echo $ad_id; ?>" class="add_to_wishlist" onclick="add_to_wishlist(<?php echo $ad_id; ?>)">
-									<img class="heart" id="<?php echo $ad_id; ?>heart1" src="../images/icons/posts/heart.svg" />
-									<img class="addedwishlist" id="<?php echo $ad_id; ?>heart2" src="../images/icons/posts/added_to_wishlist.svg" />
+									<img class="heart" id="<?php echo $ad_id; ?>heart1" src="../images/icons/posts/heart.png" />
+									<img class="addedwishlist" id="<?php echo $ad_id; ?>heart2" src="../images/icons/posts/added_to_wishlist.png" />
 								</button>
 							</div>
 
@@ -248,7 +248,7 @@ if(isset($_POST['index']) && isset($_POST['departure'])&&isset($_POST['destinati
 								</div>
 								
 								<div id="righty_departure_and_destination">
-									<img id="departure_destination_image" src="images/icons/posts/departure_destination.svg" />
+									<img id="departure_destination_image" src="images/icons/posts/departure_destination.png" />
 
 									<div id="post_departure_and_destination">									
 										<p id="post_departure_tag">
@@ -292,8 +292,8 @@ if(isset($_POST['index']) && isset($_POST['departure'])&&isset($_POST['destinati
 
 								<!--    ADD TO WISH LIST    -->
 								<button type="button" id="<?php echo $ad_id; ?>" class="add_to_wishlist" onclick="add_to_wishlist(<?php echo $ad_id; ?>)">
-									<img class="heart" id="<?php echo $ad_id; ?>heart1" src="images/icons/posts/heart.svg" />
-									<img class="addedwishlist" id="<?php echo $ad_id; ?>heart2" src="images/icons/posts/added_to_wishlist.svg" />
+									<img class="heart" id="<?php echo $ad_id; ?>heart1" src="images/icons/posts/heart.png" />
+									<img class="addedwishlist" id="<?php echo $ad_id; ?>heart2" src="images/icons/posts/added_to_wishlist.png" />
 								</button>
 							</div>
 

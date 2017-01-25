@@ -6,6 +6,7 @@ section#profile_contents{
     width: 100%;
     margin: auto;
     background-color: #f2f2f3;
+    height: 85vh;
 }
 div#account{
 	width: 100%;
@@ -73,86 +74,6 @@ p#account_description{
     padding: 10px 15px;
 }
 /* Reviews  |   Once-off |   Recurring*/
-div#review_posts{
-    width: 100%;
-    text-align: center;
-	margin: 15px 0px;
-}
-h1#reviews, h1#posts, h1#recurring_posts{
-    display: inline-block;
-    width: 32%;
-    text-align: center;
-    padding-top: 5px;
-    margin-bottom: 0px;
-    border-width: 2px 1px 0px;
-    border-radius: 7px 7px 0px 0px;
-    cursor: pointer;
-    margin-top: 0px;
-}
-img#review_img, img#posts_img, img#recurring_posts_img{
-    height: 50px;
-}
-
-
-#offering_heading{
-    text-align: center;
-    color: orange;
-}
-
-/*      PROFILE PICTURE EDIT        */
-div#upload_image{
-    min-width: 160px;
-    max-width: 170px;
-    min-height: 160px;
-    max-height: 170px;
-}
-
-form#background_form{
-    position: absolute;
-    top: 110px;
-    margin-left: 10px;
-    display: none;
-}
-form#form{
-    display: none;
-    margin-left: 230px;
-}
-input#file_submit, input#file{
-    background-color: white;
-    border-style: solid;
-    border-color: orange;
-}
-
-/*      FOLLOW      |       UNFOLLOW*/
-/*User_id and ad_user_id inputs in FOLLOW and UNfollo*/
-.js_values{display: none;}
-
-/*Before follow button is clicked. Unfollow button should be hidden*/
-div#second_unfollow, div#second_follow{display: none;}
-
-/*Follow Button*/
-#e_follow, #u_follow{
-    background-color: dodgerblue;
-    border-color: dodgerblue;
-    border-radius: 6px;
-    height: 33px;
-    color: snow;
-    font-size: 20px;
-    margin-left: 35%;
-}
-
-/*UN-Follow Button*/
-#e_unfollow, #u_unfollow{
-    background-color: greenyellow;
-    border-color: greenyellow;
-    border-radius: 6px;
-    color: snow;
-    font-size: 20px;
-    height: 33px;
-    font-size: 20px;
-    margin-left: 35%;
-}
-
 /* EDIT & DELETE BUTTON*/
 input#hide_ad_id{
     display: none;
@@ -176,22 +97,6 @@ button#edit, button#delete {
     width: 100%;
 }
 /* Reviews  |   Once-off    |   Recurring*/
-span#reviews_span, span#posts_span, span#recurring_span {
-    display: none;
-}
-
-
-/*  Content Container   */
-div#content_container {
-    background-color: white;
-    margin: 0px 5px;
-    padding: 10px;
-}
-/*  No Review(s)    */
-h2#no-reviews, p#reviews-statement {
-    text-align: center;
-	margin-bottom: 0px;
-}
 
 /*      ALL |   Commuters   |   Transport   */
 div#ad_types.ad_types{
@@ -223,7 +128,10 @@ img#recurring_people, img#recurring_car{
 div#view_driving_recurring_ads{
     display: none;
 }
-   
+div#user_profile{
+	overflow: scroll;
+    margin-bottom: 30px;
+}
 
 @media screen and (max-width:375px){
     #upload {

@@ -36,6 +36,10 @@ div#recurring{
 form#recurring_form{
     display: none;
 }
+select#time_select1, select#time_select2{
+	font-size: 17px;
+    padding: 3px 3%;
+}
 label#date_label, label#time_label{
 	margin-left: 7%;
 	font-size: 19px;

@@ -17,7 +17,7 @@
 		<div class="mobile_nav_head" id="nav_head">
 			<div class="container-fluid">	    
 				<a href="javascript:profile()">
-					<img id="mobile_logo" style="position: relative; margin-left: 85%;" src="../images/icons/mobile_navigation/logo.svg" />
+					<img id="mobile_logo" style="position: relative; margin-left: 85%;" src="../images/icons/mobile_navigation/logo.png" />
 				</a>
 			</div>
 		</div>
@@ -66,132 +66,7 @@
                             
 					<!--<iframe id="about_us_video" src="http://www.youtube.com/embed/FJid_h0-k7E?autoplay=0"></iframe>-->
 				</div>
-			</div>
-                    
-			<div id="affirmations">
-				<h3 id="affirmation_header">What our customers say...</h3>
-                            
-                        
-				<div class="slideshow_container">
-                	                                        
-					<div class="customer-slides">
-						<div class="container-fluid">
-                                    
-							<div class="affirm_img_div">
-								<img id="customer-image" src="../images/users/4038452210_018d479345.png" />
-							</div>
-                                    
-							<div class="affirm_text_div" id="statement">
-								You know, I was very sceptical at first. With everything happening in the news, I thought it to be absurd to get into a car with someone you don’t. I decided to give it a try, with the route updates, I could update my family how far I was into the journey. It was way more comfortable and convenient because I got dropped off at my gate where my husband was waiting for me.
-							</div>
-                                
-						</div>
-					</div>
-                                    
-					<div class="customer-slides">
-						<div class="container-fluid">
-                                
-							<div class="affirm_img_div">
-								<img id="customer-image" src="../images/users/danielle_small-620x412.png" />
-							</div>
-                                    
-							<div class="affirm_text_div" id="statement">
-								We genuinely want to make ride sharing as safe as possible for both the driver and passengers. We want to make travelling as convenient as possible. We want to make South Africa a smaller place by allowing everyone to travel it.
-							</div>
-                                    
-						</div>
-					</div>
-                                    
-					<div class="customer-slides">
-						<div class="container-fluid">
-                        	        
-							<div class="affirm_img_div">
-								<img id="customer-image" src="../images/users/roberts1.png" />
-							</div>
-                                    
-							<div class="affirm_text_div" id="statement">
-								You know, I was very sceptical at first. With everything happening in the news, I thought it to be absurd to get into a car with someone you don’t. I decided to give it a try, with the route updates, I could update my family how far I was into the journey. It was way more comfortable and convenient because I got dropped off at my gate where my husband was waiting for me.
-							</div>
-                                    
-						</div>
-					</div>
-                                
-					<div class="customer-slides">
-						<div class="container-fluid">
-                        	    
-							<div class="affirm_img_div">
-								<img id="customer-image" src="../images/users/Mukunzie.png" /> 
-							</div>
-                                    
-							<div class="affirm_text_div" id="statement">
-								We genuinely want to make ride sharing as safe as possible for both the driver and passengers. We want to make travelling as convenient as possible. We want to make South Africa a smaller place by allowing everyone to travel it.
-							</div>
-                                    
-						</div>
-					</div>
-                            
-					<a class="left_arrow_link" id="side_arrows" onclick="plusDivs(-1)"  >
-						<img id="left_arrow" src="../images/icons/left-arrow.svg" />
-					</a>
-                                
-					<a class="right_arrow_link" id="side_arrows" onclick="plusDivs(1)">
-						<img id="right_arrow" src="../images/icons/right-arrow.svg" />
-					</a>
-                                
-				</div>
-			</div>
-
-			<script>                          
-				/* Arrow controls*/
-				var slideIndex = 1;
-				showDivs(slideIndex);
-
-				function plusDivs(n) {
-					showDivs(slideIndex += n);
-				}
-
-				function showDivs(n) {
-					var i;
-					var x = document.getElementsByClassName("customer-slides");
-                    	                
-					if (n > x.length) {
-						slideIndex = 1
-					}    
-                                    
-					if (n < 1) {
-						slideIndex = x.length
-					};
-                                    
-					for (i = 0; i < x.length; i++) {
-						x[i].style.display = "none";  
-					}
-                                    
-					x[slideIndex-1].style.display = "block";  
-				}
-                                    
-				/*Automatic control*/
-				var myIndex = 0;
-				carousel();
-
-				function carousel() {
-					var i;
-					var x = document.getElementsByClassName("customer-slides");
-                    	                
-					for (i = 0; i < x.length; i++) {
-						x[i].style.display = "none";  
-					}
-                                    
-					myIndex++;
-                    	                    
-					if (myIndex > x.length) {
-						myIndex = 1
-					}    
-                                    
-					x[myIndex-1].style.display = "block";  
-                                    
-					setTimeout(carousel, 20000); // Change image every 10 seconds
-				}
-			</script>            
+			</div>  
 		</section>
 
 		<div id="send_msg_container"></div>

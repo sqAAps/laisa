@@ -124,7 +124,7 @@ if(isset($_POST['inbox'])){
                                                 $message_sender_profile_picture_name = basename($image);
                                             }
                                             if(!isset($user_profile_background_name)){
-                                                $user_profile_background_name = "defaults.svg";
+                                                $user_profile_background_name = "defaults.png";
                                             }
                                             echo '<a href="../view_my_profile/viewmyprofile.php/'.getusername($fr_id).'">
                                                 <img id="message_image" src="../images/users/'.$message_sender_profile_picture_name.'"/>

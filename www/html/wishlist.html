@@ -4,7 +4,6 @@
     <head>
 		<script type="text/javascript" src="../API/jquery.js"></script>
 		<script src="../API/335bootstrap.js"></script>
-		<script type="text/javascript" src="../js/index.js"></script>
 		<link rel="stylesheet" href="../API/335bootstrap.css">
 		<link href="../images/icons/mobile_navigation/1logo.png" rel="shortcut icon">
 		<title>laisa</title>
@@ -20,15 +19,19 @@
 		<div class="mobile_nav_head" id="nav_head">
 			<div class="container-fluid">	    
 				<a href="javascript:profile()">
-					<img id="mobile_logo" style="position: relative; margin-left: 85%;" src="../images/icons/mobile_navigation/logo.svg" />
+					<img id="mobile_logo" style="position: relative; margin-left: 85%;" src="../images/icons/mobile_navigation/logo.png" />
 				</a>
 			</div>
 		</div>
+		
+		<div id="send_msg_container"></div>
+		
 		
 		<!--	W I S H L I S T	-->
 		<h2 id="wishlist_head">Wishlist</h2>
 		<div id="wishlist"></div>
 		
+		<script type="text/javascript" src="../js/index.js"></script>
 		<script type="text/javascript">
 			function wishlist(){
 				var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/wishlist.php");
@@ -48,7 +51,7 @@
 				//var ajax = ajaxObj("POST", "../php/wishlist.php");	
 				ajax.onreadystatechange = function() {
 					if(ajaxReturn(ajax) == true) {
-						if(ajax.responseslice(-7) === 'deleted'){
+						if(ajax.response.slice(-7) === 'deleted'){
 							window.location.assign("./wishlist.html?" + localStorage.getItem("id"));
 						}
 					}

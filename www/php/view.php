@@ -98,7 +98,7 @@ function view_my_ads($USERID){
 							<div id="righty">
                                     
                                     <div id="righty_departure_and_destination">
-                                        <img id="departure_destination_image" src="../images/icons/posts/departure_destination.svg" />
+                                        <img id="departure_destination_image" src="../images/icons/posts/departure_destination.png" />
                                         
                                         <div id="post_departure_and_destination">
                                             <span id="post_departure_tag">
@@ -164,7 +164,7 @@ function view_my_ads($USERID){
                                 <div id="righty">
                                     
                                     <div id="righty_departure_and_destination">
-                                        <img id="departure_destination_image" src="../images/icons/posts/departure_destination.svg" />
+                                        <img id="departure_destination_image" src="../images/icons/posts/departure_destination.png" />
                                         
                                         <div id="post_departure_and_destination">
                                             <span id="post_departure_tag">
@@ -203,14 +203,14 @@ function view_my_ads($USERID){
                                     
                                     <!--    REQUEST TO BOOK-->
                                     <br>
-                                    <button type="button" id="<?php echo $ad_id; ?>" class="request_to_book" onclick="request_to_book(<?php echo $ad_id; ?>)">
+                                    <button type="button" id="<?php echo $ad_id; ?>" class="request_to_book" onclick="send_message(<?php echo $ad_id; ?>)">
                                         Send Message
                                     </button>
                                     
                                     <!--    ADD TO WISH LIST    -->
                                     <button type="button" id="<?php echo $ad_id; ?>" class="add_to_wishlist" onclick="add_to_wishlist(<?php echo $ad_id; ?>)">
-                                        <img class="heart" id="<?php echo $ad_id; ?>heart1" src="../images/icons/posts/heart.svg" />
-                                        <img class="addedwishlist" id="<?php echo $ad_id; ?>heart2" src="../images/icons/posts/added_to_wishlist.svg" />
+                                        <img class="heart" id="<?php echo $ad_id; ?>heart1" src="../images/icons/posts/heart.png" />
+                                        <img class="addedwishlist" id="<?php echo $ad_id; ?>heart2" src="../images/icons/posts/added_to_wishlist.png" />
                                     </button>
                                     
                                     
@@ -344,13 +344,13 @@ function view_all_wanted_ads(){
                                         <img id="profile_image_of_ad_user" src="images/users/'.$user_profile_picture_name.'" />
                                     </a>' ?>
                                             
-                                    <img id="rating" src="images/icons/posts/rating.svg" />
+                                    <img id="rating" src="images/icons/posts/rating.png" />
                                 </div>
                                     
                                 <div id="righty">
                                     
                                     <div id="righty_departure_and_destination">
-                                        <img id="departure_destination_image" src="images/icons/posts/departure_destination.svg" />
+                                        <img id="departure_destination_image" src="images/icons/posts/departure_destination.png" />
                                         
                                         <div id="post_departure_and_destination">
                                             <span id="post_departure_tag">
@@ -389,14 +389,14 @@ function view_all_wanted_ads(){
                                     
                                     <!--    REQUEST TO BOOK-->
                                     <br>
-                                    <button type="button" id="<?php echo $ad_id; ?>" class="request_to_book" onclick="request_to_book(<?php echo $ad_id; ?>)">
+                                    <button type="button" id="<?php echo $ad_id; ?>" class="request_to_book" onclick="send_message(<?php echo $ad_id; ?>)">
                                         Send Message
                                     </button>
                                     
                                      <!--    ADD TO WISH LIST    -->
                                     <button type="button" id="<?php echo $ad_id; ?>" class="add_to_wishlist" onclick="add_to_wishlist(<?php echo $ad_id; ?>)">
-                                        <img class="heart" id="<?php echo $ad_id; ?>heart1" src="images/icons/posts/heart.svg" />
-                                        <img class="addedwishlist" id="<?php echo $ad_id; ?>heart2" src="images/icons/posts/added_to_wishlist.svg" />
+                                        <img class="heart" id="<?php echo $ad_id; ?>heart1" src="images/icons/posts/heart.png" />
+                                        <img class="addedwishlist" id="<?php echo $ad_id; ?>heart2" src="images/icons/posts/added_to_wishlist.png" />
                                     </button>
                                     
                                     
@@ -518,13 +518,13 @@ function view_wishlist(){
                                         <img id="profile_image_of_ad_user" src="../images/users/'.$user_profile_picture_name.'" />
                             </a>' ?>
                                             
-                            <img id="rating" src="../images/icons/posts/rating.svg" />
+                            <img id="rating" src="../images/icons/posts/rating.png" />
                         </div>
                                     
                         <div id="righty">
                                     
                             <div id="righty_departure_and_destination">
-                                <img id="departure_destination_image" src="../images/icons/posts/departure_destination.svg" />
+                                <img id="departure_destination_image" src="../images/icons/posts/departure_destination.png" />
                                         
                                 <div id="post_departure_and_destination">
                                     <span id="post_departure_tag">
@@ -563,14 +563,14 @@ function view_wishlist(){
                                     
                             <!--    REQUEST TO BOOK-->
                             <br>
-                            <button type="button" id="<?php echo $ad_id; ?>" class="request_to_book" onclick="request_to_book(<?php echo $ad_id; ?>)">
+                            <button type="button" id="<?php echo $ad_id; ?>" class="request_to_book" onclick="send_message(<?php echo $ad_id; ?>)">
                                 Send Message
                             </button>
                                     
                             <!--    ADD TO WISH LIST    -->
                             <button type="button" id="<?php echo $ad_id; ?>" class="add_to_wishlist" onclick="add_to_wishlist(<?php echo $ad_id; ?>)">
-                                <img class="heart" id="<?php echo $ad_id; ?>heart1" src="../images/icons/posts/heart.svg" />
-                                <img class="addedwishlist" id="<?php echo $ad_id; ?>heart2" src="../images/icons/posts/added_to_wishlist.svg" />
+                                <img class="heart" id="<?php echo $ad_id; ?>heart1" src="../images/icons/posts/heart.png" />
+                                <img class="addedwishlist" id="<?php echo $ad_id; ?>heart2" src="../images/icons/posts/added_to_wishlist.png" />
                             </button>
                         </div>
                             

@@ -79,7 +79,7 @@ if(isset($_POST['wishlist'])){
 									<div id="details">
 										<?php echo $name.'<br>'.$gender; ?>
 									</div>
-									<img id="departure_destination_image" src="../images/icons/posts/departure_destination.svg" />
+									<img id="departure_destination_image" src="../images/icons/posts/departure_destination.png" />
 
 									<div id="post_departure_and_destination">									
 										<p id="post_departure_tag">
@@ -116,7 +116,6 @@ if(isset($_POST['wishlist'])){
 								</p>
 
 								<!--   SEND MESSAGE	-->
-								<br>
 								<button type="button" id="<?php echo $ad_id; ?>" class="request_to_book" onclick="send_message(<?php echo $ad_id; ?>)"> Send Message</button>
 
 								<!--    Delete TO WISH LIST    -->

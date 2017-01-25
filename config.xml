@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="za.co.sqaaps.laisa" version="1.0.6" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="za.co.sqaaps.laisa" version="1.0.7" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>laisa</name>
     <description>
-        Shara a ride with friends
+        Shara a ride with your friends
     </description>
     <author email="info@sqaaps.co.za" href="https://www.sqaaps.co.za">
         sqAAps

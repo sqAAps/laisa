@@ -139,8 +139,7 @@
 			}
 			
 			function deviceready(){
-				navigator.splashscreen.hide();
-				
+				navigator.splashscreen.show();
 				if (localStorage.getItem("id") != null){
 					window.location.assign("html/profile.html?" + localStorage.getItem("id"));
 				}

@@ -10,7 +10,7 @@ if(isset($_POST['html']) && isset($_POST['departure']) && isset($_POST['destinat
 	$destination = htmlentities($_POST['destination']);
 	
 	$date_entered = htmlentities($_POST['date']);
-	$date_array = preg_split("/[-\/s,]+/", "2017/04-02");
+	$date_array = preg_split("/[-\/s,]+/", $date_entered);
 	$yy = $date_array[0];
 	$mm = $date_array[1];
 	$dd = $date_array[2];

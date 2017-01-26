@@ -17,16 +17,31 @@
 		<div class="mobile_nav_head" id="nav_head">
 			<div class="container-fluid">	    
 				<a href="javascript:profile()">
-					<img id="mobile_logo" style="position: relative; margin-left: 85%;" src="../images/icons/mobile_navigation/logo.png" />
+					<img id="mobile_logo" style="position: relative; margin-left: 85%;" src="../images/icons/mobile_navigation/logo.svg" />
 				</a>
 			</div>
 		</div>
             
            
 		<!--	B O D Y		S E C T I O N	-->
-		<section class="posts_from_users" id="posts_from_users">
+		<section class="posts_from_users" id="posts_from_users" style="margin-top: 75px;">
+			<div id="introduction" style="padding: 0px 5%;">
+				<div id="container-fluid">
+					<h1 id="intro_header" style="text-align: center;">Who are we?</h1>
+                    	        
+					<p id="intro_paragraph">
+						Laisa is a dream come true. It was a vision that came to a young man while travelling from to the city. It dawned on him that the current transport network doesn't satify his needs. He knew there were others that felt like this. Coming from the rural plans, hitch-hiking was, and is still used as an informal mode of transport. Community members stop for each other if they see one hitch-hiking in their direction.
+					</p>
+					<p id="intro_paragraph">
+						The hitch-hiking is very advanced in Africa. We have different hand signals to communicate the desired destination with on coming cars.
+						The prices are also known between the members. However there's alwasys misunderstandings when taxi prices increase.
+					</p>
+					
+				</div>
+			</div>
+			
 			<div id="how_it_works">
-				<h1 id="how_it_works_header">How it works</h1>
+				<h1 id="how_it_works_header">Get Started</h1>
                     
 				<div id="topic_container">
                             
@@ -55,28 +70,14 @@
 					</div>
 				</div>
 			</div>
-                    
-			<div id="introduction">
-				<div id="container-fluid">
-					<h1 id="intro_header">What makes us different</h1>
-                    	        
-					<p id="intro_paragraph">
-						We genuinely want to make ride sharing as safe as possible for both the driver and passengers. We want to make travelling as convenient as possible. We want to make South Africa a smaller place by allowing everyone to travel it.
-					</p>
-                            
-					<!--<iframe id="about_us_video" src="http://www.youtube.com/embed/FJid_h0-k7E?autoplay=0"></iframe>-->
-				</div>
-			</div>  
 		</section>
-
-		<div id="send_msg_container"></div>
 		<!------------------------------------------->
 
 		
 		
 		<script>
 			function profile(){
-				window.location.assign("./profile.html?" + localStorage.getItem("id"));
+				window.history.back();
 			}
 		</script>
 	</body>

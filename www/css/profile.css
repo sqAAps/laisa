@@ -130,7 +130,7 @@ div#view_driving_recurring_ads{
 }
 div#user_profile{
 	overflow: scroll;
-    margin-bottom: 30px;
+    margin-bottom: 10vh;
 }
 
 @media screen and (max-width:375px){

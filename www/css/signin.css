@@ -5,7 +5,7 @@ div#search_results_div{
     margin-left: 210px;
 }
 .value_prop{
-    height: 100%;
+    height: 95vh;
     background-image: url(../images/welcome1.png);
     position: relative;
     background-size: 100% 100%;
@@ -51,11 +51,50 @@ div#arrows{
     bottom: 20px;
     left: 45%;
 }
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+	10% {
+        opacity: 0.2;
+    }
+	20% {
+        opacity: 0.4;
+    }
+	30% {
+        opacity: 0.6;
+    }
+	40% {
+        opacity: 0.90;
+    }
+	50% {
+        opacity: 1;
+    }
+	60% {
+        opacity: 0.80;
+    }
+    70% {
+        opacity: 0.60;
+    }
+	80% {
+        opacity: 0.40;
+    }
+	90% {
+        opacity: 0.20;
+    }
+    100% {
+        opacity: 0;
+    }
+}
 img#arrows_scroll{
     opacity: 0.5;
     width: 50px;
+	animation: blink 2s;
+    animation-iteration-count: infinite;
 }
-
+div#how_it_works{
+	margin-bottom: 5vh;
+}
 h1#how_it_works_header{
 	text-align: center;
 }

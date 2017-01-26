@@ -18,16 +18,19 @@
 		<div class="mobile_nav_head" id="nav_head">
 			<div class="container-fluid">	    
 				<a href="javascript:profile()">
-					<img id="mobile_logo" style="position: relative; margin-left: 85%;" src="../images/icons/mobile_navigation/logo.png" />
+					<img id="mobile_logo" style="position: relative; margin-left: 85%;" src="../images/icons/mobile_navigation/logo.svg" />
 				</a>
 			</div>
 		</div>                
         
         
-        <h2 id="post_ad_heading">Travel Plan</h2>
+        <h2 id="post_ad_heading"> Edit Travel Plan</h2>
         <section id="post_ad_section">
             <div class="container-fluid" id="post_container">
 
+                <!--<div id="one-time">Once-off Plan</div>
+                <div id="recurring">Recurring</div>-->
+                
                 <!--Once-Off Form-->
                 <form class="" id="post_form" name="post_form" action="" method="POST">
                     
@@ -121,76 +124,106 @@
                     
                     <div id="validate_status"></div>
                     
-                    <button class="" id="post_ad" name="post_ad" type="button" onclick="addpost()">Submit</button>
+                    <button class="" id="post_ad" name="post_ad" type="button" onclick="editpost()">Submit</button>
                 </form>
-				
-				<script type="text/javascript">
-					function addpost(){
-						var page_url = window.location.href;
-						var page_url_split = page_url.split("?");
-						var id = page_url_split[1];
-						
-						var departure = _("autocomplete").value;
-						var destination = _("autocomplete2").value;
-						
-						if(_("radio_input_transport").checked == true){
-							var type = "o";
-						}else{
-							var type = "w";
-						}
-
-						var date = _("date_input").value;
-						
-						var time_one = _("time_select1").value;
-						
-						var time_two = _("time_select2").value;
-						
-						var time = "Between " + time_one + "  and " + time_two;
-						
-						var amount = _("amount_input").value;
-						
-						var description = _("description_input").value;
-
-						var status = _("validate_status");
-
-						if(departure == "" || destination == "" || amount == "" ){
-							status.innerHTML = '<span style="color: #ff0000;font-family: sans-serif;margin-left: 15px;font-size: 15px;">Fill out all of the form data</span>';
-						}else if(description == ""){
-							_("description_input").style.borderColor = "red";
-							_("description_input").style.borderWidth = "2px";
-							_("description_input").style.borderStyle = "solid";
-						} else {	
-							_("description_input").style.borderColor = "gainsboro";
-							_("description_input").style.borderWidth = "1px";
-							_("description_input").style.borderStyle = "solid";
-							
-							status.innerHTML = 'please wait ...';
-							var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/post.php");
-							//var ajax = ajaxObj("POST", "../php/post.php");
-							ajax.onreadystatechange = function() {
-								if(ajaxReturn(ajax) == true) {
-									if( ajax.responseText.slice(-5) === "added"){
-										window.location.assign("./profile.html?" + localStorage.getItem("id"));
-									}else{
-										_("search_results").innerHTML = ajax.responseText;
-									}
-								}
-							}
-							ajax.send("post=" + "" + "&departure=" + departure + "&destination=" + destination + "&date=" + date + "&type=" + type + "&html=" + '' + "&time=" + time + "&amount=" + amount + "&description=" + description + "&id=" + id);
-						}
-					}
-				</script>
 				
 				
             </div>
         </section>
-		
-		
-		
+        
+        
+        
        	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUwakWff-5NOHsFTlxgWr4uSWb9Syjroo&libraries=places&callback=initAutocomplete"
         async defer></script>
 		<!--google maps API-->
         <script>
+			function edit(){
+				var page_url = window.location.href;
+				var page_url_split = page_url.split("?");
+				
+				var numbers = page_url_split[1];
+				var numbers_split = numbers.split("&");
+				
+				var user_id = numbers_split[0];
+				var ad_id = numbers_split[1];
+				
+				var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/profile.php");
+				
+				ajax.onreadystatechange = function() {
+					if(ajaxReturn(ajax) == true) {
+						var response = ajax.responseText;
+						alert(response);
+						var	response_split = response.split("£");
+						_("description_input").value = response_split[0];
+						_("autocomplete").value = response_split[1];
+						_("autocomplete2").value = response_split[2];
+						_("date_input").value = response_split[3];
+						_("amount_input").value = response_split[5];
+						var	type = response_split[6];
+					}
+				}
+				ajax.send("edit=" + user_id + "&ad_id=" + ad_id);				
+			}
+			window.onload = edit;
+			
+			function editpost(){
+				var page_url = window.location.href;
+				var page_url_split = page_url.split("?");
+				
+				var numbers = page_url_split[1];
+				var numbers_split = numbers.split("&");
+				
+				var user_id = numbers_split[0];
+				var ad_id = numbers_split[1];
+				
+				var departure = _("autocomplete").value;
+				var destination = _("autocomplete2").value;
+						
+				if(_("radio_input_transport").checked == true){
+					var type = "o";
+				}else{
+					var type = "w";
+				}
+
+				var date = _("date_input").value;
+						
+				var time_one = _("time_select1").value;
+						
+				var time_two = _("time_select2").value;
+						
+				var time = "Between " + time_one + "  and " + time_two;
+						
+				var amount = _("amount_input").value;
+						
+				var description = _("description_input").value;
+
+				var status = _("validate_status");
+
+				if(departure == "" || destination == "" || amount == "" ){
+					status.innerHTML = '<span style="color: #ff0000;font-family: sans-serif;margin-left: 15px;font-size: 15px;">Fill out all of the form data</span>';
+				}else if(description == ""){
+					_("description_input").style.borderColor = "red";
+					_("description_input").style.borderWidth = "2px";
+					_("description_input").style.borderStyle = "solid";
+				} else {	
+					_("description_input").style.borderColor = "gainsboro";
+					_("description_input").style.borderWidth = "1px";
+					_("description_input").style.borderStyle = "solid";
+					status.innerHTML = 'please wait ...';
+					var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/post.php");
+					ajax.onreadystatechange = function() {
+						if(ajaxReturn(ajax) == true) {
+							if (ajax.responseText.slice(-6) === "edited") {
+								window.location.assign("./profile.html?" + localStorage.getItem("id"));
+							}else{
+								status.innerHTML = ajax.responseText;
+							}
+						}
+					}
+					ajax.send("edit=" + ad_id + "&departure=" + departure+"&destination="+destination+"&date=" + date + "&type=" + type + "&html=" + '' + "&time=" + time + "&amount=" + amount + "&description=" + description);
+				}
+			}
+			
 			function profile(){
 				var page_url = window.location.href;
 				var page_url_split = page_url.split("?");

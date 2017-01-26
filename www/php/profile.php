@@ -153,8 +153,6 @@ if(isset($_POST['profile'])){
 }
 
 
-
-
 if (isset($_POST['delete'])) {
     // get id value
     $user_id = $_SESSION['user_id'];
@@ -193,6 +191,33 @@ if(isset($_POST['addtowishlist'])){
 		} else{
 			echo 'wishlist';
 			exit();
+		}
+	}
+}
+
+
+if(isset($_POST['edit'])){
+	$ad_id = $_POST['ad_id'];
+	$user_id = $_POST['edit'];
+	
+	$query = "SELECT * FROM `adverts` WHERE `user_id`='".mysqli_real_escape_string($connection, $user_id)."' AND `id`='".mysqli_real_escape_string($connection, $ad_id)."'";
+	if ($query_run = mysqli_query($connection, $query)) {
+		$query_num_rows = mysqli_num_rows($query_run);
+         
+		//Add to wishlist
+		if($query_num_rows === 1){
+			while ($rows = mysqli_fetch_array($query_run)) {
+				$description = $rows ['description'];
+				$departure = $rows ['departure'];
+				$destination = $rows ['destination'];
+				$date = $rows ['date'];
+				$time = $rows ['time'];
+				$amount = $rows ['amount'];
+				
+				echo $description."£".$departure."£".$destination."£".$date."£".$time."£".$amount."£".$type;
+				
+				exit();
+			}
 		}
 	}
 }

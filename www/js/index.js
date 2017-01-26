@@ -73,8 +73,8 @@ function _(id) {
 
 function restrict(elem) {
 	"use strict";
-	var tf = _(elem);
-	var rx = new RegExp;
+	var tf = _(elem),
+		rx = new RegExp;
 	if (elem === "email") {
 		rx = /[' "]/gi;
 	}
@@ -100,8 +100,8 @@ function send_message(ad_id) {
 	document.getElementById("send_container").appendChild(send_messages);
 	
 	var send_message_head = document.createElement('div');
-	send_message_head.className = "send_head",
-		send_message_text_text = document.createTextNode("Send Message");
+	send_message_head.className = "send_head";
+	var send_message_text_text = document.createTextNode("Send Message");
 	send_message_head.appendChild(send_message_text_text);
 	document.getElementById("send_message." + ad_id).appendChild(send_message_head);
 	

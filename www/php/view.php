@@ -92,7 +92,7 @@ function view_my_ads($USERID){
                     }
                     
                     //If the Session is the Ad owner, You can edit your adverts
-                    if (isset($_SESSION['user_id']) && $user_id===$ad_user_id){
+                    if (isset($_SESSION['user_id']) && $user_id === $ad_user_id){
                         ?>
                         <div class="all_results" id="all_results">                                
 							<div id="righty">
@@ -138,17 +138,17 @@ function view_my_ads($USERID){
                                     <!--    Edit & Delete Advert-->
                                     <?php
                                     echo
-                                    '<form id="hidden_ad_id_form" method="post" './*action="../edit/edit_my_ad.php/'.getusername($USERID).'.'.getusersurname($USERID).'*/'">'.
-                                        /*<input id="hide_ad_id" type="text" name="ad_id" value='.$ad_id.'>
-                                        <a href="../edit/edit_my_ad.php/'.getusername($USERID).'.'.getusersurname($USERID).'">*/
-                                            '<button class="" id="edit" type="button" >Edit</button>'./*
-                                        </a>*/
-                                    '</form>
+                                    '<form id="hidden_ad_id_form" method="post">
+                                        <input id="hide_ad_id" type="text" name="edit" value='.$ad_id.'>
+                                        <a href="./edit.html?'.$user_id.'&'.$ad_id.'">
+											<button class="" id="edit" type="button" >Edit</button>
+                                        </a>
+									</form>
                                     
                                      
                                     <form id="hidden_ad_id_form" method="post" >
-                                        <input id="hide_ad_id" type="text" name="delete" value='.$ad_id.'>'.
-										'<button class="" id="delete" type="button" onclick="delete_post('.$ad_id.')" >Delete</button>'.                                   
+                                        <input id="hide_ad_id" type="text" name="delete" value='.$ad_id.'>
+										<button class="" id="delete" type="button" onclick="delete_post('.$ad_id.')" >Delete</button>'.                                   
                                     '</form>';
                                     ?>
                                 </div>
@@ -575,24 +575,6 @@ function view_wishlist(){
                         </div>
                             
                     </div>
-                                
-                    <!--    REQUEST TO BOOK SCRIPT-->    
-                    <script type="text/javascript">                                     
-                        function request_to_book(id){
-                            var ad_id = id;
-                            
-                            $.post('wishlist.php', {ad_id: ad_id, status:"request"});
-                        }                                    
-                    </script>
-                                
-                               
-                    <!--    ADD TO WISH LIST SCRIPT   -->    
-                    <script type="text/javascript">                                                                                
-                        function add_to_wishlist(id){
-                            var ad_id = id;
-                            $.post('wishlist.php', {ad_id: ad_id, status:"wishlist"});
-                        }
-                    </script>
                 </div>
                 <?php
             }

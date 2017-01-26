@@ -118,6 +118,7 @@ function send_message(ad_id) {
 	send_button.setAttribute('value', 'SEND');
 	send_button.name = "send_button";
 	send_button.onclick = function () {
+		alert("SEND button is pressed");
 		var message = document.getElementById("send_text." + ad_id).value;
 		if (_("send_text." + ad_id) === " ") {
 			_("send_text." + ad_id).style.border = "2px solid red";

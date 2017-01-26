@@ -131,7 +131,8 @@ function send_message(ad_id) {
 					if (ajax.responseText.slice(-12) === 'message_sent') {
 						var elem = document.getElementById("send_container");
 						elem.parentNode.removeChild(elem);
-						alert("Message Sent");
+						_("message_body_cover").style.display = "block";
+						$("#message_body_cover").fadeOut(4000);
 					}
 				}
 			};

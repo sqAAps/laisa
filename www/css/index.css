@@ -423,10 +423,17 @@ div#profile_imgs{
 	width: 20%;
     display: inline-block;
 }
+div#details{
+	display: inline-block;
+    vertical-align: top;
+    margin-top: 5px;
+    margin-left: 5px;
+}
 div#profile_info{
 	display: inline-block;
     vertical-align: top;
     padding-top: 5px;
+	margin-left: 5px;
 }
 h4#profile_name{
 	margin: 0px;

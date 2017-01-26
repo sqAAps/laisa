@@ -91,10 +91,9 @@ if(isset($_POST['html']) && isset($_POST['departure']) && isset($_POST['destinat
 
 							<div id="lefty">
 								<div id="profile_imgs">
-									<?php 
-									echo '<a href="./profile.html?'.$ad_user_id.'">
-									<img id="profile_image_of_ad_user" src="'.$ad_user_picture_url.'" />
-									</a>'; ?>                                            
+									<?php echo '<a href="./profile.html?'.$ad_user_id.'">';?>
+									<img id="profile_image_of_ad_user" src="<?php echo 'https://'.$ad_user_picture_url; ?>" />
+									<?php echo '</a>'; ?>                                            
 								</div>
 								<div id="profile_info">
 									<h4 id="profile_name"><?php echo $ad_user_name; ?></h4>
@@ -144,7 +143,6 @@ if(isset($_POST['html']) && isset($_POST['departure']) && isset($_POST['destinat
 								<!--    ADD TO WISH LIST    -->
 								<button type="button" id="<?php echo $ad_id; ?>" class="add_to_wishlist" onclick="add_to_wishlist(<?php echo $ad_id; ?>)">
 									<img class="heart" id="<?php echo $ad_id; ?>heart1" src="../images/icons/posts/heart.png" />
-									<img class="addedwishlist" id="<?php echo $ad_id; ?>heart2" src="../images/icons/posts/added_to_wishlist.png" />
 								</button>
 							</div>
 
@@ -231,6 +229,7 @@ if(isset($_POST['index']) && isset($_POST['departure'])&&isset($_POST['destinati
 						if($query_num_rows==1) {
 							while ($rows = mysqli_fetch_array($query_run2)) {
 								$ad_user_name =  $rows['name'];
+								$ad_user_picture_url = $rows['picture_url'];
 								$ad_user_phoneNumber = $rows['phoneNumber'];
 								$ad_user_email = $rows['email'];
 								$ad_user_gender = $rows['gender'];
@@ -249,10 +248,9 @@ if(isset($_POST['index']) && isset($_POST['departure'])&&isset($_POST['destinati
 
 							<div id="lefty">
 								<div id="profile_imgs">
-									<?php 
-									echo '<a href="view_my_profile/viewmyprofile.php/'.getusername($ad_user_id).'">
-									<img id="profile_image_of_ad_user" src="images/users/'.$user_profile_picture_name.'" />
-									</a>'; ?>
+									<?php echo '<a href="./profile.html?'.$ad_user_id.'">';?>
+									<img id="profile_image_of_ad_user" src="<?php echo 'https://'.$ad_user_picture_url; ?>" />
+									<?php echo '</a>'; ?>
 								</div>
 								
 								<div id="righty_departure_and_destination">
@@ -304,14 +302,6 @@ if(isset($_POST['index']) && isset($_POST['departure'])&&isset($_POST['destinati
 									<img class="addedwishlist" id="<?php echo $ad_id; ?>heart2" src="images/icons/posts/added_to_wishlist.png" />
 								</button>
 							</div>
-
-							<!--    ADD TO WISH LIST SCRIPT   -->    
-							<script type="text/javascript">
-								function add_to_wishlist(id){
-									var ad_id = id;
-									$.post('index.php', {ad_id: ad_id, status:"wishlist"});
-								}
-							</script>
 
 						</div>
 					</div>

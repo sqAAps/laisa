@@ -68,17 +68,14 @@ if(isset($_POST['wishlist'])){
 
 							<div id="lefty">
 								<div id="profile_imgs">
-									<?php 
-										echo '<a href="./profile.html?'.$ad_user_id.'">
-												<img id="profile_image_of_ad_user" src="'.$picture_url.'" />
-											</a>'; 
-									?>                                            
+									<?php echo '<a href="./profile.html?'.$id.'">';?>
+									<img id="profile_image_of_ad_user" src="<?php echo 'https://'.$picture_url; ?>" />
+									<?php echo '</a>'; ?>
 								</div>
-								
+								<div id="details">
+									<?php echo $name.'<br><strong>'.$gender.'</strong>'; ?>
+								</div>
 								<div id="righty_departure_and_destination">
-									<div id="details">
-										<?php echo $name.'<br>'.$gender; ?>
-									</div>
 									<img id="departure_destination_image" src="../images/icons/posts/departure_destination.png" />
 
 									<div id="post_departure_and_destination">									
@@ -99,7 +96,6 @@ if(isset($_POST['wishlist'])){
 									<span id="post_date">Date:</span>
 									<?php echo $date ?> 
 								</span>
-								<br>
 								<span id="post_time_tag">
 									<span id="post_time">Time:</span>
 									<?php echo $time ?> 

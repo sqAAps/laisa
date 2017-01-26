@@ -132,7 +132,8 @@
 		<!--J A V A S C R I P T-->
 		<script src="../js/index.js"></script>
         <script type="text/javascript">
-			function profile_fn(){
+			function deviceready(){
+				navigator.splashscreen.show();
 				var page_url = window.location.href;
 				var page_url_split = page_url.split("?");
 				var id = page_url_split[1];
@@ -147,7 +148,6 @@
 				}
 				ajax.send("profile=" + id + "&session_user=" + localStorage.getItem("id"));
 			}
-			window.onload = profile_fn;
 			
 			function add_post(){
 				window.location.assign("./post.html?" + localStorage.getItem("id"));

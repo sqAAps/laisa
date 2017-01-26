@@ -118,12 +118,11 @@ function send_message(ad_id) {
 	send_button.setAttribute('value', 'SEND');
 	send_button.name = "send_button";
 	send_button.onclick = function () {
-		alert("SEND button is pressed");
 		var message = document.getElementById("send_text." + ad_id).value;
 		if (_("send_text." + ad_id) === " ") {
 			_("send_text." + ad_id).style.border = "2px solid red";
 		} else {
-			_("sen`d_text." + ad_id).style.border = "1px solid gainsboro";
+			_("send_text." + ad_id).style.border = "1px solid gainsboro";
 
 			var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/send_message.php");
 			//var ajax = ajaxObj("POST", "../php/send_message.php");
@@ -133,8 +132,6 @@ function send_message(ad_id) {
 						var elem = document.getElementById("send_container");
 						elem.parentNode.removeChild(elem);
 						alert("Message Sent");
-					}else{
-						alert(ajax.responseText);
 					}
 				}
 			};

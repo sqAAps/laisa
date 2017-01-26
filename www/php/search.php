@@ -8,18 +8,26 @@ $output = '';
 if(isset($_POST['html']) && isset($_POST['departure']) && isset($_POST['destination']) && isset($_POST['date']) && isset($_POST['type'])) {
 	$departure = htmlentities($_POST['departure']);
 	$destination = htmlentities($_POST['destination']);
-	$date = htmlentities($_POST['date']);
+	
+	$date_entered = htmlentities($_POST['date']);
+	$date_array = preg_split("/[-\/s,]+/", "2017/04-02");
+	$yy = $date_array[0];
+	$mm = $date_array[1];
+	$dd = $date_array[2];
+	$date1 = $yy."/".$mm."/".$dd;
+	$date2 = $yy."-".$mm."-".$dd;
+	
 	$transport = htmlentities($_POST['type']);
 
-	if(!empty($departure)&&!empty($destination)&&!empty($date)) {
+	if(!empty($departure)&&!empty($destination)&&!empty($date_entered)) {
 
-		if($transport === 'o'){     
-			echo '<h2 class="search_results_heading" id="results_heading">Search Result(s)<br>Offered Transport from "<strong>'.$departure.'</strong>" to "<strong>'.$destination.'</strong>" on the '.$date.'</h2>';
+		if($transport==='o'){     
+			echo '<h2 class="search_results_heading" id="results_heading">Offered transport from "<strong>'.$departure.'</strong>" to "<strong>'.$destination.'</strong>" on the '.$date1.'</h2>';
 		}
 		else {
 			?>
 			<span class="offering_heading" id="offering_heading">
-				<?php echo '<h2 class="search_results_heading" id="results_heading">Search Result(s)<br>Passengers seeking Transport from "<strong>'.$departure.'</strong>" to "<strong>'.$destination.'</strong>" on the '.$date.'</h2>'; ?>
+				<?php echo '<h2 class="search_results_heading" id="results_heading">Commuters looking for transport from "<strong>'.$departure.'</strong>" to "<strong>'.$destination.'</strong>" on the '.$date1.'</h2>'; ?>
 			</span>
 			<?php
 		}
@@ -28,9 +36,9 @@ if(isset($_POST['html']) && isset($_POST['departure']) && isset($_POST['destinat
 		$query1 = "SELECT * FROM `adverts` WHERE 
 			`departure` LIKE '%".mysqli_real_escape_string($connection, $departure)."%' 
 			AND `destination` LIKE '%".mysqli_real_escape_string($connection, $destination)."%' 
-			AND `date` LIKE '%".mysqli_real_escape_string($connection, $date)."%'
+			AND `date`='".mysqli_real_escape_string($connection, $date1)."' OR `date`='".mysqli_real_escape_string($connection, $date2)."'
 			AND `type`='".mysqli_real_escape_string($connection, $transport)."'
-			"; 
+			";
 		
 		//Running the Query
 		if ($query_run = mysqli_query($connection, $query1)) {

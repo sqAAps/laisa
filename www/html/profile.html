@@ -149,19 +149,11 @@
 			window.onload = profile_fn;
 			
 			function add_post(){
-				var page_url = window.location.href;
-				var page_url_split = page_url.split("?");
-				var id = page_url_split[1];
-				
-				window.location.assign("./post.html?"+id);
+				window.location.assign("./post.html?" + localStorage.getItem("id"));
 			}
 			
 			function wishlist(){
-				var page_url = window.location.href;
-				var page_url_split = page_url.split("?");
-				var id = page_url_split[1];
-				
-				window.location.assign("./wishlist.html?"+id);
+				window.location.assign("./wishlist.html?" + localStorage.getItem("id"));
 			}
 			function add_to_wishlist(id){
 				var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/profile.php");
@@ -171,7 +163,7 @@
 					if(ajaxReturn(ajax) == true) {
 						if(ajax.responseText.slice(-8) === 'wishlist'){
 							_("wishlist_body_cover").style.display = "block";
-							$("#wishlist_body_cover").fadeOut("7000");
+							$("#wishlist_body_cover").fadeOut(4000);
 						}
 					}
 				}
@@ -179,18 +171,11 @@
 			}
 			
 			function inbox(){
-				var page_url = window.location.href;
-				var page_url_split = page_url.split("?");
-				var id = page_url_split[1];
-				
-				window.location.assign("./inbox.html?"+id);
+				window.location.assign("./inbox.html?" + localStorage.getItem("id"));
 			}
 			
 			function profile(){
-				var page_url = window.location.href;
-				var page_url_split = page_url.split("?");
-				var id = page_url_split[1];
-				window.location.assign("./profile.html?"+id);
+				window.location.assign("./profile.html?" + localStorage.getItem("id"));
 			}
 			
 			function delete_post(ad_id){

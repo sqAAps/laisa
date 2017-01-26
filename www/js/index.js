@@ -119,7 +119,7 @@ function send_message(ad_id) {
 	send_button.name = "send_button";
 	send_button.onclick = function () {
 		var message = document.getElementById("send_text." + ad_id).value;
-		if (_("send_text." + ad_id) === "") {
+		if (_("send_text." + ad_id) === " ") {
 			_("send_text." + ad_id).style.border = "2px solid red";
 		} else {
 			_("sen`d_text." + ad_id).style.border = "1px solid gainsboro";
@@ -132,6 +132,8 @@ function send_message(ad_id) {
 						var elem = document.getElementById("send_container");
 						elem.parentNode.removeChild(elem);
 						alert("Message Sent");
+					}else{
+						alert(ajax.responseText);
 					}
 				}
 			};

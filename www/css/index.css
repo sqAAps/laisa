@@ -667,7 +667,9 @@ p#physical_information{
 a#footer_links{
     color: white;
 }
-
+p#intro_paragraph{
+	font-size: 16px;
+}
 
 /*          SCREEN      856     */
 @media screen and (max-width:856px){
@@ -782,8 +784,8 @@ a#footer_links{
         display: none;
     }
     img#mobile_logo{
-		width: 60px;
-		top: 5px;
+		height: 41px;
+		top: 7px;
 		display: inline-block;
 		position: absolute;
 		right: 45%;

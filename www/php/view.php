@@ -48,8 +48,8 @@ function view_my_ads($USERID){
             </html>
             <?php               
     
-            // User offered adverts are NOT found in the `offered` database
-            if($query_num_rows == 0){
+            // N O 	R E S U L T S
+            if($query_num_rows === 0){
 				if (isset($_SESSION['user_id']) && $_SESSION['user_id'] === $USERID){
 					if($type === "o"){
 						echo '<h2 id="no-reviews">No Result(s)</h2>
@@ -70,11 +70,8 @@ function view_my_ads($USERID){
 				}
             } 
             
-            //User offered adverts Are found in the `offered` database
-            //There might be more more than ONE result.
-            else if ($query_num_rows>0) {
-                
-                //Search and echo all database results
+			
+            else if ($query_num_rows > 0) {
                 $i = 1;
                 while ($rows = mysqli_fetch_array($query_run)) {
                     $ad_id = $rows ['id'];
@@ -159,82 +156,58 @@ function view_my_ads($USERID){
                         //User CANNOT edit OR delete these adverts
                         ?>
                         <div class="all_results" id="all_results">
-                                
-                            <div id="container">
-                                <div id="righty">
+							<div id="righty">
                                     
-                                    <div id="righty_departure_and_destination">
-                                        <img id="departure_destination_image" src="../images/icons/posts/departure_destination.png" />
+								<div id="righty_departure_and_destination">
+									<img id="departure_destination_image" src="../images/icons/posts/departure_destination.png" />
                                         
-                                        <div id="post_departure_and_destination">
-                                            <span id="post_departure_tag">
-                                                <span id="post_departure">Departure: </span>
-                                                <?php echo $departure ?>
-                                            </span>
+									<div id="post_departure_and_destination">
+										<span id="post_departure_tag">
+											<span id="post_departure">Departure: </span>
+											<?php echo $departure ?>
+										</span>
                                             
-                                            <br>
-                                            <span id="post_destination_tag">
-                                                <span id="post_destination">Destination: </span> <?php echo $destination ?>
-                                            </span>
-                                        </div>                                        
-                                    </div>
+										<br>
+										<span id="post_destination_tag">
+											<span id="post_destination">Destination: </span> <?php echo $destination ?>
+										</span>
+									</div>                                        
+								</div>
                                     
-                                    <p id="post_details">                                        
-                                        <span id="post_date_tag">
-                                            <span id="post_date">Date:</span>
-                                            <?php echo $date ?> 
-                                        </span>
+								<p id="post_details">                                        
+									<span id="post_date_tag">
+										<span id="post_date">Date:</span>
+										<?php echo $date ?> 
+									</span>
                                     
-                                        <span id="post_time_tag">
-                                            <span id="post_time">Time:</span>
-                                            <?php echo $time ?> 
-                                        </span>
+									<span id="post_time_tag">
+										<span id="post_time">Time:</span>
+										<?php echo $time ?> 
+									</span>
                                     
-                                        <span id="post_amount_tag">
-                                            <span id="post_amount">Amount:</span>
-                                            <?php echo "R".$amount ?> 
-                                        </span>
-                                    </p>
+									<span id="post_amount_tag">
+										<span id="post_amount">Amount:</span>
+										<?php echo "R".$amount ?> 
+									</span>
+								</p>
                                     
-                                    <p id="post_information">
-                                        <span id="more_information_text">more information:</span>
-                                        <span id="post_more_information"><?php echo '" '.$description.' "'; ?></span>
-                                    </p>
+								<p id="post_information">
+									<span id="more_information_text">more information:</span>
+									<span id="post_more_information"><?php echo '" '.$description.' "'; ?></span>
+								</p>
                                     
-                                    <!--    REQUEST TO BOOK-->
-                                    <br>
-                                    <button type="button" id="<?php echo $ad_id; ?>" class="request_to_book" onclick="send_message(<?php echo $ad_id; ?>)">
-                                        Send Message
-                                    </button>
+								<!--    REQUEST TO BOOK-->
+								<button type="button" id="<?php echo $ad_id; ?>" class="request_to_book" onclick="send_message(<?php echo $ad_id; ?>)">
+									Send Message
+                                </button>
                                     
-                                    <!--    ADD TO WISH LIST    -->
-                                    <button type="button" id="<?php echo $ad_id; ?>" class="add_to_wishlist" onclick="add_to_wishlist(<?php echo $ad_id; ?>)">
-                                        <img class="heart" id="<?php echo $ad_id; ?>heart1" src="../images/icons/posts/heart.png" />
-                                        <img class="addedwishlist" id="<?php echo $ad_id; ?>heart2" src="../images/icons/posts/added_to_wishlist.png" />
-                                    </button>
-                                    
-                                    
-                                </div>
-                                
-                            <!--    REQUEST TO BOOK SCRIPT-->    
-                            <script type="text/javascript">                                     
-                                function request_to_book(id){
-                                        var ad_id = id;
-
-                                        $.post('index.php', {ad_id: ad_id, status:"request"});
-                                    }                                    
-                            </script>
-                                
-                               
-                            <!--    ADD TO WISH LIST SCRIPT   -->    
-                            <script type="text/javascript">                                                                                
-                                function add_to_wishlist(id){
-                                        var ad_id = id;
-                                        $.post('index.php', {ad_id: ad_id, status:"wishlist"});
-                                    }
-                            </script>
+								<!--    ADD TO WISH LIST    -->
+								<button type="button" id="<?php echo $ad_id; ?>" class="add_to_wishlist" onclick="add_to_wishlist(<?php echo $ad_id; ?>)">
+									<img class="heart" id="<?php echo $ad_id; ?>heart1" src="../images/icons/posts/heart.png" />
+                               	</button>
+							</div>
                         </div>
-                    <?php
+                    	<?php
                     }
                     $i ++; 
                 }

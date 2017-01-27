@@ -12,6 +12,7 @@
         <link href='../css/signin.css' rel='stylesheet' type="text/css">
         <link href='../css/index.css' rel='stylesheet' type="text/css">
         <link href="../API/335bootstrap.css" rel="stylesheet" type="text/css">
+		<link href='../css/profile.css' rel='stylesheet' type="text/css">
 		<link href='../css/inbox.css' rel='stylesheet' type="text/css">
     
         <script language="javascript" type="text/javascript">         
@@ -68,6 +69,7 @@
                 var recName = $("#pm_rec_name");
                 var recID = $("#pm_rec_id");
                 var pm_wipit = $("#pmWipit");
+				var session_user = localStorage.getItem("id");
 				var url = "http://www.sqaaps.co.za/php/laisa/private_msg_parse.php"
                 //var url = "../php/private_msg_parse.php";
                 
@@ -76,7 +78,7 @@
                 } else {
                     $("#pmFormProcessGif").show();
                     
-                    $.post(url,{ message: pmTextArea.val(), senderName: sendername.val(), senderID: senderid.val(), rcpntName: recName.val(), rcpntID: recID.val(), thisWipit: pm_wipit.val() } ,  function(data) {
+                    $.post(url,{ message: pmTextArea.val(), senderName: sendername.val(), senderID: senderid.val(), rcpntName: recName.val(), rcpntID: recID.val(), thisWipit: pm_wipit.val(), session_user: session_user } ,  function(data) {
                         document.replyForm.pmTextArea.value = "";
                         $("#pmFormProcessGif").hide();
                         $('#replyBox').slideUp("fast");
@@ -112,6 +114,15 @@
 		
 		<!--REPLY MESSAGE-->
 		<div id="reply_message"></div>
+		
+		<div class="wishlist_body_cover" id="message_body_cover">
+			<div class="wishlist_div">
+				<h3 class="wishlist_div_head">Message</h3>
+				<p class="wishlist_div_p">Message Sent</p>
+			</div>
+		</div>
+		
+		
 		<script type="text/javascript">
 			function messages(){
 				var status = _("messages");
@@ -123,28 +134,27 @@
 						_("messages").innerHTML = ajax.responseText;
 					}
 				}
-				ajax.send("inbox=" + localStorage.getItem("id"));
+				ajax.send("inbox=" + "" + "&session_user=" + localStorage.getItem("id"));
 			}
 			window.onload = messages;
 			
-			function delete_msg(id){
+			function delete_msg(msg_id){
 				var status = _("messages");
 				status.innerHTML = 'please wait ...';
 				var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/inbox.php");
 				//var ajax = ajaxObj("POST", "../php/inbox.php");
 				ajax.onreadystatechange = function() {
 					if(ajaxReturn(ajax) == true) {
-						if(ajax.responseslice(-7) === 'deleted'){
+						if(ajax.response.slice(-7) === 'deleted'){
 							window.location.assign("./inbox.html?" + localStorage.getItem("id"));
 						}
 					}
 				}
-				ajax.send("delete_msg=" + id);
-				
+				ajax.send("delete_msg=" + msg_id  + '&session_user=' + localStorage.getItem("id"));
 				messages();
 			}
 			
-			function reply_msg(ad_id){
+			function reply_msg(msg_id){
 				var send_container = document.createElement('div');
 				send_container.className = "send_container";
 				send_container.id = "send_container";
@@ -153,34 +163,34 @@
 
 				var send_message = document.createElement('div');
 				send_message.className = "send_message_div";
-				send_message.id = "send_message."+ad_id;
+				send_message.id = "send_message."+msg_id;
 				document.getElementById("send_container").appendChild(send_message);
 
 				var send_message_head = document.createElement('div');
 				send_message_head.className ="send_head";
 				var send_message_text_text = document.createTextNode("Reply Message");
 				send_message_head.appendChild(send_message_text_text);
-				document.getElementById("send_message."+ad_id).appendChild(send_message_head);
+				document.getElementById("send_message."+msg_id).appendChild(send_message_head);
 
 				var send_text = document.createElement('textarea');
 				send_text.className = "send_text";
-				send_text.id = "send_text." + ad_id;
+				send_text.id = "send_text." + msg_id;
 				send_text.setAttribute('placeholder', ' Type your message here');
-				document.getElementById("send_message." + ad_id).appendChild(send_text);
+				document.getElementById("send_message." + msg_id).appendChild(send_text);
 
 				var send_button = document.createElement('input');
-				send_button.id = "send_button." + ad_id;
+				send_button.id = "send_button." + msg_id;
 				send_button.className = "send_button";
 				send_button.setAttribute('type', 'button');
 				send_button.setAttribute('value', 'SEND');
 				send_button.name = "send_button";
 				send_button.onclick = function(){
-					var message = document.getElementById("send_text." + ad_id).value;
-					if(_("send_text." + ad_id) === ""){
-						_("send_text." + ad_id).style.border = "2px solid red";
+					var message = document.getElementById("send_text." + msg_id).value;
+					if(_("send_text." + msg_id) === ""){
+						_("send_text." + msg_id).style.border = "2px solid red";
 					}
 					else{
-						_("send_text." + ad_id).style.border = "1px solid gainsboro";
+						_("send_text." + msg_id).style.border = "1px solid gainsboro";
 
 						var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/send_message.php");
 						//var ajax = ajaxObj("POST", "../php/send_message.php");
@@ -189,17 +199,18 @@
 								if(ajax.responseText.slice(-12) === 'message_sent'){
 									var elem = document.getElementById("send_container");
 									elem.parentNode.removeChild(elem);
-									alert("Message Sent")
+									_("message_body_cover").style.display = "block";
+									$("#message_body_cover").fadeOut(4000);
 								}
 							}
 						}
-						ajax.send("reply="+message+"&sender_id="+ad_id);
+						ajax.send("reply=" + message + "&msg_id=" + msg_id + '&session_user=' + localStorage.getItem("id"));
 					}
 				}
-				document.getElementById("send_message." + ad_id).appendChild(send_button);
+				document.getElementById("send_message." + msg_id).appendChild(send_button);
 
 				var cancel_button = document.createElement('input');
-				cancel_button.id = "cancel_button." + ad_id;
+				cancel_button.id = "cancel_button." + msg_id;
 				cancel_button.className = "cancel_button";
 				cancel_button.setAttribute('type', 'button');
 				cancel_button.setAttribute('value', 'CANCEL');
@@ -208,7 +219,7 @@
 					var elem = document.getElementById("send_container");
 					elem.parentNode.removeChild(elem);
 				}
-				document.getElementById("send_message." + ad_id).appendChild(cancel_button);
+				document.getElementById("send_message." + msg_id).appendChild(cancel_button);
 			}
 			
 			function profile(){

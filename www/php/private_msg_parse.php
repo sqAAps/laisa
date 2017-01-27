@@ -14,15 +14,15 @@ global $connection;
 
 $thisWipit = $_POST['thisWipit'];
 $sessWipit = base64_decode($_SESSION['wipit']);
-/* echo $_SESSION['wipit'] . ' | ' . $_SESSION['user_id'] . ' | ' . $_POST['senderID'];
+/* echo $_SESSION['wipit'] . ' | ' . $_POST['session_user'] . ' | ' . $_POST['senderID'];
 exit(); */
 // If session variable for wipit is not set OR if session id is not set
-if (!isset($_SESSION['wipit']) || !isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['wipit']) || !isset($_POST['session_user'])) {
 	echo  '<img src="images/round_error.png" alt="Error" width="31" height="30" /> &nbsp; <strong>Your session expired from inactivity. Please refresh your browser and continue.</strong>';
     exit();
 }
 // else if session id IS NOT EQUAL TO the posted variable for sender ID
-else if ($_SESSION['user_id'] != $_POST['senderID']) {
+else if ($_POST['session_user'] != $_POST['senderID']) {
 	echo  '<img src="images/round_error.png" alt="Error" width="31" height="30" /> &nbsp;  <strong>$_SESSION[user_id] != $_POST[senderID]</strong>';
     exit();
 }

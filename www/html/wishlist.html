@@ -42,7 +42,7 @@
 						_("wishlist").innerHTML = ajax.responseText;
 					}
 				}
-				ajax.send("wishlist=" + '');
+				ajax.send("wishlist=" + localStorage.getItem("id"));
 			}
 			window.onload = wishlist;
 			

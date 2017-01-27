@@ -6,7 +6,7 @@ global $connection;
 
 if(isset($_POST['wishlist'])){
     global $connection;
-    $query = "SELECT * FROM `wishlist` WHERE `session_user_id`='".mysqli_real_escape_string($connection, $_SESSION['user_id'])."' ";
+    $query = "SELECT * FROM `wishlist` WHERE `session_user_id`='".mysqli_real_escape_string($connection, $_POST['wishlist'])."' ";
     
     if ($query_run = mysqli_query($connection, $query)) {
         $query_num_rows = mysqli_num_rows($query_run);

@@ -5,6 +5,7 @@ require './view.php';
 global $connection;
 
 $session_user = $_POST['session_user'];
+$_SESSION['session_user'] = $_POST['session_user'];
 
 if(isset($_POST['profile'])){
 	$ad_user_id = $_POST['profile'];
@@ -213,4 +214,5 @@ if(isset($_POST['edit'])){
 		}
 	}
 }
+
 ?>

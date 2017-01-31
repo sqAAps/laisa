@@ -9,7 +9,7 @@ $user_id = $_POST['session_user'];
 //User that owns the ad
 //$ad_user_id = get_ad_user_id();
 $ad_user_id = $_POST['session_user'];
-
+$_SESSION['session_user'] = $_POST['session_user'];
 
 // Decode the Session IDX variable and extract the user's ID from it
 $decryptedID = base64_decode($user_id);

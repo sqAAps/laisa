@@ -108,7 +108,9 @@
 		
 		<!--Messages-->
 		<div id="inbox_head">
-			<h2 id="message_header">Messages</h2>
+			<a href="./inbox.html">
+				<h2 id="message_header">Messages</h2>
+			</a>
 		</div>
 		<div id="messages"></div>
 		
@@ -223,10 +225,15 @@
 			}
 			
 			function profile(){
-				var page_url = window.location.href;
-				var page_url_split = page_url.split("?");
-				var id = page_url_split[1];
-				window.location.assign("./profile.html?"+id);
+				window.location.assign("./profile.html?" + localStorage.getItem("id"));
+			}
+			if(typeof(EventSource) !== "undefined") {
+				var source = new EventSource("http://www.sqaaps.co.za/php/laisa/inbox_sse.php");
+				source.onmessage = function(event) {
+					console.log(event.data);
+				} 
+			} else {
+				console.log("Sorry, your browser does not support server-sent events...");
 			}
 		</script>
     </body>

@@ -88,6 +88,10 @@
         },
         "com.jamiestarke.webviewdebug": {
             "PACKAGE_NAME": "za.co.sqaaps.laisa"
+        },
+        "phonegap-plugin-push": {
+            "SENDER_ID": "200712378801",
+            "PACKAGE_NAME": "za.co.sqaaps.laisa"
         }
     },
     "dependent_plugins": {},
@@ -406,6 +410,22 @@
             "id": "cordova-plugin-globalization.GlobalizationProxy",
             "pluginId": "cordova-plugin-globalization",
             "runs": true
+        },
+        {
+            "file": "plugins/phonegap-plugin-push/www/push.js",
+            "id": "phonegap-plugin-push.PushNotification",
+            "pluginId": "phonegap-plugin-push",
+            "clobbers": [
+                "PushNotification"
+            ]
+        },
+        {
+            "file": "plugins/phonegap-plugin-push/www/browser/push.js",
+            "id": "phonegap-plugin-push.BrowserPush",
+            "pluginId": "phonegap-plugin-push",
+            "clobbers": [
+                "PushNotification"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -421,6 +441,7 @@
         "cordova-plugin-console": "1.0.5",
         "cordova-plugin-network-information": "1.3.1",
         "cordova-plugin-globalization": "1.0.5",
-        "com.jamiestarke.webviewdebug": "1.0.8"
+        "com.jamiestarke.webviewdebug": "1.0.8",
+        "phonegap-plugin-push": "1.9.1"
     }
 }

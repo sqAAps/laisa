@@ -8,18 +8,26 @@ $output = '';
 if(isset($_POST['html']) && isset($_POST['departure']) && isset($_POST['destination']) && isset($_POST['date']) && isset($_POST['type'])) {
 	$departure = htmlentities($_POST['departure']);
 	$destination = htmlentities($_POST['destination']);
-	$date = htmlentities($_POST['date']);
+	
+	$date_entered = htmlentities($_POST['date']);
+	$date_array = preg_split("/[-\/s,]+/", $date_entered);
+	$yy = $date_array[0];
+	$mm = $date_array[1];
+	$dd = $date_array[2];
+	$date1 = $yy."/".$mm."/".$dd;
+	$date2 = $yy."-".$mm."-".$dd;
+	
 	$transport = htmlentities($_POST['type']);
 
-	if(!empty($departure)&&!empty($destination)&&!empty($date)) {
+	if(!empty($departure)&&!empty($destination)&&!empty($date_entered)) {
 
-		if($transport === 'o'){     
-			echo '<h2 class="search_results_heading" id="results_heading">Search Result(s)<br>Offered Transport from "<strong>'.$departure.'</strong>" to "<strong>'.$destination.'</strong>" on the '.$date.'</h2>';
+		if($transport==='o'){     
+			echo '<h2 class="search_results_heading" id="results_heading">Offered transport from "<strong>'.$departure.'</strong>" to "<strong>'.$destination.'</strong>" on the '.$date1.'</h2>';
 		}
 		else {
 			?>
 			<span class="offering_heading" id="offering_heading">
-				<?php echo '<h2 class="search_results_heading" id="results_heading">Search Result(s)<br>Passengers seeking Transport from "<strong>'.$departure.'</strong>" to "<strong>'.$destination.'</strong>" on the '.$date.'</h2>'; ?>
+				<?php echo '<h2 class="search_results_heading" id="results_heading">Commuters looking for transport from "<strong>'.$departure.'</strong>" to "<strong>'.$destination.'</strong>" on the '.$date1.'</h2>'; ?>
 			</span>
 			<?php
 		}
@@ -28,9 +36,9 @@ if(isset($_POST['html']) && isset($_POST['departure']) && isset($_POST['destinat
 		$query1 = "SELECT * FROM `adverts` WHERE 
 			`departure` LIKE '%".mysqli_real_escape_string($connection, $departure)."%' 
 			AND `destination` LIKE '%".mysqli_real_escape_string($connection, $destination)."%' 
-			AND `date` LIKE '%".mysqli_real_escape_string($connection, $date)."%'
+			AND `date`='".mysqli_real_escape_string($connection, $date1)."' OR `date`='".mysqli_real_escape_string($connection, $date2)."'
 			AND `type`='".mysqli_real_escape_string($connection, $transport)."'
-			"; 
+			";
 		
 		//Running the Query
 		if ($query_run = mysqli_query($connection, $query1)) {
@@ -83,10 +91,9 @@ if(isset($_POST['html']) && isset($_POST['departure']) && isset($_POST['destinat
 
 							<div id="lefty">
 								<div id="profile_imgs">
-									<?php 
-									echo '<a href="./profile.html?'.$ad_user_id.'">
-									<img id="profile_image_of_ad_user" src="'.$ad_user_picture_url.'" />
-									</a>'; ?>                                            
+									<?php echo '<a href="./profile.html?'.$ad_user_id.'">';?>
+									<img id="profile_image_of_ad_user" src="<?php echo 'https://'.$ad_user_picture_url; ?>" />
+									<?php echo '</a>'; ?>                                            
 								</div>
 								<div id="profile_info">
 									<h4 id="profile_name"><?php echo $ad_user_name; ?></h4>
@@ -94,7 +101,7 @@ if(isset($_POST['html']) && isset($_POST['departure']) && isset($_POST['destinat
 								</div>
 								
 								<div id="righty_departure_and_destination">
-									<img id="departure_destination_image" src="../images/icons/posts/departure_destination.svg" />
+									<img id="departure_destination_image" src="../images/icons/posts/departure_destination.png" />
 
 									<div id="post_departure_and_destination">									
 										<p id="post_departure_tag">
@@ -135,8 +142,7 @@ if(isset($_POST['html']) && isset($_POST['departure']) && isset($_POST['destinat
 
 								<!--    ADD TO WISH LIST    -->
 								<button type="button" id="<?php echo $ad_id; ?>" class="add_to_wishlist" onclick="add_to_wishlist(<?php echo $ad_id; ?>)">
-									<img class="heart" id="<?php echo $ad_id; ?>heart1" src="../images/icons/posts/heart.svg" />
-									<img class="addedwishlist" id="<?php echo $ad_id; ?>heart2" src="../images/icons/posts/added_to_wishlist.svg" />
+									<img class="heart" id="<?php echo $ad_id; ?>heart1" src="../images/icons/posts/heart.png" />
 								</button>
 							</div>
 
@@ -223,6 +229,7 @@ if(isset($_POST['index']) && isset($_POST['departure'])&&isset($_POST['destinati
 						if($query_num_rows==1) {
 							while ($rows = mysqli_fetch_array($query_run2)) {
 								$ad_user_name =  $rows['name'];
+								$ad_user_picture_url = $rows['picture_url'];
 								$ad_user_phoneNumber = $rows['phoneNumber'];
 								$ad_user_email = $rows['email'];
 								$ad_user_gender = $rows['gender'];
@@ -241,14 +248,13 @@ if(isset($_POST['index']) && isset($_POST['departure'])&&isset($_POST['destinati
 
 							<div id="lefty">
 								<div id="profile_imgs">
-									<?php 
-									echo '<a href="view_my_profile/viewmyprofile.php/'.getusername($ad_user_id).'">
-									<img id="profile_image_of_ad_user" src="images/users/'.$user_profile_picture_name.'" />
-									</a>'; ?>
+									<?php echo '<a href="./profile.html?'.$ad_user_id.'">';?>
+									<img id="profile_image_of_ad_user" src="<?php echo 'https://'.$ad_user_picture_url; ?>" />
+									<?php echo '</a>'; ?>
 								</div>
 								
 								<div id="righty_departure_and_destination">
-									<img id="departure_destination_image" src="images/icons/posts/departure_destination.svg" />
+									<img id="departure_destination_image" src="images/icons/posts/departure_destination.png" />
 
 									<div id="post_departure_and_destination">									
 										<p id="post_departure_tag">
@@ -292,18 +298,10 @@ if(isset($_POST['index']) && isset($_POST['departure'])&&isset($_POST['destinati
 
 								<!--    ADD TO WISH LIST    -->
 								<button type="button" id="<?php echo $ad_id; ?>" class="add_to_wishlist" onclick="add_to_wishlist(<?php echo $ad_id; ?>)">
-									<img class="heart" id="<?php echo $ad_id; ?>heart1" src="images/icons/posts/heart.svg" />
-									<img class="addedwishlist" id="<?php echo $ad_id; ?>heart2" src="images/icons/posts/added_to_wishlist.svg" />
+									<img class="heart" id="<?php echo $ad_id; ?>heart1" src="images/icons/posts/heart.png" />
+									<img class="addedwishlist" id="<?php echo $ad_id; ?>heart2" src="images/icons/posts/added_to_wishlist.png" />
 								</button>
 							</div>
-
-							<!--    ADD TO WISH LIST SCRIPT   -->    
-							<script type="text/javascript">
-								function add_to_wishlist(id){
-									var ad_id = id;
-									$.post('index.php', {ad_id: ad_id, status:"wishlist"});
-								}
-							</script>
 
 						</div>
 					</div>

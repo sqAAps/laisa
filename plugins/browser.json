@@ -47,6 +47,10 @@
             "APP_ID": "1842810965963847",
             "APP_NAME": "laisa",
             "PACKAGE_NAME": "za.co.sqaaps.laisa"
+        },
+        "phonegap-plugin-push": {
+            "SENDER_ID": "200712378801",
+            "PACKAGE_NAME": "za.co.sqaaps.laisa"
         }
     },
     "dependent_plugins": {}

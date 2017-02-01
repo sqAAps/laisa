@@ -18,7 +18,7 @@
 		<div class="mobile_nav_head" id="nav_head">
 			<div class="container-fluid">	    
 				<a href="javascript:profile()">
-					<img id="mobile_logo" style="position: relative; margin-left: 85%;" src="../images/icons/mobile_navigation/logo.svg" />
+					<img id="mobile_logo" style="position: relative; margin-left: 85%;" src="../images/icons/mobile_navigation/logo.png" />
 				</a>
 			</div>
 		</div>                
@@ -27,11 +27,7 @@
         <h2 id="post_ad_heading">Travel Plan</h2>
         <section id="post_ad_section">
             <div class="container-fluid" id="post_container">
-                
-                
-                <!--<div id="one-time">Once-off Plan</div>
-                <div id="recurring">Recurring</div>-->
-                
+
                 <!--Once-Off Form-->
                 <form class="" id="post_form" name="post_form" action="" method="POST">
                     
@@ -62,6 +58,7 @@
 						<label id="time_label">Time: </label> Between
 						<div id="time_div">
 							<select name="time1" id="time_select1">
+								<option id="time1" name="time1" value="01:00">00:00</option>
 								<option id="time1" name="time1" value="01:00">01:00</option>
 								<option id="time1" name="time1" value="02:00">02:00</option>
 								<option id="time1" name="time1" value="03:00">03:00</option>
@@ -73,14 +70,22 @@
 								<option id="time1" name="time1" value="09:00">09:00</option>
 								<option id="time1" name="time1" value="10:00">10:00</option>
 								<option id="time1" name="time1" value="11:00">11:00</option>
-								<option id="time1" name="time1" value="12:00">12:00</option>                        
-							</select>
-							<select name="am_pm1" id="am_pm_select1">
-								<option id="am_pm1" name="am_pm1" value="AM">AM</option>
-								<option id="am_pm1" name="am_pm1" value="PM">PM</option>
+								<option id="time1" name="time1" value="12:00">12:00</option>
+								<option id="time1" name="time1" value="13:00">13:00</option>
+								<option id="time1" name="time1" value="14:00">14:00</option>
+								<option id="time1" name="time1" value="15:00">15:00</option>
+								<option id="time1" name="time1" value="16:00">16:00</option>
+								<option id="time1" name="time1" value="17:00">17:00</option>
+								<option id="time1" name="time1" value="18:00">18:00</option>
+								<option id="time1" name="time1" value="19:00">19:00</option>
+								<option id="time1" name="time1" value="20:00">20:00</option>
+								<option id="time1" name="time1" value="21:00">21:00</option>
+								<option id="time1" name="time1" value="22:00">22:00</option>
+								<option id="time1" name="time1" value="23:00">23:00</option>
 							</select>
 							<span> and </span>
 							<select name="time2" id="time_select2">
+								<option id="time2" name="time2" value="00:00">01:00</option>
 								<option id="time2" name="time2" value="01:00">01:00</option>
 								<option id="time2" name="time2" value="02:00">02:00</option>
 								<option id="time2" name="time2" value="03:00">03:00</option>
@@ -92,11 +97,18 @@
 								<option id="time2" name="time2" value="09:00">09:00</option>
 								<option id="time2" name="time2" value="10:00">10:00</option>
 								<option id="time2" name="time2" value="11:00">11:00</option>
-								<option id="time2" name="time2" value="12:00">12:00</option>                        
-							</select>
-							<select name="am_pm2" id="am_pm_select2">
-								<option id="am_pm2" name="am_pm2" value="AM">AM</option>
-								<option id="am_pm2" name="am_pm2" value="PM">PM</option>
+								<option id="time2" name="time2" value="12:00">12:00</option>
+								<option id="time2" name="time2" value="13:00">13:00</option>
+								<option id="time2" name="time2" value="14:00">14:00</option>
+								<option id="time2" name="time2" value="15:00">15:00</option>
+								<option id="time2" name="time2" value="16:00">16:00</option>
+								<option id="time2" name="time2" value="17:00">17:00</option>
+								<option id="time2" name="time2" value="18:00">18:00</option>
+								<option id="time2" name="time2" value="19:00">19:00</option>
+								<option id="time2" name="time2" value="20:00">20:00</option>
+								<option id="time2" name="time2" value="21:00">21:00</option>
+								<option id="time2" name="time2" value="22:00">22:00</option>
+								<option id="time2" name="time2" value="23:00">23:00</option>
 							</select>
 						</div>
 					</div>
@@ -114,6 +126,10 @@
 				
 				<script type="text/javascript">
 					function addpost(){
+						var page_url = window.location.href;
+						var page_url_split = page_url.split("?");
+						var id = page_url_split[1];
+						
 						var departure = _("autocomplete").value;
 						var destination = _("autocomplete2").value;
 						
@@ -126,12 +142,10 @@
 						var date = _("date_input").value;
 						
 						var time_one = _("time_select1").value;
-						var am_pm_one = _("am_pm_select1").value;
 						
 						var time_two = _("time_select2").value;
-						var am_pm_two = _("am_pm_select2").value;
 						
-						var time = "Between "+time_one+" "+am_pm_one+" and "+time_two+" "+am_pm_two;
+						var time = "Between " + time_one + "  and " + time_two;
 						
 						var amount = _("amount_input").value;
 						
@@ -162,7 +176,7 @@
 									}
 								}
 							}
-							ajax.send("departure="+departure+"&destination="+destination+"&date="+date+"&type="+type+"&html="+''+"&time="+time+"&amount="+amount+"&description="+description);
+							ajax.send("post=" + "" + "&departure=" + departure + "&destination=" + destination + "&date=" + date + "&type=" + type + "&html=" + '' + "&time=" + time + "&amount=" + amount + "&description=" + description + "&id=" + id);
 						}
 					}
 				</script>

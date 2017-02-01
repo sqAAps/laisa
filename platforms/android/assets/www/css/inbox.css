@@ -1,28 +1,32 @@
-div#messages{
-	margin-top: 80px;
+body{
+	background-color: #F6FBFF;
 }
 table#table_container{
 	width: 100%;
     margin: auto;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-bottom: 25px;
     padding-bottom: 30px;
     border-top: 1px solid #93DBC7;
-    background-color: white;
 }
 td#table_container_td{
     width: 100%;
     vertical-align:top;
 }
+div#inbox_head{
+	margin-top: 68px;
+    background-color: white;
+    padding: 25px 0px;
+}
 h2#message_header{
 	text-align: center;
     padding: 5px 0px;
     width: 80%;
-    border: 1px solid #93DBC7;
+    border: 2px solid #75AA9B;
     background-color: #93DBC7;
     border-radius: 100px;
     color: white;
     margin: auto;
+	box-shadow: 0px 0px 3px 1px #75AA9B;
 }
 
 /*//////////////////////////////
@@ -86,10 +90,11 @@ td#date{
     While loop for every message
 ////////////////////////////////////*/
 table#message_container{
-    width: 96%;
-    border-bottom: 1px solid gainsboro;
+	width: 95%;
+    border-bottom: 2px solid gainsboro;
     padding-bottom: 10px;
     margin: 10px auto;
+    background-color: white;
 }
 td#sender_checkbox_container{
     width: 4%;
@@ -105,22 +110,23 @@ img#message_image{
     height: 75px;
     margin: auto;
     border-radius: 65%;
-    border: 3px solid white;
+    border: 3px solid whitesmoke;
 }
 
 td#sender_message_container{
     width: 58%;
     vertical-align: top;
+	padding: 0px 1%;
 }
 a#sender_name{
     font-size: 14px;
-    color: mediumseagreen;
+    color: #58595B;
     font-family: sans-serif;
     font-weight: 600;
 }
 td#sender_date_container{
 	width: 16%;
-    padding: 0px 2%;
+    padding: 0px 1%;
     vertical-align: top;
 }
 td.delete_message_td, td.reply_message_td{
@@ -128,9 +134,11 @@ td.delete_message_td, td.reply_message_td{
     width: 50%;
 }
 button.delete_button, button.reply{
-	background-color: white;
-    border: 1px solid slategrey;
-	margin-bottom: 10px;
+	background-color: #18BEA2;
+    border-radius: 3px;
+    color: white;
+    border: 1px solid #128C78;
+    margin-bottom: 10px;
 }
 div#message_options{
 	margin-top: 10px;

@@ -5,19 +5,17 @@ require './view.php';
 global $connection;
 error_reporting(E_ALL);
 
-if( isset($_SESSION['user_id'])){
-    $user_id = $_SESSION['user_id'];
-}
+$user_id = $_POST['session_user'];
 //User that owns the ad
 //$ad_user_id = get_ad_user_id();
-$ad_user_id = $_SESSION['user_id'];
-
+$ad_user_id = $_POST['session_user'];
+$_SESSION['session_user'] = $_POST['session_user'];
 
 // Decode the Session IDX variable and extract the user's ID from it
-$decryptedID = base64_decode($_SESSION['user_id']);
+$decryptedID = base64_decode($user_id);
 $id_array = explode("p3h9xfn8sq03hs2234", $decryptedID);
 
-$_SESSION['username'] = getusername($_SESSION['user_id']);
+$_SESSION['username'] = getusername($user_id);
 $my_uname = $_SESSION['username'];// Put user's first name into a local variable
 
 
@@ -53,48 +51,17 @@ if(isset($_POST['delete_msg'])){
 
 
 if(isset($_POST['inbox'])){
-	$_SESSION['user_id'] = $_POST['inbox'];
+	$session_user = $_POST['session_user'];
 	?>
-	<h2 id="message_header">Messages</h2>
 	<table id="table_container">
             <tr>
                 <td id="table_container_td">
                     <!-- START THE PM FORM AND DISPLAY LIST -->
                     <form name="myform" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
-                        
-                       <!-- <table id="delete_container">
-                            <tr>
-                                <td id="delete_container_image_container">
-                                    <img id="delete_container_image" src="../images/messages/crookedArrow.png"/>
-                                </td>
-                                
-                                <td id="delete_button_container">
-                                    <input type="submit" name="deleteBtn" id="deleteBtn" value="Delete" />
-                                    <span id="jsbox" style="display:none"></span>
-                                </td>
-                            </tr>
-                        </table>-->
-                
-                        <!--<table id="headline_container">
-							
-                            <tr>
-                                <td id="toggleAll_checkbox_container">
-                                    <input name="toggleAll" id="toggleAll" type="checkbox" onclick="toggleChecks(document.myform.cb)" />
-                                </td>
-                    
-                                <td id="from">From</td>
-                                
-                                <td id="message">Message</td>
-                                
-                                <td id="date">Date</td>
-                            </tr>
-                        </table> -->
-						
-                        
                         <?php
                         ///////////End take away///////////////////////
                         // SQL to gather their entire PM list
-                        $sql = mysqli_query($connection, "SELECT * FROM messages WHERE receiver_id=".mysqli_real_escape_string($connection, $user_id)." AND recipient_delete='0' ORDER BY id DESC LIMIT 100");
+                        $sql = mysqli_query($connection, "SELECT * FROM messages WHERE receiver_id=".mysqli_real_escape_string($connection, $session_user)." AND recipient_delete='0' ORDER BY id DESC LIMIT 100");
 
                         if(mysqli_num_rows($sql)>0){
                             while($row = mysqli_fetch_array($sql)){ 
@@ -106,36 +73,29 @@ if(isset($_POST['inbox'])){
                                         $textWeight = 'msgRead';
                                 }
 
-                                $fr_id = $row['sender_id'];    
+                                $fr_id = $row['sender_id']; $msg_id = $row['id'];   
 
                                 // SQL - Collect username for sender inside loop
-								$query = "SELECT `name` FROM `users` WHERE `id`='$fr_id' LIMIT 1";
+								$query = "SELECT * FROM `users` WHERE `id`='$fr_id' LIMIT 1";
                                 $query_run = mysqli_query($connection, $query);
                                 while($raw = mysqli_fetch_array($query_run)){
                                     $Fname = $raw['name'];
+									$ad_user_picture_url = $raw['picture_url'];
                                 }
 
                                 ?>
                                 <table id="message_container">
                                     <tr>
                                         <td id="sender_image_container">
-                                            <?php                            
-                                            $images = glob("../images/users/".$fr_id."*.{jpeg,jpg,png}", GLOB_BRACE);
-                                            foreach($images as $image){
-                                                $message_sender_profile_picture_name = basename($image);
-                                            }
-                                            if(!isset($user_profile_background_name)){
-                                                $user_profile_background_name = "defaults.svg";
-                                            }
-                                            echo '<a href="../view_my_profile/viewmyprofile.php/'.getusername($fr_id).'">
-                                                <img id="message_image" src="../images/users/'.$message_sender_profile_picture_name.'"/>
-                                            </a>';
-                                            ?>
+											<?php           
+											echo '<a href="./profile.html?'.$fr_id.'">';?>
+												<img id="profile_image_of_ad_user" src="<?php echo 'https://'.$ad_user_picture_url; ?>" />
+											<?php echo '</a>'; ?>
                                         </td>
 
                                         <td id="sender_message_container">
 											<?php
-											echo '<a id="sender_name" href="../view_my_profile/viewmyprofile.php/'.getusername($fr_id).'">'.$Sname.'</a>';
+											echo '<a id="sender_name" href="../view_my_profile/viewmyprofile.php/'.getusername($fr_id).'">'.$Fname.'</a>';
 											?>
                                             <span class="toggle" style="padding:3px;">
                                                 <br>
@@ -147,7 +107,7 @@ if(isset($_POST['inbox'])){
 
                                             <div class="hiddenDiv"> 
                                                 <!--< ?php echo stripslashes(wordwrap(nl2br($row['message']), 54, "\n", true)); ?>-->
-                                                <a id="reply_a" href="javascript:toggleReplyBox('<?php echo $my_uname; ?>','<?php echo $user_id; ?>','<?php echo $Sname; ?>','<?php echo $fr_id; ?>','<?php echo $thisRandNum; ?>')">
+                                                <a id="reply_a" href="javascript:toggleReplyBox('<?php echo $my_uname; ?>','<?php echo $session_user; ?>','<?php echo $Fname; ?>','<?php echo $fr_id; ?>','<?php echo $thisRandNum; ?>')">
                                                     Reply
                                                 </a>
                                             </div>
@@ -155,7 +115,7 @@ if(isset($_POST['inbox'])){
 											<div id="message_options">
 												<button class="delete_button" id="delete.<?php echo $row['id']; ?>" type="button" onclick="delete_msg('<?php echo $row['id']; ?>')">Delete Message</button>
 												
-												<button class="reply" id="reply.<?php echo $row['id']; ?>" type="button" onclick="reply_msg(<?php echo $row['sender_id']; ?>)">Reply</button>
+												<button class="reply" id="reply.<?php echo $row['id']; ?>" type="button" onclick="reply_msg(<?php echo $msg_id; ?>)">Reply</button>
 											</div>
                                         </td>
 

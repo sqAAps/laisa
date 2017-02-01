@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<script src="../API/jquery.js"></script>
+		<script src="../js/index.js"></script>
+		<script src="../API/335bootstrap.js"></script>
+        <link rel="stylesheet" href="../API/335bootstrap.css">
+		<link href="../images/icons/mobile_navigation/1logo.png" rel="shortcut icon">
+		<title>laisa</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='../css/index.css' rel='stylesheet' type="text/css">
+        <link href='../css/post.css' rel='stylesheet' type="text/css">
+    </head>
+    
+	<body>                        
+		<!--Mobile Navigation bar-->
+		<div class="mobile_nav_head" id="nav_head">
+			<div class="container-fluid">	    
+				<a href="javascript:profile()">
+					<img id="mobile_logo" style="position: relative; margin-left: 85%;" src="../images/icons/mobile_navigation/logo.png" />
+				</a>
+			</div>
+		</div>                
+        
+        
+        <h2 id="post_ad_heading"> Edit Travel Plan</h2>
+        <section id="post_ad_section">
+            <div class="container-fluid" id="post_container">
+
+                <!--<div id="one-time">Once-off Plan</div>
+                <div id="recurring">Recurring</div>-->
+                
+                <!--Once-Off Form-->
+                <form class="" id="post_form" name="post_form" action="" method="POST">
+                    
+                    <!--Departure Field-->
+                    <input id="autocomplete" onFocus="geolocate()" name="departure" type="text" placeholder="  Where are you leaving from?" maxlength="40" required />
+                    
+                    <!--Destination Field-->
+                    <input id="autocomplete2" onFocus="geolocate()" name="destination" type="text" placeholder="  Where are you going?" maxlength="40" required />
+                       
+                    <!--Type of ad-->
+                    <ul id="type_list">
+                        <li class="type_list_items">
+                            <input id="radio_input_transport" type="radio" name="type" value="o" checked><span class="radio_text">Offering Transport</span>
+                        </li>
+                        <li class="type_list_items">
+                            <input id="radio_input_commuter" type="radio" name="type" value="w"><span class="radio_text">Seeking Transport</span>
+                        </li>
+                    </ul>
+                                                                                                                    
+                    <!--Date of departure-->
+					<div>
+                    	<label id="date_label">Date: </label>                       
+                    	<input id="date_input" type="date" name="date" placeholder="Date of departure" required />
+					</div>
+					
+                    <!--Time of departure-->
+					<div>
+						<label id="time_label">Time: </label> Between
+						<div id="time_div">
+							<select name="time1" id="time_select1">
+								<option id="time1" name="time1" value="01:00">00:00</option>
+								<option id="time1" name="time1" value="01:00">01:00</option>
+								<option id="time1" name="time1" value="02:00">02:00</option>
+								<option id="time1" name="time1" value="03:00">03:00</option>
+								<option id="time1" name="time1" value="04:00">04:00</option>
+								<option id="time1" name="time1" value="05:00">05:00</option>
+								<option id="time1" name="time1" value="06:00">06:00</option>
+								<option id="time1" name="time1" value="07:00">07:00</option>
+								<option id="time1" name="time1" value="08:00">08:00</option>
+								<option id="time1" name="time1" value="09:00">09:00</option>
+								<option id="time1" name="time1" value="10:00">10:00</option>
+								<option id="time1" name="time1" value="11:00">11:00</option>
+								<option id="time1" name="time1" value="12:00">12:00</option>
+								<option id="time1" name="time1" value="13:00">13:00</option>
+								<option id="time1" name="time1" value="14:00">14:00</option>
+								<option id="time1" name="time1" value="15:00">15:00</option>
+								<option id="time1" name="time1" value="16:00">16:00</option>
+								<option id="time1" name="time1" value="17:00">17:00</option>
+								<option id="time1" name="time1" value="18:00">18:00</option>
+								<option id="time1" name="time1" value="19:00">19:00</option>
+								<option id="time1" name="time1" value="20:00">20:00</option>
+								<option id="time1" name="time1" value="21:00">21:00</option>
+								<option id="time1" name="time1" value="22:00">22:00</option>
+								<option id="time1" name="time1" value="23:00">23:00</option>
+							</select>
+							<span> and </span>
+							<select name="time2" id="time_select2">
+								<option id="time2" name="time2" value="00:00">01:00</option>
+								<option id="time2" name="time2" value="01:00">01:00</option>
+								<option id="time2" name="time2" value="02:00">02:00</option>
+								<option id="time2" name="time2" value="03:00">03:00</option>
+								<option id="time2" name="time2" value="04:00">04:00</option>
+								<option id="time2" name="time2" value="05:00">05:00</option>
+								<option id="time2" name="time2" value="06:00">06:00</option>
+								<option id="time2" name="time2" value="07:00">07:00</option>
+								<option id="time2" name="time2" value="08:00">08:00</option>
+								<option id="time2" name="time2" value="09:00">09:00</option>
+								<option id="time2" name="time2" value="10:00">10:00</option>
+								<option id="time2" name="time2" value="11:00">11:00</option>
+								<option id="time2" name="time2" value="12:00">12:00</option>
+								<option id="time2" name="time2" value="13:00">13:00</option>
+								<option id="time2" name="time2" value="14:00">14:00</option>
+								<option id="time2" name="time2" value="15:00">15:00</option>
+								<option id="time2" name="time2" value="16:00">16:00</option>
+								<option id="time2" name="time2" value="17:00">17:00</option>
+								<option id="time2" name="time2" value="18:00">18:00</option>
+								<option id="time2" name="time2" value="19:00">19:00</option>
+								<option id="time2" name="time2" value="20:00">20:00</option>
+								<option id="time2" name="time2" value="21:00">21:00</option>
+								<option id="time2" name="time2" value="22:00">22:00</option>
+								<option id="time2" name="time2" value="23:00">23:00</option>
+							</select>
+						</div>
+					</div>
+                        
+                    <!--Amount-->
+                    <input class="" id="amount_input" name="amount" type="text" placeholder=" Amount " required />
+                    
+					<!--Basic information Field-->
+                    <textarea id="description_input" name="description" rows="4" cols="50" placeholder="  Please write any additional information regarding the travel plan" ></textarea>
+                    
+                    <div id="validate_status"></div>
+                    
+                    <button class="" id="post_ad" name="post_ad" type="button" onclick="editpost()">Submit</button>
+                </form>
+				
+				
+            </div>
+        </section>
+        
+        
+        
+       	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUwakWff-5NOHsFTlxgWr4uSWb9Syjroo&libraries=places&callback=initAutocomplete"
+        async defer></script>
+		<!--google maps API-->
+        <script>
+			function edit(){
+				var page_url = window.location.href;
+				var page_url_split = page_url.split("?");
+				
+				var numbers = page_url_split[1];
+				var numbers_split = numbers.split("&");
+				
+				var user_id = numbers_split[0];
+				var ad_id = numbers_split[1];
+				
+				var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/profile.php");
+				
+				ajax.onreadystatechange = function() {
+					if(ajaxReturn(ajax) == true) {
+						var response = ajax.responseText;
+						var	response_split = response.split("£");
+						_("description_input").value = response_split[0];
+						_("autocomplete").value = response_split[1];
+						_("autocomplete2").value = response_split[2];
+						_("date_input").value = response_split[3];
+						_("amount_input").value = response_split[5];
+						var	type = response_split[6];
+					}
+				}
+				ajax.send("edit=" + user_id + "&ad_id=" + ad_id);				
+			}
+			window.onload = edit;
+			
+			function editpost(){
+				var page_url = window.location.href;
+				var page_url_split = page_url.split("?");
+				
+				var numbers = page_url_split[1];
+				var numbers_split = numbers.split("&");
+				
+				var user_id = numbers_split[0];
+				var ad_id = numbers_split[1];
+				
+				var departure = _("autocomplete").value;
+				var destination = _("autocomplete2").value;
+						
+				if(_("radio_input_transport").checked == true){
+					var type = "o";
+				}else{
+					var type = "w";
+				}
+
+				var date = _("date_input").value;
+						
+				var time_one = _("time_select1").value;
+						
+				var time_two = _("time_select2").value;
+						
+				var time = "Between " + time_one + "  and " + time_two;
+						
+				var amount = _("amount_input").value;
+						
+				var description = _("description_input").value;
+
+				var status = _("validate_status");
+
+				if(departure == "" || destination == "" || amount == "" ){
+					status.innerHTML = '<span style="color: #ff0000;font-family: sans-serif;margin-left: 15px;font-size: 15px;">Fill out all of the form data</span>';
+				}else if(description == ""){
+					_("description_input").style.borderColor = "red";
+					_("description_input").style.borderWidth = "2px";
+					_("description_input").style.borderStyle = "solid";
+				} else {	
+					_("description_input").style.borderColor = "gainsboro";
+					_("description_input").style.borderWidth = "1px";
+					_("description_input").style.borderStyle = "solid";
+					status.innerHTML = 'please wait ...';
+					var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/post.php");
+					ajax.onreadystatechange = function() {
+						if(ajaxReturn(ajax) == true) {
+							if (ajax.responseText.slice(-6) === "edited") {
+								window.location.assign("./profile.html?" + localStorage.getItem("id"));
+							}else{
+								status.innerHTML = ajax.responseText;
+							}
+						}
+					}
+					ajax.send("edit=" + ad_id + "&departure=" + departure+"&destination="+destination+"&date=" + date + "&type=" + type + "&html=" + '' + "&time=" + time + "&amount=" + amount + "&description=" + description);
+				}
+			}
+			
+			function profile(){
+				var page_url = window.location.href;
+				var page_url_split = page_url.split("?");
+				var id = page_url_split[1];
+				window.location.assign("./profile.html?"+id);
+			}
+			
+			
+            // This example displays an address form, using the autocomplete feature
+            // of the Google Places API to help users fill in the information.
+            
+            // This example requires the Places library. Include the libraries=places
+            // parameter when you first load the API. For example:
+            // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+            var placeSearch, autocomplete, autocomplete2;
+            var componentForm = {
+                street_number: 'short_name',
+                route: 'long_name',
+                locality: 'long_name',
+                administrative_area_level_1: 'short_name',
+                country: 'long_name',
+                postal_code: 'short_name'
+            };
+
+            function initAutocomplete() {
+                // Create the autocomplete object, restricting the search to geographical
+                // location types.
+                autocomplete = new google.maps.places.Autocomplete(
+                    /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+                    {types: ['geocode']});
+
+                // When the user selects an address from the dropdown, populate the address
+                // fields in the form.
+                autocomplete.addListener('place_changed', function() {
+                    fillInAddress(autocomplete, "");
+                });
+          
+                autocomplete2 = new google.maps.places.Autocomplete(
+                    /** @type {!HTMLInputElement} */(document.getElementById('autocomplete2')),
+                    {types: ['geocode']});
+
+                // When the user selects an address from the dropdown, populate the address
+                // fields in the form.
+                autocomplete.addListener('place_changed', function() {
+                    fillInAddress(autocomplete2, "2");
+                });
+            }
+
+            function fillInAddress(autocomplete, unique) {
+                // Get the place details from the autocomplete object.
+                var place = autocomplete.getPlace();
+
+                for (var component in componentForm) {
+                    if (!!document.getElementById(component + unique)) {
+                        document.getElementById(component + unique).value = '';
+                        document.getElementById(component + unique).disabled = false;
+                    }
+                }
+
+                // Get each component of the address from the place details
+                // and fill the corresponding field on the form.
+                for (var i = 0; i < place.address_components.length; i++) {
+                    var addressType = place.address_components[i].types[0];
+                    if (componentForm[addressType] && document.getElementById(addressType + unique)) {
+                        var val = place.address_components[i][componentForm[addressType]];
+                        document.getElementById(addressType + unique).value = val;
+                    }
+                }
+            }
+            
+            google.maps.event.addDomListener(window, "load", initAutocomplete);
+            
+            // Bias the autocomplete object to the user's geographical location,
+            // as supplied by the browser's 'navigator.geolocation' object.
+            function geolocate() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function(position) {
+                        var geolocation = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+                        var circle = new google.maps.Circle({
+                            center: geolocation,
+                            radius: position.coords.accuracy
+                        });
+                        autocomplete.setBounds(circle.getBounds());
+                    });
+                }
+            }
+        </script>
+    </body>
+</html>

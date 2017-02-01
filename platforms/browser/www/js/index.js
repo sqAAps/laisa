@@ -73,8 +73,8 @@ function _(id) {
 
 function restrict(elem) {
 	"use strict";
-	var tf = _(elem);
-	var rx = new RegExp;
+	var tf = _(elem),
+		rx = new RegExp;
 	if (elem === "email") {
 		rx = /[' "]/gi;
 	}
@@ -100,8 +100,8 @@ function send_message(ad_id) {
 	document.getElementById("send_container").appendChild(send_messages);
 	
 	var send_message_head = document.createElement('div');
-	send_message_head.className = "send_head",
-		send_message_text_text = document.createTextNode("Send Message");
+	send_message_head.className = "send_head";
+	var send_message_text_text = document.createTextNode("Send Message");
 	send_message_head.appendChild(send_message_text_text);
 	document.getElementById("send_message." + ad_id).appendChild(send_message_head);
 	
@@ -119,10 +119,10 @@ function send_message(ad_id) {
 	send_button.name = "send_button";
 	send_button.onclick = function () {
 		var message = document.getElementById("send_text." + ad_id).value;
-		if (_("send_text." + ad_id) === "") {
+		if (_("send_text." + ad_id) === " ") {
 			_("send_text." + ad_id).style.border = "2px solid red";
 		} else {
-			_("sen`d_text." + ad_id).style.border = "1px solid gainsboro";
+			_("send_text." + ad_id).style.border = "1px solid gainsboro";
 
 			var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/send_message.php");
 			//var ajax = ajaxObj("POST", "../php/send_message.php");
@@ -131,7 +131,8 @@ function send_message(ad_id) {
 					if (ajax.responseText.slice(-12) === 'message_sent') {
 						var elem = document.getElementById("send_container");
 						elem.parentNode.removeChild(elem);
-						alert("Message Sent");
+						_("message_body_cover").style.display = "block";
+						$("#message_body_cover").fadeOut(4000);
 					}
 				}
 			};
@@ -152,27 +153,6 @@ function send_message(ad_id) {
 	};
 	document.getElementById("send_message." + ad_id).appendChild(cancel_button);
 }
-
-
-
-//ONclick Value Proposition arrows
-$("img#arrows_scroll").on('click', function () {
-    "use strict";
-	$('html,body').animate({
-        scrollTop: $("h1#how_it_works_header").offset().top
-	},
-						   'slow');
-});
-
-$("img#arrows_scroll").mouseenter(function () {
-    "use strict";
-	$("img#arrows_scroll").css("opacity", "1");
-});
-
-$("img#arrows_scroll").mouseleave(function () {
-    "use strict";
-	$("img#arrows_scroll").css("opacity", "0.5");
-});
 
 
 

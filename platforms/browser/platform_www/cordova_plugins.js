@@ -257,6 +257,14 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/cordova-plugin-facebook4/www/facebook-browser.js",
+        "id": "cordova-plugin-facebook4.FacebookConnectPluginBrowser",
+        "pluginId": "cordova-plugin-facebook4",
+        "clobbers": [
+            "facebookConnectPlugin"
+        ]
+    },
+    {
         "file": "plugins/cordova-plugin-network-information/www/network.js",
         "id": "cordova-plugin-network-information.network",
         "pluginId": "cordova-plugin-network-information",
@@ -308,11 +316,19 @@ module.exports = [
         "runs": true
     },
     {
-        "file": "plugins/cordova-plugin-facebook4/www/facebook-browser.js",
-        "id": "cordova-plugin-facebook4.FacebookConnectPluginBrowser",
-        "pluginId": "cordova-plugin-facebook4",
+        "file": "plugins/phonegap-plugin-push/www/push.js",
+        "id": "phonegap-plugin-push.PushNotification",
+        "pluginId": "phonegap-plugin-push",
         "clobbers": [
-            "facebookConnectPlugin"
+            "PushNotification"
+        ]
+    },
+    {
+        "file": "plugins/phonegap-plugin-push/www/browser/push.js",
+        "id": "phonegap-plugin-push.BrowserPush",
+        "pluginId": "phonegap-plugin-push",
+        "clobbers": [
+            "PushNotification"
         ]
     }
 ];
@@ -326,12 +342,13 @@ module.exports.metadata =
     "cordova-plugin-splashscreen": "3.2.2",
     "cordova-plugin-statusbar": "2.1.3",
     "cordova-plugin-whitelist": "1.2.2",
+    "cordova-plugin-facebook4": "1.7.4",
     "cordova-plugin-compat": "1.1.0",
     "cordova-plugin-console": "1.0.5",
     "cordova-plugin-network-information": "1.3.1",
     "cordova-plugin-globalization": "1.0.5",
     "com.jamiestarke.webviewdebug": "1.0.8",
-    "cordova-plugin-facebook4": "1.7.4"
+    "phonegap-plugin-push": "1.9.1"
 }
 // BOTTOM OF METADATA
 });

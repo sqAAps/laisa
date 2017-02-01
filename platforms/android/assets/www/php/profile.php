@@ -4,19 +4,12 @@ require_once './connect.inc.php';
 require './view.php';
 global $connection;
 
-// Checking if the logged in User and the
-//Logged in User
-if(isset($_SESSION['user_id'])){
-    $user_id = $_SESSION['user_id'];
-}
-//User that owns the ad
-//$ad_user_id = get_ad_user_id();
-//  FUNCTION
+$session_user = $_POST['session_user'];
+$_SESSION['session_user'] = $_POST['session_user'];
 
 if(isset($_POST['profile'])){
 	$ad_user_id = $_POST['profile'];
 	$session_user = $_POST['session_user'];
-	$_SESSION['user_id'] = $_POST['session_user'];
 	
 	function view_my_profile($USERID){ 
 		global $connection;
@@ -78,7 +71,7 @@ if(isset($_POST['profile'])){
 				
 				<!--	V I E W		A L L		P O S T S-->
 				<div class="view_all_ads" id="view_all_ads">
-					<?php   view_my_ads($session_user); ?>
+					<?php   view_my_ads($session_user, $session_user); ?>
                 </div>
 				<?php
 			}else{
@@ -89,7 +82,7 @@ if(isset($_POST['profile'])){
 				
 				<!--	V I E W		A L L		P O S T S-->
 				<div class="view_all_ads" id="view_all_ads">
-					<?php $my_ads = view_my_ads($ad_user_id); ?>
+					<?php $my_ads = view_my_ads($ad_user_id, $session_user); ?>
                 </div>
 				<?php
             }
@@ -101,15 +94,15 @@ if(isset($_POST['profile'])){
 	<footer>    
 		<ul id="footer_info">
 			<li class="footer_items" id="about_us">
-				About Us
+				<a href="./about.html" style="color:white;text-decoration:none">About Us</a>
 			</li>
                     
 			<li class="footer_items" id="privacy">
-				Privacy & Terms
+				<a href="./privacy.html" style="color:white;text-decoration:none">Privacy Policy</a>
 			</li>
                     
 			<li class="footer_items" id="Careers">
-				Careers
+				<a href="./privacy.html" style="color:white;text-decoration:none">Terms of Use</a>
 			</li>
                     
 			<li class="footer_items" id="contact_us">
@@ -153,11 +146,9 @@ if(isset($_POST['profile'])){
 }
 
 
-
-
 if (isset($_POST['delete'])) {
     // get id value
-    $user_id = $_SESSION['user_id'];
+    $session_user = $session_user = $_POST['session_user'];;
     $ad_id = $_POST['delete'];
  
     // delete the entry 
@@ -171,9 +162,9 @@ if (isset($_POST['delete'])) {
 
 if(isset($_POST['addtowishlist'])){
 	$ad_id = $_POST['addtowishlist'];
-	$user_id = $_POST['session_user'];
+	$session_user = $_POST['session_user'];
 	
-	$query = "SELECT * FROM `wishlist` WHERE `session_user_id`='".mysqli_real_escape_string($connection, $user_id)."' AND `ad_id`='".mysqli_real_escape_string($connection, $ad_id)."'";
+	$query = "SELECT * FROM `wishlist` WHERE `session_user_id`='".mysqli_real_escape_string($connection, $session_user)."' AND `ad_id`='".mysqli_real_escape_string($connection, $ad_id)."'";
 	if ($query_run = mysqli_query($connection, $query)) {
 		$query_num_rows = mysqli_num_rows($query_run);
          
@@ -182,7 +173,7 @@ if(isset($_POST['addtowishlist'])){
 			$query2 = "  INSERT INTO `wishlist` VALUES 
                                         (
                                         '',
-                                        '".mysqli_real_escape_string($connection, $user_id)."',
+                                        '".mysqli_real_escape_string($connection, $session_user)."',
                                         '".mysqli_real_escape_string($connection, $ad_id)."'
                                         )
                                         ";
@@ -196,4 +187,32 @@ if(isset($_POST['addtowishlist'])){
 		}
 	}
 }
+
+
+if(isset($_POST['edit'])){
+	$ad_id = $_POST['ad_id'];
+	$session_user = $_POST['edit'];
+	
+	$query = "SELECT * FROM `adverts` WHERE `user_id`='".mysqli_real_escape_string($connection, $session_user)."' AND `id`='".mysqli_real_escape_string($connection, $ad_id)."'";
+	if ($query_run = mysqli_query($connection, $query)) {
+		$query_num_rows = mysqli_num_rows($query_run);
+         
+		//Add to wishlist
+		if($query_num_rows === 1){
+			while ($rows = mysqli_fetch_array($query_run)) {
+				$description = $rows ['description'];
+				$departure = $rows ['departure'];
+				$destination = $rows ['destination'];
+				$date = $rows ['date'];
+				$time = $rows ['time'];
+				$amount = $rows ['amount'];
+				
+				echo $description."£".$departure."£".$destination."£".$date."£".$time."£".$amount."£".$type;
+				
+				exit();
+			}
+		}
+	}
+}
+
 ?>

@@ -1,6 +1,6 @@
 /*  MOBILE    NAVIGATION BAR      */
 div#profile_head{
-	margin-top: 55px;
+	margin-top: 60px;
 }
 .mobile_nav_head{
     position: fixed;
@@ -10,6 +10,7 @@ div#profile_head{
     z-index: 2;
 	top: 0px;
 	box-shadow: 0px 3px 3px #888888;
+	border-bottom: 1px solid #008F87;
 }
 img#more{
     display: block;
@@ -422,10 +423,17 @@ div#profile_imgs{
 	width: 20%;
     display: inline-block;
 }
+div#details{
+	display: inline-block;
+    vertical-align: top;
+    margin-top: 5px;
+    margin-left: 5px;
+}
 div#profile_info{
 	display: inline-block;
     vertical-align: top;
     padding-top: 5px;
+	margin-left: 5px;
 }
 h4#profile_name{
 	margin: 0px;
@@ -464,6 +472,9 @@ p#post_departure_tag{
 }
 
 /* Post/ad  date,time,amout */
+p#post_details{
+	margin-bottom: 5px;
+}
 p#post_destination_tag{
     padding-top: 4px;
 	margin-bottom: 0px;
@@ -477,7 +488,8 @@ span#post_date, span#post_time, span#post_amount{
 }
 /* Post/ad  description*/
 span#post_more_information{
-    font-style: italic;
+    font-size: 13px;
+	font-style: italic;
 }
 
 
@@ -490,7 +502,7 @@ div#container{
 }
 /*  Post/ad container   */
 #all_results{
-	border: 1px solid #d1d2d3;
+	border: 1px solid #B8B9BA;
     border-radius: 8px;
     margin: 0 auto;
     width: 95%;
@@ -500,53 +512,17 @@ div#container{
 }
 /* Commuters Looking for transport | Transport from "" to ""*/
 h2#results_heading{
-    border-style: solid;
-    border-width: 2px 0px;
-    border-color: #d1d2d3;
+	border-style: solid;
+    border-width: 3px 0px;
+    border-color: white;
     color: #414042;
     text-align: center;
-    padding: 7px 0px;
+    padding: 5px 0px;
     margin: 20px 0px;
     font-size: 19px;
 }
-
-/*          ASIDE           */
-aside.friend_box{
-    width: 240px;
-    top: 65px;
-    bottom: 10px;
-    position: fixed;
-}
-div#profile_window{
-    width: 100%;
-    height: 160px;
-    margin-top: 30px;
-    background-color: #189F87;
-}
-img#user_background{
-    width: 100%;
-    height: 60%;
-    margin-top: 2px;
-}
-div#user_details{
-    height: 40%;
-    width: 100%;
-}
-img#nav_profile_image{
-    width: 60px;
-    height: 60px;
-    border-style: solid;
-    border-color: grey;
-    border-width: 1px;
-    border-radius: 100%;
-    position: absolute;
-    margin: -20px 0px 0px 15px;
-}
-span#user_p_information{
-    color: white;
-    font-size: 19px;
-    position: absolute;
-    margin: 10px 0px 0px 90px;
+h2#no-reviews{
+	text-align: center;
 }
 /* SEARCH */
 form#search_form.search_form{
@@ -580,26 +556,6 @@ input#search, #search {
     width: 100%;
     font-size: 18px;
 }
-/* Search for friends*/
-h4#search_friends_label{
-    margin-top: 40px;
-}
-input#name{
-    width: 100%;
-    border-radius: 15px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #189F87;
-    margin-bottom: 4px
-}
-input#look{
-    border-radius: 3px;
-    width: 100%;
-    border-color: dodgerblue;
-    background-color: dodgerblue;
-    color: snow;
-    margin-top: 10px;
-}
 
 
 /*ALL ADS*/
@@ -622,6 +578,7 @@ div.send_message_div{
     margin: auto;
     width: 80%;
     margin-top: 25%;
+	z-index: 3;
 }
 div.send_head{
 	background-color: #93DBC7;
@@ -652,8 +609,9 @@ input.send_button, input.cancel_button{
 /*      FOOTER      */
 footer{    
     background-color: #189F87;
-    position: relative;
+    position: fixed;
     width: 100%;
+    bottom: 0px;
 }
 #footer_info{
 	text-align: center;
@@ -716,7 +674,9 @@ p#physical_information{
 a#footer_links{
     color: white;
 }
-
+p#intro_paragraph{
+	font-size: 16px;
+}
 
 /*          SCREEN      856     */
 @media screen and (max-width:856px){
@@ -813,38 +773,46 @@ a#footer_links{
 		padding-top: 5%;
 		top: 55px;
     }
-    
-    img#profile_menu, img#search_menu{
-        display: block;
-    }
     img#profile_menu{
-        float: left;
-        width: 30px;
-        height: 30px;
+		float: left;
+		height: 32px;
+		padding: 5px;
+		background-color: #009687;
+		border-radius: 5px;
+		border: 1px solid #008F87;
     }
     img#close_menu1{
         float: left;
-        width: 30px;
-        height: 30px;
+        height: 32px;
+		padding: 5px;
+		background-color: #009687;
+		border-radius: 5px;
+		border: 1px solid #008F87;
         display: none;
     }
     img#mobile_logo{
-        width: 62px;
-        height: 35px;
-        display: inline-block;
-        position: absolute;
-        right: 45%
+		height: 41px;
+		top: 7px;
+		display: inline-block;
+		position: absolute;
+		right: 45%;
     }
     img#search_menu{
-        float: right;
-        width: 50px;
-        height: 30px;
+		float: right;
+		height: 32px;
+    	border: 1px solid #008F87;
+    	background-color: #009687;
+    	padding: 5px;
+    	border-radius: 5px;
     }
     img#close_menu2{
         display: none;
         float: right;
-        width: 50px;
-        height: 30px;
+        height: 32px;
+		border: 1px solid #008F87;
+		background-color: #009687;
+		padding: 5px;
+		border-radius: 5px;
     }
     
     section.signin{
@@ -871,9 +839,6 @@ a#footer_links{
     
     
     /* Post/ad  description */
-    span#post_more_information {
-        font-size: 13px
-    }
     .footer_items{
         font-size: 12px;
     }

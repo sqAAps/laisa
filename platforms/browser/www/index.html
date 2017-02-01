@@ -20,10 +20,10 @@
 		<!--	N A V I G A T I O N	-->
 		<div class="mobile_nav_head" id="nav_head">
 			<div class="container-fluid">
-				<img id="mobile_logo" src="./images/icons/mobile_navigation/logo.svg" style="position: relative; margin-left: 85%;" />
+				<img id="mobile_logo" src="./images/icons/mobile_navigation/logo.png" style="position: relative; margin-left: 85%;" />
 			</div>
 		</div>
-		<!------------------------------------------->
+		<!--						-->
 		
 		
 		<!-- fb-root is needed by the FB API. -->
@@ -32,28 +32,25 @@
 		
 		<!--	V A L U E	 P R O P O S I T I O N	-->
 		<div class="value_prop" id="value_prop">
-			<div id="vp_text">Share a ride with your friends</div>
+			<div id="vp_text">Share a ride with your Friends</div>
 			
 			<div id="fb_button" style="text-align: center; margin: 10px auto;">
 				<!-- FACEBOOK -->
 				<a href="javascript:fblogin();">
 					<img id="fb_login-img" src="./images/facebook.png"/>
 				</a>
-				
-				<!--<fb:login-button id="signup" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>-->
 			</div>
 			
-			<div id="arrows">
-				<img id="arrows_scroll" src="./images/icons/Arrows.svg" />
+			<div id="arrows" onclick="arrows();">
+				<img id="arrows_scroll" src="./images/icons/Arrows.png" />
 			</div>
 		</div> 
-		<!------------------------------------------->
+		<!----------------------------------------- -->
             
            
 		<!--	B O D Y		S E C T I O N	-->
-		<section class="posts_from_users" id="posts_from_users">
-			<div id="how_it_works">
-				<h2 id="how_it_works_header">How It Works</h1>
+		<div id="how_it_works">
+				<h1 id="how_it_works_header">Get Started</h1>
                     
 				<div id="topic_container">
                             
@@ -61,7 +58,7 @@
 						<img id="how_images" src="./images/icons/search-icon.png" />                                
 						<h3 id="how_header">Search</h3>                                
 						<p id="topic">
-							Search for already posted adverts travelling similar distances
+							Before posting a travel, search within the community. Chances are someone has posted a  plan that will suit your needs.
 						</p>
 					</div>
                         
@@ -69,7 +66,7 @@
 						<img id="how_images" src="./images/icons/List-your-advert-icon.png" />
 						<h3 id="how_header">List your Post</h3>
 						<p id="topic">
-							Post an advert ,whether you’re “looking for transport” or “offering transport”.
+							If your search has returned (0) results, post a plan. Post a travelling plan with all the details members should know beforehand. Be friendly
 						</p>
 					</div>
                         
@@ -77,178 +74,11 @@
 						<img id="how_images" src="./images/icons/mail.png" />
 						<h3 id="how_header">Message</h3>
 						<p id="topic">
-							Send a message to the advert owner and request additional information and organize pickups. SAFE TRIP
+							Speak to your potential passenger/driver before travelling together. This always  makes you feel at ease because you've gotten to know each other a bit. Don't forget to share the costs. Safe Trip
 						</p>
-					</div>
-					
-					<!--
-					<div class="topic_div">
-						<img id="how_images" src="./images/icons/request_to_book.svg" />
-						<h3 id="how_header">Request to book</h3>
-						<p id="topic">
-							You send request to the ad-owner to book transport, or request the potential passenger to book.
-						</p>
-					</div>
-                        
-					<div class="topic_div">
-						<img id="how_images" src="./images/icons/payment.svg" />
-						<h3 id="how_header">Payment</h3>
-						<p id="topic">
-							Once the request is accepted and user is booked, payment will be deducted from the passenger’s account, will receive a OTP for check-in
-						</p>
-					</div>
-                        
-					<div class="topic_div">
-						<img id="how_images" src="./images/icons/safe-trip.svg" />
-						<h3 id="how_header">Check In</h3>
-						<p id="topic">
-							On arrival of driver, passenger will check-in and check-out using OTP. Driver receives payment after check-out
-						</p>
-					</div>
-                     -->
-					
+					</div>			
 				</div>
-			</div>
-                    
-			<div id="introduction">
-				<div id="container-fluid">
-					<h3 id="intro_header">What Makes Us Different</h1>
-                    	        
-					<p id="intro_paragraph">
-						We genuinely want to make ride sharing as safe as possible for both the driver and passengers. We want to make travelling as convenient as possible. We want to make South Africa a smaller place by allowing everyone to travel it.
-					</p>
-                            
-					<!--<iframe id="about_us_video" src="./http://www.youtube.com/embed/FJid_h0-k7E?autoplay=0"></iframe>-->
-				</div>
-			</div>
-                    
-			<div id="affirmations">
-				<h3 id="affirmation_header">What Our Customers Say</h3>
-                            
-                        
-				<div class="slideshow_container">
-                	                                        
-					<div class="customer-slides">
-						<div class="container-fluid">
-                                    
-							<div class="affirm_img_div">
-								<img id="customer-image" src="./images/users/4038452210_018d479345.png" />
-							</div>
-                                    
-							<div class="affirm_text_div" id="statement">
-								You know, I was very sceptical at first. With everything happening in the news, I thought it to be absurd to get into a car with someone you don’t. I decided to give it a try, with the route updates, I could update my family how far I was into the journey. It was way more comfortable and convenient because I got dropped off at my gate where my husband was waiting for me.
-							</div>
-                                
-						</div>
-					</div>
-                                    
-					<div class="customer-slides">
-						<div class="container-fluid">
-                                
-							<div class="affirm_img_div">
-								<img id="customer-image" src="./images/users/danielle_small-620x412.png" />
-							</div>
-                                    
-							<div class="affirm_text_div" id="statement">
-								We genuinely want to make ride sharing as safe as possible for both the driver and passengers. We want to make travelling as convenient as possible. We want to make South Africa a smaller place by allowing everyone to travel it.
-							</div>
-                                    
-						</div>
-					</div>
-                                    
-					<div class="customer-slides">
-						<div class="container-fluid">
-                        	        
-							<div class="affirm_img_div">
-								<img id="customer-image" src="./images/users/roberts1.png" />
-							</div>
-                                    
-							<div class="affirm_text_div" id="statement">
-								You know, I was very sceptical at first. With everything happening in the news, I thought it to be absurd to get into a car with someone you don’t. I decided to give it a try, with the route updates, I could update my family how far I was into the journey. It was way more comfortable and convenient because I got dropped off at my gate where my husband was waiting for me.
-							</div>
-                                    
-						</div>
-					</div>
-                                
-					<div class="customer-slides">
-						<div class="container-fluid">
-                        	    
-							<div class="affirm_img_div">
-								<img id="customer-image" src="./images/users/Mukunzie.png" /> 
-							</div>
-                                    
-							<div class="affirm_text_div" id="statement">
-								We genuinely want to make ride sharing as safe as possible for both the driver and passengers. We want to make travelling as convenient as possible. We want to make South Africa a smaller place by allowing everyone to travel it.
-							</div>
-                                    
-						</div>
-					</div>
-                            
-					<a class="left_arrow_link" id="side_arrows" onclick="plusDivs(-1)"  >
-						<img id="left_arrow" src="./images/icons/left-arrow.svg" />
-					</a>
-                                
-					<a class="right_arrow_link" id="side_arrows" onclick="plusDivs(1)">
-						<img id="right_arrow" src="./images/icons/right-arrow.svg" />
-					</a>
-                                
-				</div>
-			</div>
-
-			<script>                          
-				/* Arrow controls*/
-				var slideIndex = 1;
-				showDivs(slideIndex);
-
-				function plusDivs(n) {
-					showDivs(slideIndex += n);
-				}
-
-				function showDivs(n) {
-					var i;
-					var x = document.getElementsByClassName("customer-slides");
-                    	                
-					if (n > x.length) {
-						slideIndex = 1
-					}    
-                                    
-					if (n < 1) {
-						slideIndex = x.length
-					};
-                                    
-					for (i = 0; i < x.length; i++) {
-						x[i].style.display = "none";  
-					}
-                                    
-					x[slideIndex-1].style.display = "block";  
-				}
-                                    
-				/*Automatic control*/
-				var myIndex = 0;
-				carousel();
-
-				function carousel() {
-					var i;
-					var x = document.getElementsByClassName("customer-slides");
-                    	                
-					for (i = 0; i < x.length; i++) {
-						x[i].style.display = "none";  
-					}
-                                    
-					myIndex++;
-                    	                    
-					if (myIndex > x.length) {
-						myIndex = 1
-					}    
-                                    
-					x[myIndex-1].style.display = "block";  
-                                    
-					setTimeout(carousel, 20000); // Change image every 10 seconds
-				}
-			</script>            
-		</section>
-
-		<div id="send_msg_container"></div>
+			</div>            
 		<!------------------------------------------->
 		
 		
@@ -256,19 +86,19 @@
 		<footer>    
 				<ul id="footer_info">
 					<li class="footer_items" id="about_us">
-						About Us
+						<a href="./html/about.html" style="color:white;text-decoration:none">About Us</a>
                     </li>
                     
 					<li class="footer_items" id="privacy">
-						Privacy & Terms
+						<a href="./html/privacy.html" style="color:white;text-decoration:none">Privacy Policy</a>
                     </li>
                     
 					<li class="footer_items" id="Careers">
-						Careers
+						<a href="./html/privacy.html" style="color:white;text-decoration:none">Terms of Use</a>
                     </li>
                     
 					<li class="footer_items" id="contact_us">
-						Contact Us
+						<a href="javascript:show_contact()" style="text-decoration:none;color:white;">Contact Us</a>
                     </li>
 				</ul>
                 
@@ -304,9 +134,12 @@
 		<script type="text/javascript" src="./cordova.js"></script>
 		<script type="text/javascript" src="./js/index.js"></script>
 		<script type="text/javascript">
+			function arrows(){
+				$('html,body').animate({scrollTop: $("#how_it_works_header").offset().top}, 'slow');
+			}
+			
 			function deviceready(){
-				navigator.splashscreen.hide();
-				
+				navigator.splashscreen.show();
 				if (localStorage.getItem("id") != null){
 					window.location.assign("html/profile.html?" + localStorage.getItem("id"));
 				}

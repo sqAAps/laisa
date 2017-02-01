@@ -3,7 +3,6 @@
     <head>
 		<script src="../API/jquery.js"></script>
 		<script src="../API/335bootstrap.js"></script>
-		<script src="../js/index.js"></script>
 		<link rel="stylesheet" href="../API/335bootstrap.css">
 		<link href="../images/icons/mobile_navigation/1logo.png" rel="shortcut icon">
 		<title>laisa</title>
@@ -20,21 +19,21 @@
 		<div class="mobile_nav_head" id="nav_head">
 			<div class="container-fluid">
 				<a href="javascript:open_profile_menu();">
-					<img id="profile_menu" src="../images/icons/mobile_navigation/profile_menu.svg">
+					<img id="profile_menu" src="../images/icons/mobile_navigation/profile_menu.png">
 				</a>
 				<a href="javascript:close_profile_menu();">
-					<img id="close_menu1" src="../images/icons/mobile_navigation/close_menu.svg">
+					<img id="close_menu1" src="../images/icons/mobile_navigation/close_menu.png">
 				</a>	    
 					
 				<a href="javascript:profile()">
-					<img id="mobile_logo" src="../images/icons/mobile_navigation/logo.svg" />
+					<img id="mobile_logo" src="../images/icons/mobile_navigation/logo.png" />
 				</a>
                 	   
 				<a href="javascript:open_search_menu();">
-					<img id="search_menu" src="../images/icons/mobile_navigation/search_menu.svg">
+					<img id="search_menu" src="../images/icons/mobile_navigation/search_menu.png">
 				</a>	
 				<a href="javascript:close_search_menu();">	
-					<img id="close_menu2" src="../images/icons/mobile_navigation/close_menu.svg">
+					<img id="close_menu2" src="../images/icons/mobile_navigation/close_menu.png">
 				</a>
 			</div>
 		</div>                
@@ -46,7 +45,7 @@
 				<ul id="profile_menu_ul">
 					<li class="profile_menu_li">
 						<a href="javascript:add_post()" style="text-decoration:none">
-							<img id="profile_menu_li_img" src="../images/icons/profile_menu/add_post.svg"/>
+							<img id="profile_menu_li_img" src="../images/icons/profile_menu/add_post.png"/>
 							<span id="profile_menu_li_head">Add Post</span>
 						</a>
 					</li>
@@ -54,7 +53,7 @@
                    
 					<li class="profile_menu_li">
 						<a href="javascript:inbox()" style="text-decoration:none;">
-							<img id="profile_menu_li_img" src="../images/icons/profile_menu/inbox.svg"/>
+							<img id="profile_menu_li_img" src="../images/icons/profile_menu/inbox.png"/>
 							<span id="profile_menu_li_head">Inbox</span>
 						</a>
 					</li>
@@ -62,7 +61,7 @@
 					
 					<li class="profile_menu_li">
 						<a href="javascript:wishlist()" style="text-decoration:none;">
-							<img id="profile_menu_li_img" src="../images/icons/profile_menu/wishlist.svg"/>
+							<img id="profile_menu_li_img" src="../images/icons/profile_menu/wishlist.png"/>
 							<span id="profile_menu_li_head">Wish List</span>
 						</a>
                     </li>
@@ -94,9 +93,10 @@
 					<input id="search_menu_destination" name="destination" type="text" placeholder=" Destination" />
 					
 					<!-- D A T E -->
-					<input id="search_menu_date" name="date" type="text" placeholder=" DATE: YYYY/MM/DD" />
+					<input id="search_menu_date" name="date" type="date" placeholder=" DATE: YYYY/MM/DD" />
+					
 
-					<br>                                            
+					<br>
 					<input id="search_menu_offering_transport" type="radio" name="type" value="o" checked/>
 					<span id="span_search_menu_offering_looking"> I'm looking for Transport</span>
 							
@@ -128,8 +128,16 @@
 			</div>
 		</div>
 		
+		<div class="wishlist_body_cover" id="message_body_cover">
+			<div class="wishlist_div">
+				<h3 class="wishlist_div_head">Message</h3>
+				<p class="wishlist_div_p">Message Sent</p>
+			</div>
+		</div>
+		
 		
 		<!--J A V A S C R I P T-->
+		<script src="../js/index.js"></script>
         <script type="text/javascript">
 			function profile_fn(){
 				var page_url = window.location.href;
@@ -149,19 +157,11 @@
 			window.onload = profile_fn;
 			
 			function add_post(){
-				var page_url = window.location.href;
-				var page_url_split = page_url.split("?");
-				var id = page_url_split[1];
-				
-				window.location.assign("./post.html?"+id);
+				window.location.assign("./post.html?" + localStorage.getItem("id"));
 			}
 			
 			function wishlist(){
-				var page_url = window.location.href;
-				var page_url_split = page_url.split("?");
-				var id = page_url_split[1];
-				
-				window.location.assign("./wishlist.html?"+id);
+				window.location.assign("./wishlist.html?" + localStorage.getItem("id"));
 			}
 			function add_to_wishlist(id){
 				var ajax = ajaxObj("POST", "http://www.sqaaps.co.za/php/laisa/profile.php");
@@ -171,7 +171,7 @@
 					if(ajaxReturn(ajax) == true) {
 						if(ajax.responseText.slice(-8) === 'wishlist'){
 							_("wishlist_body_cover").style.display = "block";
-							$("#wishlist_body_cover").fadeOut("7000");
+							$("#wishlist_body_cover").fadeOut(4000);
 						}
 					}
 				}
@@ -179,18 +179,11 @@
 			}
 			
 			function inbox(){
-				var page_url = window.location.href;
-				var page_url_split = page_url.split("?");
-				var id = page_url_split[1];
-				
-				window.location.assign("./inbox.html?"+id);
+				window.location.assign("./inbox.html?" + localStorage.getItem("id"));
 			}
 			
 			function profile(){
-				var page_url = window.location.href;
-				var page_url_split = page_url.split("?");
-				var id = page_url_split[1];
-				window.location.assign("./profile.html?"+id);
+				window.location.assign("./profile.html?" + localStorage.getItem("id"));
 			}
 			
 			function delete_post(ad_id){
@@ -202,7 +195,7 @@
 						}
 					}
 				}
-				ajax.send('delete=' + ad_id + '&user_id='+ localStorage.getItem("id"));
+				ajax.send('delete=' + ad_id + '&session_user='+ localStorage.getItem("id"));
 			}
 			
 			function search(){
@@ -290,6 +283,91 @@
 				$('div#contact_us_form').toggle();
 				$('html,body').animate({scrollTop: $("div#contact_us_form").offset().top}, 'slow');
 			}
+		</script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUwakWff-5NOHsFTlxgWr4uSWb9Syjroo&libraries=places&callback=initAutocomplete"
+        async defer></script>
+		<script>
+			// This example displays an address form, using the autocomplete feature
+            // of the Google Places API to help users fill in the information.
+            
+            // This example requires the Places library. Include the libraries=places
+            // parameter when you first load the API. For example:
+            // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+            var placeSearch, search_menu_departure, search_menu_destination;
+			
+            var componentForm = {
+                street_number: 'short_name',
+                route: 'long_name',
+                locality: 'long_name',
+                administrative_area_level_1: 'short_name',
+                country: 'long_name',
+                postal_code: 'short_name'
+            };
+
+            function initAutocomplete() {
+
+                search_menu_departure = new google.maps.places.Autocomplete((document.getElementById('search_menu_departure')),
+                    {types: ['geocode']});
+
+                // When the user selects an address from the dropdown, populate the address
+                // fields in the form.
+                search_menu_departure.addListener('place_changed', function() {
+                    fillInAddress(search_menu_departure, "");
+                });
+          
+                search_menu_destination = new google.maps.places.Autocomplete(
+                    /** @type {!HTMLInputElement} */(document.getElementById('search_menu_destination')),
+                    {types: ['geocode']});
+
+                // When the user selects an address from the dropdown, populate the address
+                // fields in the form.
+                search_menu_destination.addListener('place_changed', function() {
+                    fillInAddress(search_menu_destination, "2");
+                });
+            }
+
+            function fillInAddress(autocomplete, unique) {
+                // Get the place details from the autocomplete object.
+                var place = autocomplete.getPlace();
+
+                for (var component in componentForm) {
+                    if (!!document.getElementById(component + unique)) {
+                        document.getElementById(component + unique).value = '';
+                        document.getElementById(component + unique).disabled = false;
+                    }
+                }
+
+                // Get each component of the address from the place details
+                // and fill the corresponding field on the form.
+                for (var i = 0; i < place.address_components.length; i++) {
+                    var addressType = place.address_components[i].types[0];
+                    if (componentForm[addressType] && document.getElementById(addressType + unique)) {
+                        var val = place.address_components[i][componentForm[addressType]];
+                        document.getElementById(addressType + unique).value = val;
+                    }
+                }
+            }
+            
+            google.maps.event.addDomListener(window, "load", initAutocomplete);
+            
+            // Bias the autocomplete object to the user's geographical location,
+            // as supplied by the browser's 'navigator.geolocation' object.
+            function geolocate() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function(position) {
+                        var geolocation = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+                        var circle = new google.maps.Circle({
+                            center: geolocation,
+                            radius: position.coords.accuracy
+                        });
+                        autocomplete.setBounds(circle.getBounds());
+                    });
+                }
+            }
 		</script>
     </body>
 </html>

@@ -24,7 +24,7 @@
       </feature>
     </config-file>
     <config-file target="res/values/strings.xml" parent="/resources">
-      <string name="google_app_id">200712378801</string>
+      <string name="google_app_id">$SENDER_ID</string>
     </config-file>
     <config-file target="AndroidManifest.xml" parent="/manifest">
       <uses-permission android:name="android.permission.INTERNET"/>
@@ -90,7 +90,7 @@
       </array>
     </config-file>
     <config-file target="*-Info.plist" parent="GCM_SENDER_ID">
-      <string>200712378801</string>
+      <string>$SENDER_ID</string>
     </config-file>
     <config-file target="*-Info.plist" parent="IS_GCM_ENABLED">
       <true/>
